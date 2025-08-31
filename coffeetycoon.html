@@ -8,140 +8,185 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f0f13;
-      --panel:#171821;
-      --panel-2:#12131b;
-      --ink:#dfe6f1;
-      --muted:#a9b2c3;
-      --accent:#c084fc;
-      --accent-2:#22d3ee;
-      --good:#4ade80;
-      --warn:#facc15;
-      --danger:#f87171;
-      --coffee:#b97a57;
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      text-align: center;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 600px at 70% -10%, #1b1c28 0%, var(--bg) 50%), var(--bg);
-      color:var(--ink);
-      display:grid; grid-template-rows:auto 1fr auto;
-      overflow:hidden;
+    header {
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: 800;
+      background: #1e1e1e;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
     }
-    header{display:flex; align-items:center; gap:14px; padding:14px 18px; background:var(--panel-2); border-bottom:1px solid #232538; position:sticky; top:0; z-index:2; box-shadow:0 4px 20px rgba(0,0,0,.25);}
-    header .title{font-weight:800; letter-spacing:.3px;}
-    header .pill{padding:6px 10px; border-radius:999px; background:#232538; color:var(--muted); font-size:12px}
-    main{display:grid; grid-template-columns: 340px 1fr 360px; gap:16px; padding:16px; height:100%;}
-    .card{background:var(--panel); border:1px solid #232538; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.25); overflow:hidden; display:flex; flex-direction:column;}
-    .card h2{margin:0; padding:14px 16px; font-size:16px; font-weight:800; border-bottom:1px solid #232538; background:linear-gradient(180deg, #1a1b26, #171821)}
-    .card .content{padding:12px 14px; gap:8px; display:flex; flex-direction:column;}
-    .stat{display:flex; justify-content:space-between; align-items:center; background:var(--panel-2); padding:10px 12px; border-radius:12px; border:1px solid #232538;}
-    .stat .big{font-size:22px; font-weight:800;}
-    .stat .label{color:var(--muted); font-size:12px}
-    .row{display:flex; gap:8px; align-items:center}
-    .grow{flex:1}
-    .btn{display:flex; align-items:center; gap:8px; justify-content:space-between; padding:10px 12px; border-radius:12px; background:#1e2030; border:1px solid #26293f; cursor:pointer; transition:.15s transform, .15s filter;}
-    .btn:hover{filter:brightness(1.05)}
-    .btn:active{transform:translateY(1px)}
-    .btn .name{font-weight:700}
-    .btn .cost{color:var(--muted); font-size:12px}
-    .btn.lock{opacity:.5; filter:saturate(.6)}
-    .shoplist{display:flex; flex-direction:column; gap:8px; overflow:auto; padding-bottom:12px}
-    canvas{width:100%; height:100%; display:block; background: radial-gradient(900px 400px at 30% -20%, rgba(255,255,255,.06), transparent 60%), #0e0f14}
-    .footer{display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:var(--panel-2); border-top:1px solid #232538}
-    .tag{font-size:11px; color:var(--muted); background:#232538; padding:6px 10px; border-radius:999px; border:1px solid #2b2e46}
-    .toolbar{display:flex; gap:8px}
-    .toolbar button{background:#1e2030; color:var(--ink); border:1px solid #2b2e46; border-radius:10px; padding:8px 12px; cursor:pointer}
-    @media (max-width: 1100px){
-      main{grid-template-columns:1fr; grid-template-rows: 340px auto auto; overflow:auto}
-      .right, .left{height:auto; min-height:320px}
+    main {
+      padding: 20px;
+    }
+    canvas {
+      background: #1e1e1e;
+      border: 2px solid #333;
+      border-radius: 12px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .stats, .upgrades {
+      margin-top: 20px;
+    }
+    .upgrade-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #2e2e2e;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .upgrade-btn:hover {
+      background: #444;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="title">☕ Coffee Shop Tycoon</div>
-    <div class="pill" id="saveStatus">autosave on</div>
-    <div class="pill">Canvas edition</div>
-    <div class="grow"></div>
-    <div class="pill" id="timestamp"></div>
-  </header>
+  <header>Coffee Shop Tycoon ☕</header>
   <main>
-    <section class="card left">
-      <h2>Shop & Upgrades</h2>
-      <div class="content" id="leftPanel">
-        <div class="stat"><div>
-          <div class="label">Beans (money)</div>
-          <div class="big" id="beans">0</div>
-        </div>
-        <div style="text-align:right">
-          <div class="label">per click</div>
-          <div class="big" id="perClick">0</div>
-        </div></div>
-        <div class="row">
-          <div class="stat grow"><div>
-            <div class="label">Cups sold</div>
-            <div class="big" id="cups">0</div>
-          </div></div>
-          <div class="stat grow"><div>
-            <div class="label">Beans/sec</div>
-            <div class="big" id="bps">0</div>
-          </div></div>
-        </div>
-        <div class="stat"><div>
-          <div class="label">Reputation × Multiplier</div>
-          <div class="big"><span id="rep">1.00</span>×</div>
-        </div>
-        <div style="text-align:right">
-          <div class="label">Price per cup</div>
-          <div class="big" id="price">$1.00</div>
-        </div></div>
-        <h3 style="margin:8px 4px 0; color:var(--muted)">Hire / Buy</h3>
-        <div id="shop" class="shoplist"></div>
-        <h3 style="margin:8px 4px 0; color:var(--muted)">Upgrades</h3>
-        <div id="upgrades" class="shoplist"></div>
-      </div>
-    </section>
-    <section class="card center">
-      <h2>Tap to Brew — Click the Cup!</h2>
-      <div class="content" style="padding:0; height:100%">
-        <canvas id="game"></canvas>
-      </div>
-    </section>
-    <section class="card right">
-      <h2>Achievements & Log</h2>
-      <div class="content" style="overflow:auto">
-        <div class="stat" style="align-items:flex-start">
-          <div>
-            <div class="label">Milestones</div>
-            <div class="row" id="achievements" style="flex-wrap:wrap; gap:6px; margin-top:8px"></div>
-          </div>
-        </div>
-        <div class="stat" style="height:220px; overflow:auto">
-          <div>
-            <div class="label">Activity Log</div>
-            <ul id="log" style="list-style:none; padding:0; margin:6px 0 0; display:flex; flex-direction:column; gap:6px"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <p>Click the coffee cup to brew coffee!</p>
+    <canvas id="gameCanvas" width="200" height="200"></canvas>
+
+    <div class="stats">
+      <p id="coffeeCount">Coffee: 0</p>
+      <p id="cps">Coffee per second: 0</p>
+    </div>
+
+    <div class="upgrades">
+      <button class="upgrade-btn" id="buyAssistant">Hire Assistant (Cost: 10)</button>
+      <button class="upgrade-btn" id="buyMachine">Buy Coffee Machine (Cost: 100)</button>
+    </div>
   </main>
-  <div class="footer">
-    <div class="toolbar">
-      <span class="tag">Tip: hold <strong>space</strong> to auto-brew</span>
-      <span class="tag">S to save • L to load • R to reset</span>
-    </div>
-    <div class="toolbar">
-      <button id="saveBtn">Save</button>
-      <button id="loadBtn">Load</button>
-      <button id="resetBtn">Hard Reset</button>
-    </div>
-  </div>
+
   <script>
-    /* JavaScript game logic code is the same from previous version */
-    /* Entire script included previously goes here unchanged */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let coffee = 0;
+    let cps = 0;
+    let assistants = 0;
+    let machines = 0;
+    let assistantCost = 10;
+    let machineCost = 100;
+
+    // Steam particles
+    let steam = [];
+
+    function drawCup() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Cup body
+      ctx.fillStyle = '#c49a6c';
+      ctx.beginPath();
+      ctx.moveTo(60, 150);
+      ctx.lineTo(140, 150);
+      ctx.lineTo(120, 70);
+      ctx.lineTo(80, 70);
+      ctx.closePath();
+      ctx.fill();
+
+      // Cup top (ellipse)
+      ctx.fillStyle = '#8b5a2b';
+      ctx.beginPath();
+      ctx.ellipse(100, 70, 40, 15, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Handle
+      ctx.strokeStyle = '#c49a6c';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.arc(145, 100, 20, Math.PI / 2, -Math.PI / 2, true);
+      ctx.stroke();
+    }
+
+    function drawSteam() {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      steam.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function updateSteam() {
+      if (Math.random() < 0.1) {
+        steam.push({ x: 100 + (Math.random() * 20 - 10), y: 55, size: Math.random() * 4 + 2, speed: Math.random() * 0.5 + 0.5 });
+      }
+      steam.forEach(p => {
+        p.y -= p.speed;
+        p.size *= 0.98;
+      });
+      steam = steam.filter(p => p.size > 0.5);
+    }
+
+    function updateStats() {
+      document.getElementById('coffeeCount').textContent = `Coffee: ${Math.floor(coffee)}`;
+      document.getElementById('cps').textContent = `Coffee per second: ${cps}`;
+    }
+
+    function isClickOnCup(x, y) {
+      // Simple bounding box for cup area
+      return (x > 60 && x < 140 && y > 60 && y < 150);
+    }
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (isClickOnCup(x, y)) {
+        coffee++;
+        updateStats();
+      }
+    });
+
+    document.getElementById('buyAssistant').addEventListener('click', () => {
+      if (coffee >= assistantCost) {
+        coffee -= assistantCost;
+        assistants++;
+        cps += 1;
+        assistantCost = Math.floor(assistantCost * 1.5);
+        document.getElementById('buyAssistant').textContent = `Hire Assistant (Cost: ${assistantCost})`;
+        updateStats();
+      }
+    });
+
+    document.getElementById('buyMachine').addEventListener('click', () => {
+      if (coffee >= machineCost) {
+        coffee -= machineCost;
+        machines++;
+        cps += 5;
+        machineCost = Math.floor(machineCost * 1.7);
+        document.getElementById('buyMachine').textContent = `Buy Coffee Machine (Cost: ${machineCost})`;
+        updateStats();
+      }
+    });
+
+    setInterval(() => {
+      coffee += cps / 10;
+      updateStats();
+    }, 100);
+
+    function gameLoop() {
+      drawCup();
+      updateSteam();
+      drawSteam();
+      requestAnimationFrame(gameLoop);
+    }
+
+    updateStats();
+    gameLoop();
   </script>
 </body>
 </html>

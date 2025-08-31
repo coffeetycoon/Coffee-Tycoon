@@ -1,192 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coffee Shop Tycoon ☕</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Nunito', sans-serif;
-      background: #121212;
-      color: #f0f0f0;
-      text-align: center;
-    }
-    header {
-      padding: 20px;
-      font-size: 2rem;
-      font-weight: 800;
-      background: #1e1e1e;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
-    }
-    main {
-      padding: 20px;
-    }
-    canvas {
-      background: #1e1e1e;
-      border: 2px solid #333;
-      border-radius: 12px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    .stats, .upgrades {
-      margin-top: 20px;
-    }
-    .upgrade-btn {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #2e2e2e;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .upgrade-btn:hover {
-      background: #444;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coffee Tycoon ☕</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body { margin:0; font-family:"Nunito",sans-serif; background:#1e1e1e; color:#f5f5f5; }
+header { padding:16px; text-align:center; background:#2d2d2d; color:#fff; }
+main { display:flex; flex-wrap:wrap; padding:16px; gap:16px; }
+.card { background:#2b2b2b; border-radius:16px; box-shadow:0 2px 6px rgba(0,0,0,0.6); flex:1; min-width:280px; display:flex; flex-direction:column; max-height:600px; }
+.card h2 { margin:0; padding:12px 16px; background:#333; border-radius:16px 16px 0 0; font-size:1.1rem; color:#fff; }
+.content { padding:16px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; overflow:auto; width:100%; }
+canvas#game { width:100%; height:auto; max-height:300px; background:#111; border:2px solid #444; border-radius:12px; cursor:pointer; }
+.footer { background:#2d2d2d; padding:8px 16px; display:flex; justify-content:flex-end; align-items:center; flex-wrap:wrap; color:#ddd; }
+.toolbar { display:flex; gap:8px; align-items:center; }
+button { border:none; background:#6f4e37; color:#fff; padding:6px 12px; border-radius:8px; cursor:pointer; }
+button:hover { background:#8a6349; }
+
+.upgrade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3a3a3a;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  width: 180%;
+}
+
+.upgrade span {
+  flex: 1 1 auto;
+  margin-right: 8px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.upgrade button {
+  flex: 0 0 60px;
+  font-size: 0.8rem;
+  padding: 3px 6px;
+}
+
+#upgradeCounts { margin-top:16px; width:90%; }
+#upgradeCounts div { display:flex; justify-content:space-between; margin-bottom:4px; }
+
+/* Achievements styling */
+#achievements {
+  margin-top:16px;
+  background:#333;
+  border-radius:8px;
+  width:100%;
+  padding:8px;
+  flex-direction:column;
+  overflow-y:auto;
+  max-height:200px;
+}
+#achievements h3 { margin:0 0 8px 0; font-size:1rem; text-align:center; color:#fff; }
+#achievements ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; }
+#achievements li { background:#2b2b2b; padding:4px 8px; border-radius:6px; color:#fff; font-size:0.9rem; cursor:default; position:relative; }
+#achievements li:hover::after {
+  content: attr(data-tooltip);
+  position:absolute;
+  top:-28px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#444;
+  color:#fff;
+  font-size:0.8rem;
+  padding:2px 6px;
+  border-radius:4px;
+  white-space:nowrap;
+  z-index:10;
+}
+</style>
 </head>
 <body>
-  <header>Coffee Shop Tycoon ☕</header>
-  <main>
-    <p>Click the coffee cup to brew coffee!</p>
-    <canvas id="gameCanvas" width="200" height="200"></canvas>
+<header>
+<h1>Coffee Tycoon ☕</h1>
+<p>Brew coffee, buy upgrades, grow your empire!</p>
+<h2 id="coffeeCount">Coffees: 0</h2>
+</header>
+<main>
+<section class="card left">
+<h2>Shop Upgrades</h2>
+<div class="content" id="shopContent" style="align-items:flex-start;">
+  <div id="upgrades" class="shoplist"></div>
+  <div id="upgradeCounts"></div>
+</div>
+</section>
+<section class="card center">
+<h2>Tap to Brew — Click the Cup!</h2>
+<div class="content" style="padding:0; height:100%">
+  <canvas id="game"></canvas>
+</div>
+</section>
+<section class="card right">
+<h2>Activity Log</h2>
+<div class="content" style="overflow:auto; width:100%">
+  <ul id="log" style="list-style:none; padding:0; margin:6px 0 0; display:flex; flex-direction:column; gap:6px"></ul>
+</div>
+<h2>Achievements</h2>
+<div class="content" id="achievements">
+  <ul id="achievementList"></ul>
+</div>
+</section>
+</main>
+<div class="footer">
+  <div class="toolbar">
+    <button id="saveBtn">Save</button>
+    <button id="loadBtn">Load</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+</div>
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+let canvasWidth = canvas.clientWidth;
+let canvasHeight = canvas.clientHeight;
+canvas.width = canvasWidth;
+canvas.height = canvasHeight;
 
-    <div class="stats">
-      <p id="coffeeCount">Coffee: 0</p>
-      <p id="cps">Coffee per second: 0</p>
-    </div>
+let coffees=0; let clickPower=1; let cps=0;
+const particles=[];
+const upgrades=[
+  {name:"Auto Brewer", cost:50, cps:1, count:0},
+  {name:"Barista", cost:150, cps:2, count:0},
+  {name:"Robot Barista", cost:500, cps:5, count:0},
+  {name:"New Shop", cost:2000, cps:10, count:0}
+];
 
-    <div class="upgrades">
-      <button class="upgrade-btn" id="buyAssistant">Hire Assistant (Cost: 10)</button>
-      <button class="upgrade-btn" id="buyMachine">Buy Coffee Machine (Cost: 100)</button>
-    </div>
-  </main>
+let cupScale = 1;
+let cupBouncing = false;
 
-  <script>
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
+const achievements = [
+  {name:"First Coffee", condition:()=>coffees>=1, earned:false, requirement:"Brew 1 coffee", progress:()=>coffees+"/1"},
+  {name:"Coffee Lover", condition:()=>coffees>=100, earned:false, requirement:"Brew 100 coffees", progress:()=>coffees+"/100"},
+  {name:"Barista Manager", condition:()=>upgrades.find(u=>u.name==="Barista").count>=1, earned:false, requirement:"Own 1 Barista", progress:()=>upgrades.find(u=>u.name==="Barista").count+"/1"},
+  {name:"Robot Overlord", condition:()=>upgrades.find(u=>u.name==="Robot Barista").count>=1, earned:false, requirement:"Own 1 Robot Barista", progress:()=>upgrades.find(u=>u.name==="Robot Barista").count+"/1"}
+];
 
-    let coffee = 0;
-    let cps = 0;
-    let assistants = 0;
-    let machines = 0;
-    let assistantCost = 10;
-    let machineCost = 100;
+function drawCup(){
+  const centerX = canvas.width/2;
+  const centerY = canvas.height/2+20;
+  ctx.save();
+  ctx.translate(centerX, centerY);
+  ctx.scale(cupScale, cupScale);
 
-    // Steam particles
-    let steam = [];
+  // Starbucks-style to-go cup
+  // Cup body
+  ctx.fillStyle="#fff";
+  ctx.beginPath();
+  ctx.moveTo(-25,-50);
+  ctx.lineTo(25,-50);
+  ctx.lineTo(20,50);
+  ctx.lineTo(-20,50);
+  ctx.closePath();
+  ctx.fill();
+  
+  // Sleeve
+  ctx.fillStyle="#6f4e37";
+  ctx.fillRect(-15,-10,30,20);
 
-    function drawCup() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Lid
+  ctx.fillStyle="#ccc";
+  ctx.beginPath();
+  ctx.ellipse(0,-50,27,8,0,0,2*Math.PI);
+  ctx.fill();
 
-      // Cup body
-      ctx.fillStyle = '#c49a6c';
-      ctx.beginPath();
-      ctx.moveTo(60, 150);
-      ctx.lineTo(140, 150);
-      ctx.lineTo(120, 70);
-      ctx.lineTo(80, 70);
-      ctx.closePath();
-      ctx.fill();
+  ctx.restore();
+}
 
-      // Cup top (ellipse)
-      ctx.fillStyle = '#8b5a2b';
-      ctx.beginPath();
-      ctx.ellipse(100, 70, 40, 15, 0, 0, Math.PI * 2);
-      ctx.fill();
+function addParticle(x,y,text="+1"){ particles.push({x,y,alpha:1,dy:-1,text}); }
+function drawParticles(){
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+    ctx.globalAlpha=p.alpha; ctx.fillStyle="#6f4e37"; ctx.font="20px Nunito"; ctx.fillText(p.text,p.x,p.y);
+    ctx.globalAlpha=1; p.y+=p.dy; p.alpha-=0.02;
+    if(p.alpha<=0) particles.splice(i,1);
+  }
+}
 
-      // Handle
-      ctx.strokeStyle = '#c49a6c';
-      ctx.lineWidth = 8;
-      ctx.beginPath();
-      ctx.arc(145, 100, 20, Math.PI / 2, -Math.PI / 2, true);
-      ctx.stroke();
+function gameLoop(){ 
+  ctx.clearRect(0,0,canvas.width,canvas.height); 
+  drawCup(); 
+  drawParticles(); 
+  requestAnimationFrame(gameLoop); 
+  checkAchievements();
+}
+
+canvas.addEventListener("click", e => { 
+  coffees+=clickPower; 
+  addParticle(e.offsetX,e.offsetY,"+"+clickPower); 
+  bounceCup();
+  updateUI(); 
+});
+
+function bounceCup(){
+  if(cupBouncing) return;
+  cupBouncing = true;
+  let scale = 1;
+  let up = true;
+  const interval = setInterval(()=>{
+    if(up){
+      scale += 0.05;
+      if(scale >= 1.2) up = false;
+    } else {
+      scale -= 0.05;
+      if(scale <= 1){
+        scale = 1; cupBouncing = false; clearInterval(interval);
+      }
     }
+    cupScale = scale;
+  }, 16);
+}
 
-    function drawSteam() {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-      steam.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+function updateUI(){ 
+  document.getElementById("coffeeCount").textContent="Coffees: "+coffees;
+  updateUpgradeCounts();
+}
+
+function addLog(msg){ const li=document.createElement("li"); li.textContent=msg; document.getElementById("log").prepend(li); }
+
+function renderUpgrades(){
+  const container=document.getElementById("upgrades");
+  container.innerHTML="";
+  upgrades.forEach(u=>{
+    const div=document.createElement("div");
+    div.className="upgrade";
+
+    const textSpan=document.createElement("span");
+    textSpan.textContent=`${u.name} (+${u.cps}/s) — ${u.cost} ☕`;
+    textSpan.title=`${u.name}\nCPS: ${u.cps}\nOwned: ${u.count}\nCurrent Cost: ${u.cost} ☕`;
+
+    const btn=document.createElement("button");
+    btn.textContent="Buy";
+    btn.title=`Buy ${u.name} for ${u.cost} ☕ (+${u.cps}/s)`;
+    btn.onclick=()=>{
+      if(coffees>=u.cost){
+        coffees-=u.cost; cps+=u.cps; u.count++; u.cost=Math.floor(u.cost*1.5);
+        addLog("Bought "+u.name); updateUI(); renderUpgrades();
+      }else addLog("Not enough coffee for "+u.name);
+    };
+    div.appendChild(textSpan);
+    div.appendChild(btn);
+    container.appendChild(div);
+  });
+}
+
+function updateUpgradeCounts(){
+  const container=document.getElementById("upgradeCounts"); container.innerHTML="";
+  upgrades.forEach(u=>{
+    const div=document.createElement("div"); div.innerHTML=`<span>${u.name}</span><span>Owned: ${u.count}</span>`;
+    container.appendChild(div);
+  });
+}
+
+// Achievements
+function checkAchievements(){
+  const list = document.getElementById("achievementList");
+  list.innerHTML="";
+  achievements.forEach(a=>{
+    if(a.condition() && !a.earned){
+      a.earned=true;
+      addLog("Achievement unlocked: "+a.name);
+    }
+    const li = document.createElement("li");
+    li.textContent = a.earned ? "✅ " + a.name : "❌ " + a.name;
+    li.setAttribute("data-tooltip", a.requirement + " (" + a.progress() + ")");
+    list.appendChild(li);
+  });
+}
+
+// Auto-brew
+setInterval(()=>{
+  if(cps>0){
+    coffees+=cps; 
+    updateUI(); 
+    for(let i=0;i<Math.min(cps,5);i++){
+      const offsetX = canvas.width/2 + Math.random()*20-10;
+      const offsetY = canvas.height/2 + 20 + Math.random()*10-5;
+      addParticle(offsetX, offsetY,"+"+1);
+    }
+  }
+},1000);
+
+// Reset
+document.getElementById("resetBtn").onclick = ()=>{
+  if(confirm("Are you sure you want to reset your save?")){
+    coffees=0; clickPower=1; cps=0; upgrades.forEach(u=>{
+      u.count=0; 
+      if(u.name==="Auto Brewer") u.cost=50;
+      if(u.name==="Barista") u.cost=150;
+      if(u.name==="Robot Barista") u.cost=500;
+      if(u.name==="New Shop") u.cost=2000;
+    });
+    achievements.forEach(a=>a.earned=false);
+    updateUI(); renderUpgrades(); addLog("Game reset!");
+  }
+};
+
+// HEX Save/Load
+function stringToHex(str) {
+  return Array.from(str).map(c => c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
+}
+function hexToString(hex) {
+  return hex.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte,16))).join('');
+}
+
+document.getElementById("saveBtn").onclick = () => {
+  const saveData = {
+    coffees,
+    clickPower,
+    upgrades: upgrades.map(u => ({ name: u.name, cost: u.cost, count: u.count })),
+    achievements: achievements.map(a=>a.earned)
+  };
+  const saveStr = stringToHex(JSON.stringify(saveData));
+  prompt("Copy your save string:", saveStr);
+};
+
+document.getElementById("loadBtn").onclick = () => {
+  const saveStr = prompt("Paste your save string:");
+  if (saveStr) {
+    try {
+      const data = JSON.parse(hexToString(saveStr));
+      coffees = data.coffees || 0;
+      clickPower = data.clickPower || 1;
+
+      data.upgrades?.forEach(u => {
+        const upgrade = upgrades.find(upg => upg.name === u.name);
+        if (upgrade) {
+          upgrade.cost = u.cost;
+          upgrade.count = u.count;
+        }
       });
+
+      if(data.achievements) data.achievements.forEach((earned,i)=>achievements[i].earned=earned);
+
+      cps = upgrades.reduce((sum, u) => sum + u.count * u.cps, 0);
+      updateUI();
+      renderUpgrades();
+      addLog("Save loaded!");
+    } catch (e) {
+      alert("Invalid save string.");
     }
+  }
+};
 
-    function updateSteam() {
-      if (Math.random() < 0.1) {
-        steam.push({ x: 100 + (Math.random() * 20 - 10), y: 55, size: Math.random() * 4 + 2, speed: Math.random() * 0.5 + 0.5 });
-      }
-      steam.forEach(p => {
-        p.y -= p.speed;
-        p.size *= 0.98;
-      });
-      steam = steam.filter(p => p.size > 0.5);
-    }
-
-    function updateStats() {
-      document.getElementById('coffeeCount').textContent = `Coffee: ${Math.floor(coffee)}`;
-      document.getElementById('cps').textContent = `Coffee per second: ${cps}`;
-    }
-
-    function isClickOnCup(x, y) {
-      // Simple bounding box for cup area
-      return (x > 60 && x < 140 && y > 60 && y < 150);
-    }
-
-    canvas.addEventListener('click', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      if (isClickOnCup(x, y)) {
-        coffee++;
-        updateStats();
-      }
-    });
-
-    document.getElementById('buyAssistant').addEventListener('click', () => {
-      if (coffee >= assistantCost) {
-        coffee -= assistantCost;
-        assistants++;
-        cps += 1;
-        assistantCost = Math.floor(assistantCost * 1.5);
-        document.getElementById('buyAssistant').textContent = `Hire Assistant (Cost: ${assistantCost})`;
-        updateStats();
-      }
-    });
-
-    document.getElementById('buyMachine').addEventListener('click', () => {
-      if (coffee >= machineCost) {
-        coffee -= machineCost;
-        machines++;
-        cps += 5;
-        machineCost = Math.floor(machineCost * 1.7);
-        document.getElementById('buyMachine').textContent = `Buy Coffee Machine (Cost: ${machineCost})`;
-        updateStats();
-      }
-    });
-
-    setInterval(() => {
-      coffee += cps / 10;
-      updateStats();
-    }, 100);
-
-    function gameLoop() {
-      drawCup();
-      updateSteam();
-      drawSteam();
-      requestAnimationFrame(gameLoop);
-    }
-
-    updateStats();
-    gameLoop();
-  </script>
+renderUpgrades(); updateUI(); gameLoop();
+</script>
 </body>
 </html>

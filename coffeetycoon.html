@@ -14,7 +14,7 @@
   .card { background:#2b2b2b; border-radius:16px; box-shadow:0 2px 6px rgba(0,0,0,0.6); flex:1; min-width:280px; display:flex; flex-direction:column; max-height:600px; }
   .card h2 { margin:0; padding:12px 16px; background:#333; border-radius:16px 16px 0 0; font-size:1.1rem; color:#fff; }
   .content { padding:16px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; overflow:auto; width:100%; box-sizing:border-box; }
-  canvas#game { width:90%; height:100%; max-height:400px; background:#111; border:2px solid #444; border-radius:12px; cursor:pointer; padding:20px; }
+  canvas#game { width:100%; height:400px; background:#111; border:2px solid #444; border-radius:12px; cursor:pointer; }
 
   /* Shop upgrades */
   #upgrades { width:100%; box-sizing:border-box; }
@@ -90,13 +90,10 @@
     cursor:default;
     position:relative;
   }
-  /* removed pseudo-element tooltip because it was clipped by scroll container.
-     We'll use a JS-attached tooltip element instead (below). */
 
   .progress { height:8px; background:#555; border-radius:4px; overflow:hidden; margin-top:4px; }
   .progress-bar { height:100%; background:#d2691e; width:0%; transition:width 0.3s; }
 
-  /* Footer buttons dark */
   .footer button {
     background:#444;
     color:#f5f5f5;
@@ -110,7 +107,7 @@
   .footer button:hover { background:#555; }
   .footer button:active { background:#666; transform:scale(0.95); }
 
-  /* Tooltip element (JS injected) */
+  /* Tooltip */
   .achievement-tooltip {
     position:fixed;
     background: rgba(20,20,20,0.95);
@@ -123,8 +120,7 @@
     white-space:nowrap;
     box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     opacity:0;
-    transform: translateY(0);
-    transition: opacity 0.12s ease, transform 0.12s ease;
+    transition: opacity 0.12s ease;
   }
   .achievement-tooltip.visible { opacity:1; }
 </style>
@@ -170,14 +166,13 @@
 </div>
 
 <script>
-/* ---------- canvas + core data ---------- */
+/* ---------- Canvas setup ---------- */
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
 function sizeCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = rect.height;
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
 }
 sizeCanvas();
 window.addEventListener('resize', sizeCanvas);
@@ -197,15 +192,14 @@ const upgrades = [
 let cupScale = 1;
 let cupBouncing = false;
 
-/* achievements include requirement text for tooltip */
 const achievements = [
-  {name:"First Coffee", requirement:"Brew 1 coffee", condition:()=>coffees>=1, earned:false, progress:()=>coffees+"/1", percent:()=>Math.min((coffees/1)*100,100)},
-  {name:"Coffee Lover", requirement:"Brew 100 coffees", condition:()=>coffees>=100, earned:false, progress:()=>coffees+"/100", percent:()=>Math.min((coffees/100)*100,100)},
-  {name:"Barista Manager", requirement:"Own 1 Barista", condition:()=>upgrades.find(u=>u.name==="Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Barista").count+"/1", percent:()=>Math.min((upgrades.find(u=>u.name==="Barista").count/1)*100,100)},
-  {name:"Robot Overlord", requirement:"Own 1 Robot Barista", condition:()=>upgrades.find(u=>u.name==="Robot Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Robot Barista").count+"/1", percent:()=>Math.min((upgrades.find(u=>u.name==="Robot Barista").count/1)*100,100)}
+  {name:"First Coffee", requirement:"Brew 1 coffee", condition:()=>coffees>=1, earned:false, progress:()=>coffees+"/1", percent:()=>Math.min(coffees/1*100,100)},
+  {name:"Coffee Lover", requirement:"Brew 100 coffees", condition:()=>coffees>=100, earned:false, progress:()=>coffees+"/100", percent:()=>Math.min(coffees/100*100,100)},
+  {name:"Barista Manager", requirement:"Own 1 Barista", condition:()=>upgrades.find(u=>u.name==="Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Barista").count+"/1", percent:()=>Math.min(upgrades.find(u=>u.name==="Barista").count/1*100,100)},
+  {name:"Robot Overlord", requirement:"Own 1 Robot Barista", condition:()=>upgrades.find(u=>u.name==="Robot Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Robot Barista").count+"/1", percent:()=>Math.min(upgrades.find(u=>u.name==="Robot Barista").count/1*100,100)}
 ];
 
-/* ---------- drawing ---------- */
+/* ---------- Drawing ---------- */
 function drawCup(){
   const centerX = canvas.width/2;
   const centerY = canvas.height/2 + 20;
@@ -252,7 +246,6 @@ function gameLoop(){
   checkAchievements();
 }
 canvas.addEventListener('click', e => {
-  // compute offsetX/offsetY relative to canvas
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
@@ -262,34 +255,27 @@ canvas.addEventListener('click', e => {
   updateUI();
 });
 
-/* ---------- cup bounce ---------- */
+/* ---------- Cup bounce ---------- */
 function bounceCup(){
   if(cupBouncing) return;
   cupBouncing = true;
   let scale = 1;
   let up = true;
   const interval = setInterval(()=>{
-    if(up){
-      scale += 0.05;
-      if(scale >= 1.2) up = false;
-    } else {
-      scale -= 0.05;
-      if(scale <= 1){
-        scale = 1; cupBouncing = false; clearInterval(interval);
-      }
-    }
+    if(up){ scale += 0.05; if(scale >= 1.2) up = false; }
+    else { scale -= 0.05; if(scale <= 1){ scale = 1; cupBouncing = false; clearInterval(interval); } }
     cupScale = scale;
   }, 16);
 }
 
-/* ---------- UI updates ---------- */
+/* ---------- UI ---------- */
 function updateUI(){
   document.getElementById('coffeeCount').textContent = "Coffees: " + coffees;
   document.getElementById('cpsCount').textContent = "Coffees per Second: " + cps;
   updateUpgradeCounts();
 }
 
-/* ---------- upgrades rendering ---------- */
+/* ---------- Upgrades ---------- */
 function renderUpgrades(){
   const container = document.getElementById('upgrades');
   container.innerHTML = "";
@@ -299,22 +285,17 @@ function renderUpgrades(){
 
     const text = document.createElement('span');
     text.textContent = `${u.name} (+${u.cps}/s) — ${u.cost} ☕`;
-    text.title = `${u.name}\nCPS: ${u.cps}\nOwned: ${u.count}\nCurrent Cost: ${u.cost} ☕`;
 
     const btn = document.createElement('button');
     btn.textContent = 'Buy';
-    btn.title = `Buy ${u.name} for ${u.cost} ☕ (+${u.cps}/s)`;
     btn.onclick = ()=>{
       if(coffees >= u.cost){
         coffees -= u.cost;
         cps += u.cps;
         u.count++;
         u.cost = Math.floor(u.cost * 1.5);
-        addLog("Bought " + u.name);
         updateUI();
         renderUpgrades();
-      } else {
-        addLog("Not enough coffee for " + u.name);
       }
     };
 
@@ -334,85 +315,36 @@ function updateUpgradeCounts(){
   });
 }
 
-/* ---------- Achievements rendering + JS tooltip ---------- */
+/* ---------- Achievements ---------- */
 let currentTooltip = null;
-
 function showTooltipForElement(el, text){
   hideTooltip();
   const tip = document.createElement('div');
   tip.className = 'achievement-tooltip';
   tip.textContent = text;
   document.body.appendChild(tip);
-
-  // allow layout then position
-  requestAnimationFrame(() => {
+  requestAnimationFrame(()=>{
     const rect = el.getBoundingClientRect();
-    const tipRect = tip.getBoundingClientRect();
-    // center horizontally on element
-    let left = rect.left + rect.width/2;
-    let top = rect.top - tipRect.height - 8;
-    // if it would go off top, place below
-    if(top < 8) top = rect.bottom + 8;
-    // constrain horizontally a bit so it doesn't get fully off-screen
-    const margin = 8;
-    const minLeft = margin + tipRect.width/2;
-    const maxLeft = window.innerWidth - margin - tipRect.width/2;
-    if(left < minLeft) left = minLeft;
-    if(left > maxLeft) left = maxLeft;
-
-    tip.style.left = left + 'px';
-    tip.style.top = top + 'px';
+    tip.style.left = rect.left + rect.width/2 + 'px';
+    tip.style.top = rect.top - 30 + 'px';
     tip.style.transform = 'translateX(-50%)';
     tip.classList.add('visible');
     currentTooltip = {el, tip};
   });
 }
-
 function hideTooltip(){
-  if(currentTooltip && currentTooltip.tip){
-    currentTooltip.tip.remove();
-    currentTooltip = null;
-  }
+  if(currentTooltip){ currentTooltip.tip.remove(); currentTooltip = null; }
 }
-
-function repositionTooltip(){
-  if(!currentTooltip) return;
-  const el = currentTooltip.el;
-  const tip = currentTooltip.tip;
-  const rect = el.getBoundingClientRect();
-  const tipRect = tip.getBoundingClientRect();
-  let left = rect.left + rect.width/2;
-  let top = rect.top - tipRect.height - 8;
-  if(top < 8) top = rect.bottom + 8;
-  const margin = 8;
-  const minLeft = margin + tipRect.width/2;
-  const maxLeft = window.innerWidth - margin - tipRect.width/2;
-  if(left < minLeft) left = minLeft;
-  if(left > maxLeft) left = maxLeft;
-  tip.style.left = left + 'px';
-  tip.style.top = top + 'px';
-  tip.style.transform = 'translateX(-50%)';
-}
-
 function checkAchievements(){
   const list = document.getElementById('achievementList');
   list.innerHTML = "";
-
   achievements.forEach(a=>{
-    if(a.condition() && !a.earned){
-      a.earned = true;
-      addLog("Achievement unlocked: " + a.name);
-    }
-
+    if(a.condition() && !a.earned){ a.earned = true; }
     const li = document.createElement('li');
     li.textContent = a.earned ? "✅ " + a.name : "❌ " + a.name;
-
-    // store tooltip text (requirement + current progress)
     const tooltipText = a.requirement + " (" + a.progress() + ")";
-    li.setAttribute('data-tooltip', tooltipText);
-    li.setAttribute('title', tooltipText); // native fallback
-
-    // create a small progress bar
+    li.addEventListener('mouseenter',()=>showTooltipForElement(li,tooltipText));
+    li.addEventListener('mouseleave',hideTooltip);
     const progressWrap = document.createElement('div');
     progressWrap.className = 'progress';
     const bar = document.createElement('div');
@@ -422,92 +354,16 @@ function checkAchievements(){
     progressWrap.appendChild(bar);
     li.appendChild(progressWrap);
     list.appendChild(li);
-
-    // JS tooltip listeners
-    li.addEventListener('mouseenter', () => showTooltipForElement(li, tooltipText));
-    li.addEventListener('mouseleave', hideTooltip);
-    li.addEventListener('mousemove', repositionTooltip);
   });
 }
 
-// reposition tooltip on scroll/resize to keep it anchored
-window.addEventListener('scroll', () => { if(currentTooltip) repositionTooltip(); }, true);
-window.addEventListener('resize', () => { if(currentTooltip) repositionTooltip(); });
+/* ---------- Auto brew ---------- */
+setInterval(()=>{ if(cps>0){ coffees += cps; updateUI(); } },1000);
 
-/* ---------- auto-brew and particles ---------- */
-setInterval(()=>{
-  if(cps > 0){
-    coffees += cps;
-    updateUI();
-    // spawn a few +1 particles
-    for(let i=0;i<Math.min(cps,5);i++){
-      const offsetX = canvas.width/2 + Math.random()*20 - 10;
-      const offsetY = canvas.height/2 + 20 + Math.random()*10 - 5;
-      addParticle(offsetX, offsetY, "+1");
-    }
-  }
-}, 1000);
+/* ---------- Controls ---------- */
+document.getElementById('resetBtn').onclick = ()=>{ coffees=0;clickPower=1;cps=0;upgrades.forEach(u=>{u.count=0;});achievements.forEach(a=>a.earned=false);updateUI();renderUpgrades(); }
 
-/* ---------- basic controls ---------- */
-document.getElementById('resetBtn').onclick = () => {
-  if(confirm("Are you sure you want to reset your save?")){
-    coffees = 0;
-    clickPower = 1;
-    cps = 0;
-    upgrades.forEach(u => {
-      u.count = 0;
-      if(u.name === "Auto Brewer") u.cost = 50;
-      if(u.name === "Barista") u.cost = 150;
-      if(u.name === "Robot Barista") u.cost = 500;
-      if(u.name === "New Shop") u.cost = 2000;
-    });
-    achievements.forEach(a => a.earned = false);
-    updateUI();
-    renderUpgrades();
-    addLog("Game reset!");
-  }
-};
-
-/* HEX Save/Load helpers */
-function stringToHex(str){ return Array.from(str).map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join(''); }
-function hexToString(hex){ return hex.match(/.{1,2}/g).map(b=>String.fromCharCode(parseInt(b,16))).join(''); }
-
-document.getElementById('saveBtn').onclick = () => {
-  const saveData = {
-    coffees,
-    clickPower,
-    upgrades: upgrades.map(u => ({ name: u.name, cost: u.cost, count: u.count })),
-    achievements: achievements.map(a => a.earned)
-  };
-  const saveStr = stringToHex(JSON.stringify(saveData));
-  prompt("Copy your save string:", saveStr);
-};
-
-document.getElementById('loadBtn').onclick = () => {
-  const saveStr = prompt("Paste your save string:");
-  if(!saveStr) return;
-  try{
-    const data = JSON.parse(hexToString(saveStr));
-    coffees = data.coffees || 0;
-    clickPower = data.clickPower || 1;
-    data.upgrades?.forEach(u=>{
-      const upgrade = upgrades.find(x => x.name === u.name);
-      if(upgrade){ upgrade.cost = u.cost; upgrade.count = u.count; }
-    });
-    if(data.achievements) data.achievements.forEach((earned,i)=>achievements[i].earned = earned);
-    cps = upgrades.reduce((sum, u) => sum + u.count * u.cps, 0);
-    updateUI();
-    renderUpgrades();
-    addLog("Save loaded!");
-  } catch(e){
-    alert("Invalid save string.");
-  }
-};
-
-/* ---------- helpers ---------- */
-function addLog(msg){ console.log(msg); }
-
-/* ---------- init ---------- */
+/* ---------- Init ---------- */
 renderUpgrades();
 updateUI();
 gameLoop();

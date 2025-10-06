@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Coffee Tycoon ☕</title>
+<title>Coffee Tycoon</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   body { margin:0; font-family:"Nunito",sans-serif; background:#1e1e1e; color:#f5f5f5; }
-  header { padding:16px; text-align:center; background:#2d2d2d; color:#fff; }
+  header { padding:16px; text-align:center; background:#2d2d2d; color:#fff; position:relative; }
   header h2, header h3 { margin:4px 0; }
 
   main { display:flex; flex-wrap:wrap; padding:16px; gap:16px; }
@@ -22,87 +22,120 @@
     display:flex;
     align-items:center;
     background:#3a3a3a;
-    padding:6px 10px;
+    padding:8px 12px;
     border-radius:8px;
-    margin-bottom:6px;
+    margin-bottom:8px;
     width:100%;
-    min-height:40px;
+    min-height:50px;
     position:relative;
     box-sizing:border-box;
+    transition: all 0.3s ease;
   }
+  .upgrade.affordable { background:#2d4a2d; box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); }
+  .upgrade.unaffordable { opacity: 0.6; }
   .upgrade span {
     flex:1 1 auto;
     min-width:0;
-    margin-right:6px;
-    font-size:0.85rem;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    margin-right:80px;
+    font-size:0.9rem;
   }
   .upgrade button {
     position:absolute;
-    right:10px;
+    right:12px;
     top:50%;
     transform:translateY(-50%);
     flex:none;
-    font-size:0.8rem;
-    padding:6px 12px;
-    background:#444;
-    color:#f5f5f5;
+    font-size:0.85rem;
+    padding:8px 16px;
+    background:#4CAF50;
+    color:#fff;
     border:none;
     border-radius:8px;
     cursor:pointer;
     transition:background 0.2s, transform 0.1s;
     box-shadow:0 2px 4px rgba(0,0,0,0.4);
+    font-weight:600;
   }
-  .upgrade button:hover { background:#555; }
-  .upgrade button:active { background:#666; transform:translateY(-50%) scale(0.95); }
+  .upgrade button:hover { background:#45a049; }
+  .upgrade button:active { background:#3d8b40; transform:translateY(-50%) scale(0.95); }
+  .upgrade button:disabled { background:#555; cursor:not-allowed; opacity:0.5; }
+
+  /* Stats panel */
+  #stats { margin-top:12px; background:#333; padding:12px; border-radius:8px; width:100%; box-sizing:border-box; font-size:0.9rem; }
+  #stats div { display:flex; justify-content:space-between; padding:4px 0; }
 
   /* Upgrade counts */
-  #upgradeCounts { margin-top:12px; width:100%; box-sizing:border-box; }
+  #upgradeCounts { margin-top:12px; width:100%; box-sizing:border-box; background:#2a2a2a; padding:8px; border-radius:8px; }
   #upgradeCounts div {
     display:flex;
     justify-content:space-between;
     font-size:0.85rem;
     width:100%;
     box-sizing:border-box;
+    padding:4px 0;
   }
 
   /* Achievements */
   #achievements {
-    margin-top:16px;
-    background:#333;
-    border-radius:8px;
     width:100%;
-    padding:8px;
+    padding:0;
     flex-direction:column;
     overflow-y:auto;
-    max-height:250px;
   }
-  #achievements h3 { margin:0 0 8px 0; font-size:1rem; text-align:center; color:#fff; }
-  #achievements ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; }
+  #achievements ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
   #achievements li {
-    background:#2b2b2b;
-    padding:6px 8px;
-    border-radius:6px;
+    background:#3a3a3a;
+    padding:10px 12px;
+    border-radius:8px;
     color:#fff;
-    font-size:0.9rem;
+    font-size:0.95rem;
     cursor:default;
     position:relative;
   }
 
-  .progress { height:8px; background:#555; border-radius:4px; overflow:hidden; margin-top:4px; }
+  .progress { height:8px; background:#555; border-radius:4px; overflow:hidden; margin-top:6px; }
   .progress-bar { height:100%; background:#d2691e; width:0%; transition:width 0.3s; }
+
+  /* Toast notifications */
+  .toast {
+    position:fixed;
+    top:80px;
+    right:20px;
+    background:rgba(76, 175, 80, 0.95);
+    color:#fff;
+    padding:12px 16px;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    z-index:10000;
+    animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+    max-width:300px;
+    font-weight:600;
+  }
+  @keyframes slideIn { from { transform:translateX(400px); opacity:0; } to { transform:translateX(0); opacity:1; } }
+  @keyframes slideOut { from { transform:translateX(0); opacity:1; } to { transform:translateX(400px); opacity:0; } }
+
+  /* Event banner */
+  .event-banner {
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+    color:#000;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+    font-size:0.95rem;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity:1; } 50% { opacity:0.8; } }
 
   .footer button {
     background:#444;
     color:#f5f5f5;
     border:none;
-    padding:6px 12px;
+    padding:8px 16px;
     border-radius:8px;
     cursor:pointer;
     transition:background 0.2s, transform 0.1s;
     box-shadow:0 2px 4px rgba(0,0,0,0.4);
+    font-weight:600;
   }
   .footer button:hover { background:#555; }
   .footer button:active { background:#666; transform:scale(0.95); }
@@ -112,9 +145,9 @@
     position:fixed;
     background: rgba(20,20,20,0.95);
     color: #fff;
-    padding:6px 8px;
+    padding:8px 12px;
     border-radius:6px;
-    font-size:0.85rem;
+    font-size:0.9rem;
     z-index:9999;
     pointer-events:none;
     white-space:nowrap;
@@ -123,14 +156,28 @@
     transition: opacity 0.12s ease;
   }
   .achievement-tooltip.visible { opacity:1; }
+
+  /* Prestige button */
+  .prestige-btn {
+    background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+    color:#000 !important;
+    font-weight:bold;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4) !important;
+  }
+  .prestige-btn:hover { background: linear-gradient(135deg, #ffed4e, #ffd700) !important; }
 </style>
 </head>
 <body>
+<div id="eventBanner"></div>
 <header>
-  <h1>Coffee Tycoon ☕</h1>
+  <h1>Coffee Tycoon ☕ Enhanced</h1>
   <p>Brew coffee, buy upgrades, grow your empire!</p>
   <h2 id="coffeeCount">Coffees: 0</h2>
   <h3 id="cpsCount">Coffees per Second: 0</h3>
+  <div style="margin-top:8px; font-size:0.9rem; color:#ffd700;">
+    <span id="goldenBeans">🫘 Golden Beans: 0</span>
+    <span style="margin-left:16px;" id="multiplier">✨ Multiplier: 1.0x</span>
+  </div>
 </header>
 
 <main>
@@ -139,6 +186,7 @@
     <div class="content" id="shopContent" style="align-items:flex-start;">
       <div id="upgrades" class="shoplist"></div>
       <div id="upgradeCounts"></div>
+      <div id="stats"></div>
     </div>
   </section>
 
@@ -157,16 +205,139 @@
   </section>
 </main>
 
-<div class="footer" style="background:#2d2d2d; padding:8px 16px; display:flex; justify-content:flex-end; align-items:center; flex-wrap:wrap; color:#ddd;">
+<div class="footer" style="background:#2d2d2d; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; color:#ddd;">
+  <button id="prestigeBtn" class="prestige-btn">Prestige (Requires 10,000 ☕)</button>
   <div class="toolbar" style="display:flex; gap:8px; align-items:center;">
-    <button id="saveBtn">Save</button>
-    <button id="loadBtn">Load</button>
-    <button id="resetBtn">Reset</button>
+    <button id="resetBtn">Reset Game</button>
   </div>
 </div>
 
 <script>
-/* ---------- Canvas setup ---------- */
+/* ========== GAME STATE CLASS ========== */
+class GameState {
+  constructor() {
+    this.coffees = 0;
+    this.totalCoffeesEarned = 0;
+    this.clickPower = 1;
+    this.cps = 0;
+    this.goldenBeans = 0;
+    this.prestigeMultiplier = 1.0;
+    this.totalClicks = 0;
+    this.startTime = Date.now();
+    this.upgrades = [];
+    this.achievements = [];
+    this.activeEvent = null;
+    this.eventEndTime = 0;
+  }
+
+  addCoffees(amount) {
+    const adjusted = Math.floor(amount * this.prestigeMultiplier * (this.activeEvent?.multiplier || 1));
+    this.coffees += adjusted;
+    this.totalCoffeesEarned += adjusted;
+    return adjusted;
+  }
+
+  canAfford(cost) {
+    return this.coffees >= cost;
+  }
+
+  purchase(cost) {
+    if (this.canAfford(cost)) {
+      this.coffees -= cost;
+      return true;
+    }
+    return false;
+  }
+
+  doPrestige() {
+    const beansEarned = Math.floor(this.totalCoffeesEarned / 10000);
+    if (beansEarned > this.goldenBeans) {
+      this.goldenBeans = beansEarned;
+      this.prestigeMultiplier = 1 + (this.goldenBeans * 0.05);
+      
+      this.coffees = 0;
+      this.totalCoffeesEarned = 0;
+      this.clickPower = 1;
+      this.cps = 0;
+      this.totalClicks = 0;
+      this.upgrades.forEach(u => {
+        u.count = 0;
+        u.cost = u.baseCost;
+      });
+      this.achievements.forEach(a => a.earned = false);
+      
+      return true;
+    }
+    return false;
+  }
+}
+
+/* ========== UPGRADE CLASS ========== */
+class Upgrade {
+  constructor(name, baseCost, cps, scaleFactor = 1.15) {
+    this.name = name;
+    this.baseCost = baseCost;
+    this.cost = baseCost;
+    this.cps = cps;
+    this.count = 0;
+    this.scaleFactor = scaleFactor;
+  }
+
+  purchase(gameState) {
+    if (gameState.purchase(this.cost)) {
+      this.count++;
+      gameState.cps += this.cps;
+      this.cost = Math.floor(this.baseCost * Math.pow(this.scaleFactor, this.count));
+      return true;
+    }
+    return false;
+  }
+
+  getDescription() {
+    return `${this.name} (+${this.cps}/s) — ${this.cost} ☕`;
+  }
+}
+
+/* ========== EVENT SYSTEM ========== */
+class GameEvent {
+  constructor(name, description, duration, multiplier) {
+    this.name = name;
+    this.description = description;
+    this.duration = duration;
+    this.multiplier = multiplier;
+  }
+}
+
+const eventTypes = [
+  new GameEvent("Rush Hour", "2x earnings for 30 seconds!", 30000, 2),
+  new GameEvent("Happy Hour", "1.5x earnings for 45 seconds!", 45000, 1.5),
+];
+
+/* ========== INITIALIZATION ========== */
+const gameState = new GameState();
+
+gameState.upgrades = [
+  new Upgrade("Auto Brewer", 50, 1, 1.15),
+  new Upgrade("Barista", 150, 2, 1.15),
+  new Upgrade("Coffee Grinder", 400, 4, 1.2),
+  new Upgrade("Robot Barista", 800, 8, 1.2),
+  new Upgrade("Espresso Machine", 1500, 15, 1.25),
+  new Upgrade("New Shop", 3000, 30, 1.25),
+  new Upgrade("Roastery", 6000, 60, 1.3),
+  new Upgrade("Coffee Farm", 12000, 120, 1.3)
+];
+
+gameState.achievements = [
+  {name:"First Coffee", requirement:"Brew 1 coffee", condition:()=>gameState.totalCoffeesEarned>=1, earned:false, progress:()=>gameState.totalCoffeesEarned+"/1", percent:()=>Math.min(gameState.totalCoffeesEarned/1*100,100)},
+  {name:"Coffee Lover", requirement:"Brew 100 coffees", condition:()=>gameState.totalCoffeesEarned>=100, earned:false, progress:()=>gameState.totalCoffeesEarned+"/100", percent:()=>Math.min(gameState.totalCoffeesEarned/100*100,100)},
+  {name:"Caffeine Addict", requirement:"Brew 1,000 coffees", condition:()=>gameState.totalCoffeesEarned>=1000, earned:false, progress:()=>gameState.totalCoffeesEarned+"/1,000", percent:()=>Math.min(gameState.totalCoffeesEarned/1000*100,100)},
+  {name:"Barista Manager", requirement:"Own 5 Baristas", condition:()=>gameState.upgrades.find(u=>u.name==="Barista").count>=5, earned:false, progress:()=>gameState.upgrades.find(u=>u.name==="Barista").count+"/5", percent:()=>Math.min(gameState.upgrades.find(u=>u.name==="Barista").count/5*100,100)},
+  {name:"Robot Overlord", requirement:"Own 5 Robot Baristas", condition:()=>gameState.upgrades.find(u=>u.name==="Robot Barista").count>=5, earned:false, progress:()=>gameState.upgrades.find(u=>u.name==="Robot Barista").count+"/5", percent:()=>Math.min(gameState.upgrades.find(u=>u.name==="Robot Barista").count/5*100,100)},
+  {name:"Click Master", requirement:"Click 500 times", condition:()=>gameState.totalClicks>=500, earned:false, progress:()=>gameState.totalClicks+"/500", percent:()=>Math.min(gameState.totalClicks/500*100,100)},
+  {name:"Empire Builder", requirement:"Own a Coffee Farm", condition:()=>gameState.upgrades.find(u=>u.name==="Coffee Farm").count>=1, earned:false, progress:()=>gameState.upgrades.find(u=>u.name==="Coffee Farm").count+"/1", percent:()=>Math.min(gameState.upgrades.find(u=>u.name==="Coffee Farm").count/1*100,100)}
+];
+
+/* ========== CANVAS ========== */
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
@@ -177,29 +348,11 @@ function sizeCanvas(){
 sizeCanvas();
 window.addEventListener('resize', sizeCanvas);
 
-let coffees = 0;
-let clickPower = 1;
-let cps = 0;
 const particles = [];
-
-const upgrades = [
-  {name:"Auto Brewer", cost:50, cps:1, count:0},
-  {name:"Barista", cost:150, cps:2, count:0},
-  {name:"Robot Barista", cost:500, cps:5, count:0},
-  {name:"New Shop", cost:2000, cps:10, count:0}
-];
-
 let cupScale = 1;
 let cupBouncing = false;
 
-const achievements = [
-  {name:"First Coffee", requirement:"Brew 1 coffee", condition:()=>coffees>=1, earned:false, progress:()=>coffees+"/1", percent:()=>Math.min(coffees/1*100,100)},
-  {name:"Coffee Lover", requirement:"Brew 100 coffees", condition:()=>coffees>=100, earned:false, progress:()=>coffees+"/100", percent:()=>Math.min(coffees/100*100,100)},
-  {name:"Barista Manager", requirement:"Own 1 Barista", condition:()=>upgrades.find(u=>u.name==="Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Barista").count+"/1", percent:()=>Math.min(upgrades.find(u=>u.name==="Barista").count/1*100,100)},
-  {name:"Robot Overlord", requirement:"Own 1 Robot Barista", condition:()=>upgrades.find(u=>u.name==="Robot Barista").count>=1, earned:false, progress:()=>upgrades.find(u=>u.name==="Robot Barista").count+"/1", percent:()=>Math.min(upgrades.find(u=>u.name==="Robot Barista").count/1*100,100)}
-];
-
-/* ---------- Drawing ---------- */
+/* ========== DRAWING ========== */
 function drawCup(){
   const centerX = canvas.width/2;
   const centerY = canvas.height/2 + 20;
@@ -207,14 +360,18 @@ function drawCup(){
   ctx.translate(centerX, centerY);
   ctx.scale(cupScale, cupScale);
 
-  // cup
   ctx.fillStyle = "#fff";
   ctx.beginPath();
-  ctx.moveTo(-25,-50); ctx.lineTo(25,-50); ctx.lineTo(20,50); ctx.lineTo(-20,50); ctx.closePath(); ctx.fill();
-  // sleeve
+  ctx.moveTo(-25,-50); 
+  ctx.lineTo(25,-50); 
+  ctx.lineTo(20,50); 
+  ctx.lineTo(-20,50); 
+  ctx.closePath(); 
+  ctx.fill();
+  
   ctx.fillStyle = "#6f4e37";
   ctx.fillRect(-15,-10,30,20);
-  // lid
+  
   ctx.fillStyle = "#ccc";
   ctx.beginPath();
   ctx.ellipse(0,-50,27,8,0,0,2*Math.PI);
@@ -223,13 +380,16 @@ function drawCup(){
   ctx.restore();
 }
 
-function addParticle(x,y,text="+1"){ particles.push({x,y,alpha:1,dy:-1,text}); }
+function addParticle(x,y,text="+1"){ 
+  particles.push({x,y,alpha:1,dy:-1,text}); 
+}
+
 function drawParticles(){
   for(let i=particles.length-1;i>=0;i--){
     const p = particles[i];
     ctx.globalAlpha = p.alpha;
     ctx.fillStyle = "#6f4e37";
-    ctx.font = "20px Nunito";
+    ctx.font = "bold 20px Nunito";
     ctx.fillText(p.text, p.x, p.y);
     ctx.globalAlpha = 1;
     p.y += p.dy;
@@ -243,59 +403,92 @@ function gameLoop(){
   drawCup();
   drawParticles();
   requestAnimationFrame(gameLoop);
-  checkAchievements();
 }
+
 canvas.addEventListener('click', e => {
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
-  coffees += clickPower;
-  addParticle(x, y, "+"+clickPower);
+  const earned = gameState.addCoffees(gameState.clickPower);
+  gameState.totalClicks++;
+  addParticle(x, y, "+"+earned);
   bounceCup();
   updateUI();
+  checkAchievements();
 });
 
-/* ---------- Cup bounce ---------- */
+/* ========== CUP BOUNCE ========== */
 function bounceCup(){
   if(cupBouncing) return;
   cupBouncing = true;
   let scale = 1;
   let up = true;
   const interval = setInterval(()=>{
-    if(up){ scale += 0.05; if(scale >= 1.2) up = false; }
-    else { scale -= 0.05; if(scale <= 1){ scale = 1; cupBouncing = false; clearInterval(interval); } }
+    if(up){ 
+      scale += 0.05; 
+      if(scale >= 1.2) up = false; 
+    } else { 
+      scale -= 0.05; 
+      if(scale <= 1){ 
+        scale = 1; 
+        cupBouncing = false; 
+        clearInterval(interval); 
+      } 
+    }
     cupScale = scale;
   }, 16);
 }
 
-/* ---------- UI ---------- */
+/* ========== UI ========== */
 function updateUI(){
-  document.getElementById('coffeeCount').textContent = "Coffees: " + coffees;
-  document.getElementById('cpsCount').textContent = "Coffees per Second: " + cps;
+  document.getElementById('coffeeCount').textContent = "Coffees: " + Math.floor(gameState.coffees);
+  document.getElementById('cpsCount').textContent = "Coffees per Second: " + gameState.cps.toFixed(1);
+  document.getElementById('goldenBeans').textContent = "🫘 Golden Beans: " + gameState.goldenBeans;
+  document.getElementById('multiplier').textContent = "✨ Multiplier: " + gameState.prestigeMultiplier.toFixed(2) + "x";
+  updateStats();
   updateUpgradeCounts();
+  renderUpgrades();
 }
 
-/* ---------- Upgrades ---------- */
+function updateStats() {
+  const container = document.getElementById('stats');
+  const elapsed = Math.floor((Date.now() - gameState.startTime) / 1000);
+  const minutes = Math.floor(elapsed / 60);
+  const seconds = elapsed % 60;
+  container.innerHTML = `
+    <div><strong>📊 Statistics</strong></div>
+    <div><span>Total Earned:</span><span>${gameState.totalCoffeesEarned}</span></div>
+    <div><span>Total Clicks:</span><span>${gameState.totalClicks}</span></div>
+    <div><span>Time Played:</span><span>${minutes}m ${seconds}s</span></div>
+    <div><span>Click Power:</span><span>${gameState.clickPower}</span></div>
+  `;
+}
+
+/* ========== UPGRADES ========== */
 function renderUpgrades(){
   const container = document.getElementById('upgrades');
   container.innerHTML = "";
-  upgrades.forEach(u=>{
+  gameState.upgrades.forEach(u=>{
     const row = document.createElement('div');
     row.className = 'upgrade';
+    
+    if (gameState.canAfford(u.cost)) {
+      row.classList.add('affordable');
+    } else {
+      row.classList.add('unaffordable');
+    }
 
     const text = document.createElement('span');
-    text.textContent = `${u.name} (+${u.cps}/s) — ${u.cost} ☕`;
+    text.textContent = u.getDescription();
 
     const btn = document.createElement('button');
     btn.textContent = 'Buy';
+    btn.disabled = !gameState.canAfford(u.cost);
     btn.onclick = ()=>{
-      if(coffees >= u.cost){
-        coffees -= u.cost;
-        cps += u.cps;
-        u.count++;
-        u.cost = Math.floor(u.cost * 1.5);
+      if(u.purchase(gameState)){
         updateUI();
-        renderUpgrades();
+        checkAchievements();
+        showToast(`Purchased ${u.name}!`);
       }
     };
 
@@ -307,15 +500,22 @@ function renderUpgrades(){
 
 function updateUpgradeCounts(){
   const container = document.getElementById('upgradeCounts');
-  container.innerHTML = "";
-  upgrades.forEach(u=>{
-    const div = document.createElement('div');
-    div.innerHTML = `<span>${u.name}</span><span>Owned: ${u.count}</span>`;
-    container.appendChild(div);
+  container.innerHTML = "<div style='font-weight:bold; margin-bottom:4px;'>Owned Upgrades:</div>";
+  let hasAny = false;
+  gameState.upgrades.forEach(u=>{
+    if(u.count > 0) {
+      hasAny = true;
+      const div = document.createElement('div');
+      div.innerHTML = `<span>${u.name}</span><span>${u.count}</span>`;
+      container.appendChild(div);
+    }
   });
+  if (!hasAny) {
+    container.innerHTML += "<div style='text-align:center; opacity:0.6;'>None yet</div>";
+  }
 }
 
-/* ---------- Achievements ---------- */
+/* ========== ACHIEVEMENTS ========== */
 let currentTooltip = null;
 function showTooltipForElement(el, text){
   hideTooltip();
@@ -332,41 +532,129 @@ function showTooltipForElement(el, text){
     currentTooltip = {el, tip};
   });
 }
+
 function hideTooltip(){
-  if(currentTooltip){ currentTooltip.tip.remove(); currentTooltip = null; }
+  if(currentTooltip){ 
+    currentTooltip.tip.remove(); 
+    currentTooltip = null; 
+  }
 }
+
 function checkAchievements(){
   const list = document.getElementById('achievementList');
   list.innerHTML = "";
-  achievements.forEach(a=>{
-    if(a.condition() && !a.earned){ a.earned = true; }
+  gameState.achievements.forEach(a=>{
+    if(a.condition() && !a.earned){ 
+      a.earned = true;
+      showToast(`🏆 Achievement: ${a.name}!`);
+    }
     const li = document.createElement('li');
     li.textContent = a.earned ? "✅ " + a.name : "❌ " + a.name;
     const tooltipText = a.requirement + " (" + a.progress() + ")";
     li.addEventListener('mouseenter',()=>showTooltipForElement(li,tooltipText));
     li.addEventListener('mouseleave',hideTooltip);
+    
     const progressWrap = document.createElement('div');
     progressWrap.className = 'progress';
     const bar = document.createElement('div');
     bar.className = 'progress-bar';
     bar.style.width = a.percent() + '%';
-    if(a.earned) bar.style.background = 'green';
+    if(a.earned) bar.style.background = '#4CAF50';
     progressWrap.appendChild(bar);
     li.appendChild(progressWrap);
     list.appendChild(li);
   });
 }
 
-/* ---------- Auto brew ---------- */
-setInterval(()=>{ if(cps>0){ coffees += cps; updateUI(); } },1000);
+/* ========== TOAST NOTIFICATIONS ========== */
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
 
-/* ---------- Controls ---------- */
-document.getElementById('resetBtn').onclick = ()=>{ coffees=0;clickPower=1;cps=0;upgrades.forEach(u=>{u.count=0;});achievements.forEach(a=>a.earned=false);updateUI();renderUpgrades(); }
+/* ========== EVENT SYSTEM ========== */
+function startRandomEvent() {
+  if (gameState.activeEvent) return;
+  if (Math.random() < 0.3) {
+    const event = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+    gameState.activeEvent = event;
+    gameState.eventEndTime = Date.now() + event.duration;
+    
+    const banner = document.getElementById('eventBanner');
+    banner.innerHTML = `<div class="event-banner">⚡ ${event.name}: ${event.description}</div>`;
+    showToast(`Event Started: ${event.name}`);
+    
+    setTimeout(() => {
+      gameState.activeEvent = null;
+      banner.innerHTML = '';
+      showToast('Event ended!');
+    }, event.duration);
+  }
+}
 
-/* ---------- Init ---------- */
+/* ========== AUTO BREW ========== */
+setInterval(()=>{ 
+  if(gameState.cps > 0){ 
+    gameState.addCoffees(gameState.cps); 
+    updateUI(); 
+    checkAchievements();
+  }
+}, 1000);
+
+// Random events every 60 seconds
+setInterval(() => {
+  if (gameState.totalCoffeesEarned > 200) {
+    startRandomEvent();
+  }
+}, 60000);
+
+/* ========== PRESTIGE ========== */
+document.getElementById('prestigeBtn').onclick = () => {
+  const beansGain = Math.floor(gameState.totalCoffeesEarned / 10000);
+  if (beansGain > gameState.goldenBeans) {
+    if (confirm(`Prestige and earn ${beansGain} Golden Beans?\n\nThis will reset your progress but give you a ${(beansGain * 5)}% permanent boost!\n\nCurrent multiplier: ${gameState.prestigeMultiplier.toFixed(2)}x\nNew multiplier: ${(1 + beansGain * 0.05).toFixed(2)}x`)) {
+      gameState.doPrestige();
+      updateUI();
+      renderUpgrades();
+      checkAchievements();
+      showToast(`🌟 Prestiged! Earned ${beansGain} Golden Beans!`);
+    }
+  } else {
+    alert('You need to earn at least 10,000 total coffees to prestige!\n\nCurrent: ' + gameState.totalCoffeesEarned + ' coffees');
+  }
+};
+
+/* ========== RESET ========== */
+document.getElementById('resetBtn').onclick = () => {
+  if (confirm('Are you sure you want to reset?\n\nThis will erase ALL progress including Golden Beans!')) {
+    gameState.coffees = 0;
+    gameState.totalCoffeesEarned = 0;
+    gameState.clickPower = 1;
+    gameState.cps = 0;
+    gameState.goldenBeans = 0;
+    gameState.prestigeMultiplier = 1.0;
+    gameState.totalClicks = 0;
+    gameState.startTime = Date.now();
+    gameState.upgrades.forEach(u => {
+      u.count = 0;
+      u.cost = u.baseCost;
+    });
+    gameState.achievements.forEach(a => a.earned = false);
+    updateUI();
+    renderUpgrades();
+    checkAchievements();
+    showToast('Game reset!');
+  }
+};
+
+/* ========== INIT ========== */
 renderUpgrades();
 updateUI();
 gameLoop();
+checkAchievements();
 </script>
 </body>
 </html>

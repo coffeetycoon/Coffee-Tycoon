@@ -443,6 +443,116 @@
     transform: translateY(0);
   }
 
+  /* Prestige Styles */
+  .prestige-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .prestige-info {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .prestige-info h3 {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .prestige-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .prestige-stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .prestige-stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .prestige-stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffd700;
+  }
+
+  .prestige-button {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border: none;
+    padding: 20px 48px;
+    border-radius: 16px;
+    color: #1a1a2e;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    display: block;
+    margin: 24px auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .prestige-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(255, 215, 0, 0.5);
+  }
+
+  .prestige-button:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .prestige-button:disabled {
+    background: rgba(100, 100, 100, 0.5);
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.5;
+  }
+
+  .prestige-description {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .prestige-description p {
+    margin: 12px 0;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+
+  .multiplier-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin: 16px 0;
+    text-align: center;
+  }
+
+  .beans-gain {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    font-weight: 600;
+    margin: 12px 0;
+  }
+
+
 </style>
 </head>
 <body>
@@ -465,6 +575,10 @@
       </div>
       <div class="key-item">
         <span class="key">3</span>
+        <span>Prestige - Reset for permanent bonuses</span>
+      </div>
+      <div class="key-item">
+        <span class="key">4</span>
         <span>Achievements - Track your progress</span>
       </div>
     </div>
@@ -483,6 +597,7 @@
   <div class="status-bar">
     <div class="stat">☕ Coffee: <span id="money">0</span></div>
     <div class="stat">⚡ CPS: <span id="cps">0</span></div>
+    <div class="stat">✨ Golden Coffee: <span id="goldenBeans">0</span></div>
   </div>
 </header>
 
@@ -490,6 +605,7 @@
   <div class="tabs">
     <button class="tab-btn active" data-tab="click">Brew House</button>
     <button class="tab-btn" data-tab="shop">Shop</button>
+    <button class="tab-btn" data-tab="prestige">Prestige</button>
     <button class="tab-btn" data-tab="achievements">Achievements</button>
   </div>
   
@@ -509,6 +625,11 @@
       <div id="shopList"></div>
     </div>
     
+    <div id="prestigeTab" class="tab-content">
+      <h2 style="margin-top: 0; color: #d4a574;">Prestige</h2>
+      <div id="prestigeContent"></div>
+    </div>
+    
     <div id="achievementsTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Achievements</h2>
       <div id="achievementsList" class="achievement-grid"></div>
@@ -521,10 +642,13 @@
 const gameState = {
   money: 0,
   coffee: 0,
+  totalCoffeeAllTime: 0,
   cps: 0,
   clickValue: 1,
   items: {},
-  unlockedAchievements: new Set()
+  unlockedAchievements: new Set(),
+  goldenBeans: 0,
+  prestigeMultiplier: 1.0
 };
 
 // Shop Items
@@ -534,14 +658,27 @@ const shopItems = [
   { id: 'grinder', name: 'Coffee Grinder', baseCost: 400, cps: 10, scale: 1.2 },
   { id: 'espresso', name: 'Espresso Machine', baseCost: 800, cps: 25, scale: 1.2 },
   { id: 'roaster', name: 'Coffee Roaster', baseCost: 2000, cps: 60, scale: 1.25 },
-  { id: 'shop', name: 'New Coffee Shop', baseCost: 5000, cps: 150, scale: 1.25 },
+  { id: 'shop', name: 'Coffee Shop', baseCost: 5000, cps: 150, scale: 1.25 },
   { id: 'plantation', name: 'Coffee Plantation', baseCost: 15000, cps: 400, scale: 1.3 },
-  { id: 'franchise', name: 'Coffee Franchise', baseCost: 50000, cps: 1200, scale: 1.3 }
+  { id: 'franchise', name: 'Coffee Franchise', baseCost: 50000, cps: 1200, scale: 1.3 },
+  { id: 'factory', name: 'Coffee Factory', baseCost: 150000, cps: 3500, scale: 1.35 },
+  { id: 'warehouse', name: 'Coffee Warehouse', baseCost: 500000, cps: 10000, scale: 1.35 },
+  { id: 'laboratory', name: 'Coffee Laboratory', baseCost: 2000000, cps: 30000, scale: 1.4 },
+  { id: 'corporation', name: 'Coffee Corporation', baseCost: 10000000, cps: 100000, scale: 1.4 }
 ];
 
 shopItems.forEach(item => {
   gameState.items[item.id] = { count: 0, cost: item.baseCost };
 });
+
+// Number abbreviation function
+function abbreviateNumber(num) {
+  if (num < 1000) return Math.floor(num).toString();
+  if (num < 1000000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+  if (num < 1000000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (num < 1000000000000) return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+  return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + 'T';
+}
 
 // Achievements
 const achievements = [
@@ -569,9 +706,11 @@ shopItems.forEach(item => {
 
 // UI Functions
 function updateUI() {
-  document.getElementById('money').textContent = Math.floor(gameState.coffee).toLocaleString();
-  document.getElementById('cps').textContent = gameState.cps.toFixed(1);
+  document.getElementById('money').textContent = abbreviateNumber(gameState.coffee);
+  document.getElementById('cps').textContent = abbreviateNumber(gameState.cps * gameState.prestigeMultiplier);
+  document.getElementById('goldenBeans').textContent = gameState.goldenBeans;
   renderShop();
+  renderPrestige();
   renderAchievements();
   checkAchievements();
 }
@@ -590,12 +729,12 @@ function renderShop() {
     div.innerHTML = `
       <div class="item-info">
         <div class="item-name">${item.name}</div>
-        <div class="item-effect">Effect: +${item.cps} CPS</div>
+        <div class="item-effect">Effect: +${abbreviateNumber(item.cps)} CPS</div>
       </div>
       <div class="item-actions">
         <div class="quantity-display">${itemState.count}</div>
         <button class="buy-btn" ${!canAfford ? 'disabled' : ''}>BUY</button>
-        <div class="cost-tile">☕ ${Math.floor(itemState.cost).toLocaleString()}</div>
+        <div class="cost-tile">☕ ${abbreviateNumber(itemState.cost)}</div>
       </div>
     `;
     
@@ -606,6 +745,65 @@ function renderShop() {
 
 function renderOwned() {
   // Removed - no longer needed
+}
+
+function renderPrestige() {
+  const container = document.getElementById('prestigeContent');
+  const beansToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
+  const beansAfterPrestige = beansToGain;
+  const newMultiplier = 1 + (beansAfterPrestige * 0.1);
+  const canPrestige = beansToGain > gameState.goldenBeans;
+  
+  container.innerHTML = `
+    <div class="prestige-container">
+      <div class="prestige-info">
+        <h3>✨ Golden Coffee System</h3>
+        <p>Reset your progress to earn Golden Coffee, which provide permanent production multipliers!</p>
+        <div class="multiplier-display">Current Multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x</div>
+      </div>
+
+      <div class="prestige-description">
+        <p><strong>How it works:</strong></p>
+        <p>• Every 1M total coffees brewed = 1 Golden Coffee</p>
+        <p>• Each Golden Coffee gives +10% production multiplier (permanently!)</p>
+        <p>• Prestiging resets your coffee, items, and CPS</p>
+        <p>• Your Golden Coffee and multiplier are kept forever</p>
+      </div>
+
+      <div class="prestige-stats">
+        <div class="prestige-stat">
+          <div class="prestige-stat-label">Total Coffee Brewed</div>
+          <div class="prestige-stat-value">${abbreviateNumber(gameState.totalCoffeeAllTime)}</div>
+        </div>
+        <div class="prestige-stat">
+          <div class="prestige-stat-label">Current Golden Coffee</div>
+          <div class="prestige-stat-value">${gameState.goldenBeans}</div>
+        </div>
+        <div class="prestige-stat">
+          <div class="prestige-stat-label">Golden Coffee After Prestige</div>
+          <div class="prestige-stat-value">${beansAfterPrestige}</div>
+        </div>
+      </div>
+
+      ${canPrestige ? `
+        <div class="beans-gain">
+          You will gain ${beansAfterPrestige - gameState.goldenBeans} Golden Coffee!
+        </div>
+        <div class="beans-gain">
+          New Multiplier: ${newMultiplier.toFixed(1)}x (from ${gameState.prestigeMultiplier.toFixed(1)}x)
+        </div>
+      ` : `
+        <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
+          You need ${abbreviateNumber((gameState.goldenBeans + 1) * 1000000)} total coffees to prestige.
+          <br>Current: ${abbreviateNumber(gameState.totalCoffeeAllTime)}
+        </div>
+      `}
+
+      <button class="prestige-button" ${!canPrestige ? 'disabled' : ''} onclick="doPrestige()">
+        ${canPrestige ? '✨ PRESTIGE NOW ✨' : '🔒 Not Enough Coffee Yet'}
+      </button>
+    </div>
+  `;
 }
 
 function renderAchievements() {
@@ -649,6 +847,30 @@ function showToast(message, isAchievement = false) {
   setTimeout(() => toast.remove(), 3000);
 }
 
+function doPrestige() {
+  const beansToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
+  
+  if (beansToGain > gameState.goldenBeans) {
+    const beansGained = beansToGain - gameState.goldenBeans;
+    
+    if (confirm(`Are you sure you want to prestige?\n\nYou will gain ${beansGained} Golden Coffee!\n\nThis will reset:\n• Coffee count\n• All items\n• CPS\n\nYou will keep:\n• Golden Coffee\n• ${(beansToGain * 0.1 * 100).toFixed(0)}% production multiplier\n• All achievements`)) {
+      gameState.goldenBeans = beansToGain;
+      gameState.prestigeMultiplier = 1 + (gameState.goldenBeans * 0.1);
+      
+      // Reset progress
+      gameState.coffee = 0;
+      gameState.cps = 0;
+      gameState.items = {};
+      shopItems.forEach(item => {
+        gameState.items[item.id] = { count: 0, cost: item.baseCost };
+      });
+      
+      showToast(`🌟 Prestiged! Gained ${beansGained} Golden Coffee! New multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x`, true);
+      updateUI();
+    }
+  }
+}
+
 function checkAchievements() {
   achievements.forEach(ach => {
     if (!gameState.unlockedAchievements.has(ach.id) && ach.check()) {
@@ -661,7 +883,9 @@ function checkAchievements() {
 
 // Click Handler
 document.getElementById('coffeeButton').onclick = () => {
-  gameState.coffee += gameState.clickValue;
+  const earnedCoffee = gameState.clickValue * gameState.prestigeMultiplier;
+  gameState.coffee += earnedCoffee;
+  gameState.totalCoffeeAllTime += earnedCoffee;
   updateUI();
   
   const btn = document.getElementById('coffeeButton');
@@ -683,7 +907,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 // Game Loop
 setInterval(() => {
-  gameState.coffee += gameState.cps;
+  const earnedCoffee = gameState.cps * gameState.prestigeMultiplier;
+  gameState.coffee += earnedCoffee;
+  gameState.totalCoffeeAllTime += earnedCoffee;
   updateUI();
 }, 1000);
 
@@ -704,6 +930,8 @@ document.addEventListener('keydown', (e) => {
   } else if (key === '2') {
     switchToTab('shop');
   } else if (key === '3') {
+    switchToTab('prestige');
+  } else if (key === '4') {
     switchToTab('achievements');
   }
 });

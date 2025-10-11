@@ -11,6 +11,7 @@ A game where you brew coffee.
 <img src="Images/Download.png" alt="Download" width="500">
 3. Have fun!
 <img src="Images/Files.png" alt="Download" width="500">
+
 ---
 
 ## 🧾 Latest Version: v1.5.3 - Bug Fixes

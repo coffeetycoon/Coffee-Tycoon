@@ -73,7 +73,8 @@ A game where you brew coffee.
 - Progressive shop unlocking of items
 - More shop items beyond coffee franchise
 
-### Undecided Additions - Items listed under here may be moved to any current planned or future unplanned update
+### Undecided Additions
+#### Items listed under here may be moved to any current planned or future unplanned update
 - Nothing yet! Provide feedback and let us know what to add!
 
 ---

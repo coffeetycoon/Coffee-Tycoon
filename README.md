@@ -35,16 +35,19 @@ A game where you brew coffee.
 ## 🚀 Future Updates
 
 ### v1.6 – Upgrade Packs
-- Add special upgrade packs that boost production
-- Each pack unlocks progressively based on total coffee earned
+- Organize upgrades into packs
+- Each pack/upgrade unlocks progressively
 
 ### v1.7 – Achievement Rewards
 - Achievements now give bonus rewards
-- Encourages long-term progression and milestones
+- Could be bonus coffee, production boosts, other stuff
 
 ### v1.8 – Notifications & UI Tweaks
-- Add notifications for new Achievements and Upgrade Packs
+- Add notifications for new Achievements and Upgrade Packs (only showing on tabs right now, will now show on packs as well so you know which pack, and which achievement/upgrade is new)
+- Notification will disappear if you buy upgrade, or claim the achievment rewards
 - Remove achievement emojis for a cleaner look
+- Claim All button for Achievements
+- Mark All Notifications As Read button for Upgrades
 
 ---
 

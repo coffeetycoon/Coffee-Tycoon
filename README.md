@@ -4,8 +4,8 @@ A game where you brew coffee.
 
 ## Contents
 - [🕹️ How to Download and Play](##-🕹️-How-to-Download-and-Play)
-- [Updates](#-Update)
-	- [## 🧾 Latest Version](🧾-Latest-Version:-v1.5.3-Bug-Fixes)
+- [🧾 Updates](#-🧾-Update)
+	- [Latest Version](##-Latest-Version:-v1.5.3:-Bug-Fixes)
 
 ---
 
@@ -20,13 +20,13 @@ A game where you brew coffee.
 
 ---
 
-# Updates
+# 🧾 Updates
 
-## 🧾 Latest Version: v1.5.3 - Bug Fixes
+## Latest Version: v1.5.3: Bug Fixes
 ### Bug Fixes
 - Fixed minor bugs and stability issues
 
-## 🧾 Last Major Update: v1.5 – Upgrades!
+## Last Major Update: v1.5: Upgrades!
 ### New Stuff
 - Introduced the new upgrade system
 - Added progression-based coffee boosts

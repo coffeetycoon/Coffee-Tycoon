@@ -74,9 +74,9 @@ A game where you brew coffee.
 - More shop items beyond coffee franchise
 
 ### Undecided Additions
-#### Items listed under here may be moved to any current planned or future unplanned update
-- Nothing yet! Provide feedback and let us know what to add!
-
+#### Stuff here may be moved to any planned (above) or unplanned update
+#### Any of these items may be removed entirely, and never added
+- Mobile UI
 ---
 
 💡 *Stay tuned for more updates as the Coffee Tycoon improves!*

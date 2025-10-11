@@ -6,6 +6,8 @@ A game where you brew coffee.
 
 ## Contents
 - [How to Download and Play](#how-to-download-and-play)
+  - [File Download](###-option-1-file)
+  - [Link to Game](###-option-2-link)
 - [Updates](#updates)
   - [Latest Version](#latest-version-v153-bug-fixes)
   - [Last Major Update](#last-major-update-v15-upgrades)
@@ -15,8 +17,7 @@ A game where you brew coffee.
 
 ## How to Download and Play
 
-<!-- Instructions coming soon -->
-
+### Option 1: File
 1. Download the coffeetycoon.html file above  
 <img src="Images/Open.png" alt="Open" width="500">
 2. Download the file  
@@ -25,6 +26,8 @@ A game where you brew coffee.
 <img src="Images/Files.png" alt="Files" width="500">
 4. Have fun!
 
+### Option 2: Link
+1. Current Link: https://coffeetycoon.github.io/Coffee-Tycoon/
 ---
 
 ## Updates

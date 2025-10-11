@@ -53,6 +53,9 @@ A game where you brew coffee.
 ### v1.6 – Upgrade Packs
 - Organize upgrades into packs
 - Each pack/upgrade unlocks progressively
+- Add info button for current version info and upcoming updates
+- Info should also have git repo link
+- Add a "?" button which makes the tutorial pop-up show up again
 
 ### v1.7 – Achievement Rewards
 - Achievements now give bonus rewards

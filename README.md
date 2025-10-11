@@ -54,6 +54,7 @@ A game where you brew coffee.
 ### v1.7 – Achievement Rewards
 - Achievements now give bonus rewards
 - Could be bonus coffee, production boosts, other stuff
+- Reordering achievement packs and fixing overlapping achievments
 
 ### v1.8 – Notifications & UI Tweaks
 - Add notifications for new Achievements and Upgrade Packs (only showing on tabs right now, will now show on packs as well so you know which pack, and which achievement/upgrade is new)
@@ -64,6 +65,7 @@ A game where you brew coffee.
 
 ### v1.9 – TBD
 - Progressive shop unlocking of items
+- More shop items beyond coffee franchise
 
 ---
 

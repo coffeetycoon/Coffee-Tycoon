@@ -6,10 +6,11 @@ A game where you brew coffee.
 
 ## 🕹️ How to Download and Play
 1. Download the coffeetycoon.html file above
-![Gameplay Screenshot](images/download.png)
-3. Open the HTML in any modern browser (e.g. Chrome, Edge, Firefox, Opera/Opera GX etc)
-4. Have fun!
-
+<img src="Images/Open.png" alt="Open" width="500">
+2. Open the HTML in any modern browser (e.g. Chrome, Edge, Firefox, Opera/Opera GX etc)
+<img src="Images/Download.png" alt="Download" width="500">
+3. Have fun!
+<img src="Images/Files.png" alt="Download" width="500">
 ---
 
 ## 🧾 Latest Version: v1.5.3 - Bug Fixes

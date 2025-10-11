@@ -62,6 +62,9 @@ A game where you brew coffee.
 - Claim All button for Achievements
 - Mark All Notifications As Read button for Upgrades
 
+### v1.9 – TBD
+- Progressive shop unlocking of items
+
 ---
 
 💡 *Stay tuned for more updates as the Coffee Tycoon improves!*

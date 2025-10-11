@@ -3,9 +3,9 @@
 A game where you brew coffee.
 
 ## Contents
-- [🕹️ How to Download and Play](##-🕹️-How-to-Download-and-Play)
-- [🧾 Updates](#-🧾-Update)
-	- [Latest Version](##-Latest-Version:-v1.5.3:-Bug-Fixes)
+- [🕹️ How to Download and Play](#how-to-download-and-play)
+- [🧾 Updates](#updates)
+  - [Latest Version](#latest-version-v153-bug-fixes)
 
 ---
 

@@ -36,7 +36,6 @@ A game where you brew coffee.
 ### Last Major Update: v1.5: Upgrades!
 #### New Stuff
 - Introduced the new upgrade system
-- Added progression-based coffee boosts
 - Improved balance and pacing for early gameplay
 
 #### Bug Fixes

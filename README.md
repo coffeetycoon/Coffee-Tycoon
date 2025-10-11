@@ -6,8 +6,8 @@ A game where you brew coffee.
 
 ## Contents
 - [How to Download and Play](#how-to-download-and-play)
-  - [File Download](###-option-1-file)
-  - [Link to Game](###-option-2-link)
+  - [File Download](#-option-1-file)
+  - [Link to Game](#-option-2-link)
 - [Updates](#updates)
   - [Latest Version](#latest-version-v153-bug-fixes)
   - [Last Major Update](#last-major-update-v15-upgrades)

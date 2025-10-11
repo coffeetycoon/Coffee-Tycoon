@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>☕ Coffee Tycoon</title>
+<title>Coffee Tycoon</title>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { font-family: 'Comfortaa', cursive; }
+  * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
   body { 
     margin: 0; 
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); 
@@ -81,6 +81,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
+    position: relative;
   }
   
   .tab-btn:hover {
@@ -93,6 +94,23 @@
     background: linear-gradient(135deg, #d4a574, #8b6f47);
     border-color: #d4a574;
     color: #1a1a2e;
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    background: #ff4444;
+    border-radius: 50%;
+    border: 2px solid #1a1a2e;
+    animation: pulse-badge 2s infinite;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
   }
   
   .content-area {
@@ -107,35 +125,36 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
   
-  /* Shop Items */
-  .shop-item {
+  .shop-item, .upgrade-item {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     transition: all 0.3s ease;
   }
   
-  .shop-item:hover {
+  .shop-item:hover, .upgrade-item:hover {
     border-color: rgba(212, 165, 116, 0.5);
     background: rgba(255, 255, 255, 0.08);
-    transform: translateX(4px);
   }
   
-  .shop-item.affordable {
+  .shop-item.affordable, .upgrade-item.affordable {
     border-color: rgba(76, 175, 80, 0.5);
     background: rgba(76, 175, 80, 0.1);
+  }
+
+  .shop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .item-info {
     flex: 1;
   }
   
-  .item-name {
+  .item-name, .upgrade-name {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 4px;
@@ -162,7 +181,7 @@
     text-align: center;
   }
   
-  .buy-btn {
+  .buy-btn, .upgrade-buy-btn {
     background: linear-gradient(135deg, #4CAF50, #45a049);
     border: none;
     padding: 12px 24px;
@@ -175,16 +194,16 @@
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
   }
   
-  .buy-btn:hover:not(:disabled) {
+  .buy-btn:hover:not(:disabled), .upgrade-buy-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
   }
   
-  .buy-btn:active:not(:disabled) {
+  .buy-btn:active:not(:disabled), .upgrade-buy-btn:active:not(:disabled) {
     transform: translateY(0);
   }
   
-  .buy-btn:disabled {
+  .buy-btn:disabled, .upgrade-buy-btn:disabled {
     background: rgba(100, 100, 100, 0.5);
     cursor: not-allowed;
     box-shadow: none;
@@ -198,76 +217,42 @@
     font-weight: 700;
     font-size: 1.1rem;
     color: #d4a574;
-    white-space: nowrap;
     min-width: 120px;
     text-align: center;
   }
-  
-  /* Owned Items */
-  .owned-item {
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #d4a574;
-    padding: 16px;
+
+  .upgrade-item.purchased {
+    border-color: rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.1);
+    opacity: 0.6;
+  }
+
+  .upgrade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 12px;
-    border-radius: 8px;
   }
-  
-  .owned-item-name {
+
+  .upgrade-status {
     font-size: 1.1rem;
-    font-weight: 700;
-    color: #d4a574;
-    margin-bottom: 4px;
+    font-weight: 600;
+    color: #ffd700;
   }
-  
-  .owned-item-stats {
-    font-size: 0.95rem;
+
+  .upgrade-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
     opacity: 0.9;
   }
-  
-  /* Achievements */
-  .achievement-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 16px;
+
+  .upgrade-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .achievement {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  
-  .achievement.unlocked {
-    border-color: #ffd700;
-    background: rgba(255, 215, 0, 0.1);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  }
-  
-  .achievement-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
-  
-  .achievement-name {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 4px;
-  }
-  
-  .achievement-desc {
-    font-size: 0.85rem;
-    opacity: 0.8;
-  }
-  
-  /* Click Area */
-  #clickArea {
-    text-align: center;
-    padding: 40px;
-  }
-  
+
   #coffeeButton {
     width: 200px;
     height: 200px;
@@ -278,7 +263,8 @@
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 8px 24px rgba(212, 165, 116, 0.4);
-    margin-bottom: 16px;
+    margin: 20px auto;
+    display: block;
   }
   
   #coffeeButton:hover {
@@ -289,57 +275,84 @@
   #coffeeButton:active {
     transform: scale(0.95);
   }
-  
-  .click-instruction {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: 16px;
-  }
-  
-  /* Toast */
-  .toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(76, 175, 80, 0.95);
-    color: #fff;
-    padding: 16px 24px;
+
+  .achievement {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    z-index: 10000;
-    animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
-    font-weight: 600;
-  }
-  
-  .toast.achievement {
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    color: #1a1a2e;
-  }
-  
-  @keyframes slideIn { 
-    from { transform: translateX(400px); opacity: 0; } 
-    to { transform: translateX(0); opacity: 1; } 
-  }
-  @keyframes slideOut { 
-    from { transform: translateX(0); opacity: 1; } 
-    to { transform: translateX(400px); opacity: 0; } 
-  }
-  
-  .empty-state {
-    text-align: center;
-    padding: 40px;
-    opacity: 0.6;
-    font-size: 1.1rem;
+    padding: 16px;
   }
 
-  /* Instructions Overlay */
-  .overlay {
+  .achievement.unlocked {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  /* Achievement Pack Styles */
+  .achievement-pack {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .achievement-pack:hover {
+    border-color: rgba(212, 165, 116, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .pack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .pack-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #d4a574;
+  }
+
+  .pack-progress {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4CAF50;
+  }
+
+  .pack-description {
+    opacity: 0.9;
+    margin-bottom: 12px;
+  }
+
+  .pack-preview {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pack-badge {
+    font-size: 1.5rem;
+  }
+
+  /* Modal Styles */
+  .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -347,105 +360,85 @@
     animation: fadeIn 0.3s ease;
   }
 
-  .overlay.hidden {
+  .modal.hidden {
     display: none;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .instructions-modal {
+  .modal-content {
     background: linear-gradient(135deg, #2d2d2d, #1a1a2e);
     border: 3px solid #d4a574;
     border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
+    padding: 32px;
+    max-width: 900px;
     width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-    animation: slideUp 0.4s ease;
   }
 
-  @keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  .instructions-modal h2 {
-    margin-top: 0;
-    color: #d4a574;
-    font-size: 2rem;
-    text-align: center;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 24px;
   }
 
-  .instructions-modal h3 {
+  .modal-title {
+    font-size: 2rem;
+    font-weight: 700;
     color: #d4a574;
-    font-size: 1.3rem;
-    margin-top: 24px;
-    margin-bottom: 12px;
   }
 
-  .instructions-modal p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    opacity: 0.95;
-  }
-
-  .key-guide {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
-  }
-
-  .key-item {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-    font-size: 1.05rem;
-  }
-
-  .key {
-    background: linear-gradient(135deg, #d4a574, #8b6f47);
-    color: #1a1a2e;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    min-width: 40px;
-    text-align: center;
-    margin-right: 16px;
-    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
-  }
-
-  .start-btn {
-    background: linear-gradient(135deg, #d4a574, #8b6f47);
+  .modal-close {
+    background: rgba(255, 255, 255, 0.1);
     border: none;
-    padding: 16px 48px;
-    border-radius: 12px;
-    color: #1a1a2e;
-    font-size: 1.2rem;
-    font-weight: 700;
+    color: #f5f5f5;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.4);
-    display: block;
-    margin: 24px auto 0;
+    line-height: 1;
   }
 
-  .start-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.5);
+  .modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
   }
 
-  .start-btn:active {
-    transform: translateY(0);
+  .modal-achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
   }
 
-  /* Prestige Styles */
+  .modal-achievement {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .modal-achievement.unlocked {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+  }
+
+  .progress {
+    height: 8px;
+    background: #555;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #d2691e;
+    transition: width 0.3s;
+  }
+
   .prestige-container {
     max-width: 700px;
     margin: 0 auto;
@@ -458,39 +451,6 @@
     padding: 24px;
     margin-bottom: 24px;
     text-align: center;
-  }
-
-  .prestige-info h3 {
-    color: #ffd700;
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 16px;
-  }
-
-  .prestige-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin: 20px 0;
-  }
-
-  .prestige-stat {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .prestige-stat-label {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 8px;
-  }
-
-  .prestige-stat-value {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #ffd700;
   }
 
   .prestige-button {
@@ -515,46 +475,125 @@
     box-shadow: 0 8px 28px rgba(255, 215, 0, 0.5);
   }
 
-  .prestige-button:active:not(:disabled) {
-    transform: translateY(0);
-  }
-
   .prestige-button:disabled {
     background: rgba(100, 100, 100, 0.5);
     cursor: not-allowed;
-    box-shadow: none;
     opacity: 0.5;
   }
 
-  .prestige-description {
-    background: rgba(255, 255, 255, 0.05);
+  .toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(76, 175, 80, 0.95);
+    color: #fff;
+    padding: 16px 24px;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    z-index: 10000;
+    animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+    font-weight: 600;
   }
 
-  .prestige-description p {
-    margin: 12px 0;
-    line-height: 1.6;
-    font-size: 1.05rem;
+  .toast.achievement {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #1a1a2e;
   }
 
-  .multiplier-display {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #ffd700;
-    margin: 16px 0;
+  @keyframes slideIn {
+    from { transform: translateX(400px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(400px); opacity: 0; }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .overlay.hidden { display: none; }
+
+  .instructions-modal {
+    background: linear-gradient(135deg, #2d2d2d, #1a1a2e);
+    border: 3px solid #d4a574;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .instructions-modal h2 {
+    margin-top: 0;
+    color: #d4a574;
+    font-size: 2rem;
     text-align: center;
   }
 
-  .beans-gain {
-    font-size: 1.2rem;
-    color: #4CAF50;
-    font-weight: 600;
-    margin: 12px 0;
+  .key-guide {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
   }
 
+  .key-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
 
+  .key {
+    background: linear-gradient(135deg, #d4a574, #8b6f47);
+    color: #1a1a2e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    min-width: 40px;
+    text-align: center;
+    margin-right: 16px;
+  }
+
+  .start-btn {
+    background: linear-gradient(135deg, #d4a574, #8b6f47);
+    border: none;
+    padding: 16px 48px;
+    border-radius: 12px;
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    margin: 24px auto 0;
+  }
+
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.5);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.6;
+    font-size: 1.1rem;
+  }
 </style>
 </head>
 <body>
@@ -562,10 +601,10 @@
   <div class="instructions-modal">
     <h2>☕ Welcome to Coffee Tycoon!</h2>
     
-    <h3>How to Play:</h3>
-    <p>Build your coffee empire from the ground up! Click the coffee cup to brew coffee manually, then purchase items from the Shop to automate your production and increase your Coffees Per Second (CPS).</p>
+    <h3 style="color: #d4a574; margin-top: 24px;">How to Play:</h3>
+    <p>Build your coffee empire from the ground up! Click the coffee cup to brew coffee manually, then purchase items from the Shop to automate your production.</p>
     
-    <h3>Quick Keys:</h3>
+    <h3 style="color: #d4a574; margin-top: 24px;">Quick Keys:</h3>
     <div class="key-guide">
       <div class="key-item">
         <span class="key">1</span>
@@ -577,16 +616,20 @@
       </div>
       <div class="key-item">
         <span class="key">3</span>
-        <span>Prestige - Reset for permanent bonuses</span>
+        <span>Upgrades - Permanent improvements</span>
       </div>
       <div class="key-item">
         <span class="key">4</span>
-        <span>Achievements - Track your progress</span>
+        <span>Prestige - Reset for bonuses</span>
+      </div>
+      <div class="key-item">
+        <span class="key">5</span>
+        <span>Achievements - Track progress</span>
       </div>
     </div>
     
-    <h3>Goal:</h3>
-    <p>Earn as much coffee as possible! Purchase items to automate production, unlock all achievements, and become the ultimate Coffee Tycoon!</p>
+    <h3 style="color: #d4a574; margin-top: 24px;">Goal:</h3>
+    <p>Earn coffee, unlock upgrades progressively, and reach 1 million coffee to prestige for permanent Golden Coffee bonuses!</p>
     
     <button class="start-btn" onclick="closeInstructions()">Start Brewing!</button>
   </div>
@@ -597,34 +640,38 @@
   <p>Brew coffee, earn money, and build your empire!</p>
   
   <div class="status-bar">
-    <div class="stat">☕ Coffee: <span id="money">0</span></div>
-    <div class="stat">⚡ CPS: <span id="cps">0</span></div>
-    <div class="stat">✨ Golden Coffee: <span id="goldenBeans">0</span></div>
+    <div class="stat">☕ Coffee: <span id="coffeeDisplay">0</span></div>
+    <div class="stat">⚡ CPS: <span id="cpsDisplay">0</span></div>
+    <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">0</span></div>
   </div>
 </header>
 
 <main>
   <div class="tabs">
-    <button class="tab-btn active" data-tab="click">Brew House</button>
+    <button class="tab-btn active" data-tab="brew">Brew House</button>
     <button class="tab-btn" data-tab="shop">Shop</button>
+    <button class="tab-btn" data-tab="upgrades">Upgrades</button>
     <button class="tab-btn" data-tab="prestige">Prestige</button>
     <button class="tab-btn" data-tab="achievements">Achievements</button>
   </div>
   
   <div class="content-area">
-    <div id="clickTab" class="tab-content active">
-      <div id="clickArea">
+    <div id="brewTab" class="tab-content active">
+      <div style="text-align: center;">
         <button id="coffeeButton">☕</button>
-        <div class="click-instruction">Click the cup to brew coffee!</div>
-        <div style="margin-top: 20px; font-size: 1rem; opacity: 0.8;">
-          Each click: +1 Coffee
-        </div>
+        <div style="font-size: 1.2rem; margin-top: 16px;">Click the cup to brew coffee!</div>
+        <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">1</span> Coffee</div>
       </div>
     </div>
     
     <div id="shopTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Shop</h2>
       <div id="shopList"></div>
+    </div>
+    
+    <div id="upgradesTab" class="tab-content">
+      <h2 style="margin-top: 0; color: #d4a574;">Upgrades</h2>
+      <div id="upgradesList"></div>
     </div>
     
     <div id="prestigeTab" class="tab-content">
@@ -634,26 +681,39 @@
     
     <div id="achievementsTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Achievements</h2>
-      <div id="achievementsList" class="achievement-grid"></div>
+      <div id="achievementsList"></div>
     </div>
   </div>
 </main>
 
+<!-- Achievement Pack Modal -->
+<div id="achievementModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Achievement Pack</div>
+      <button class="modal-close" onclick="closeAchievementModal()">×</button>
+    </div>
+    <div class="modal-achievements" id="modalAchievements"></div>
+  </div>
+</div>
+
 <script>
-// Game State
+// ========== GAME STATE ==========
 const gameState = {
-  money: 0,
   coffee: 0,
   totalCoffeeAllTime: 0,
-  cps: 0,
-  clickValue: 1,
+  clickPower: 1,
+  goldenCoffee: 0,
+  prestigeMultiplier: 1.0,
   items: {},
-  unlockedAchievements: new Set(),
-  goldenBeans: 0,
-  prestigeMultiplier: 1.0
+  purchasedUpgrades: new Set(),
+  itemMultipliers: {},
+  viewedUpgrades: new Set(),
+  viewedAchievements: new Set(),
+  achievements: []
 };
 
-// Shop Items
+// ========== SHOP ITEMS ==========
 const shopItems = [
   { id: 'brewer', name: 'Auto Brewer', baseCost: 50, cps: 1, scale: 1.15 },
   { id: 'barista', name: 'Barista', baseCost: 150, cps: 5, scale: 1.15 },
@@ -662,18 +722,353 @@ const shopItems = [
   { id: 'roaster', name: 'Coffee Roaster', baseCost: 2000, cps: 60, scale: 1.25 },
   { id: 'shop', name: 'Coffee Shop', baseCost: 5000, cps: 150, scale: 1.25 },
   { id: 'plantation', name: 'Coffee Plantation', baseCost: 15000, cps: 400, scale: 1.3 },
-  { id: 'franchise', name: 'Coffee Franchise', baseCost: 50000, cps: 1200, scale: 1.3 },
-  { id: 'factory', name: 'Coffee Factory', baseCost: 150000, cps: 3500, scale: 1.35 },
-  { id: 'warehouse', name: 'Coffee Warehouse', baseCost: 500000, cps: 10000, scale: 1.35 },
-  { id: 'laboratory', name: 'Coffee Laboratory', baseCost: 2000000, cps: 30000, scale: 1.4 },
-  { id: 'corporation', name: 'Coffee Corporation', baseCost: 10000000, cps: 100000, scale: 1.4 }
+  { id: 'franchise', name: 'Coffee Franchise', baseCost: 50000, cps: 1200, scale: 1.3 }
 ];
 
+// Initialize items
 shopItems.forEach(item => {
   gameState.items[item.id] = { count: 0, cost: item.baseCost };
 });
 
-// Number abbreviation function
+// ========== UPGRADES ==========
+const upgrades = [
+  // Click Power Upgrades
+  { 
+    id: 'click_1', 
+    name: 'Better Coffee Beans', 
+    description: '+1 coffee per click', 
+    cost: 1500, 
+    effect: () => { gameState.clickPower += 1; },
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 1000
+  },
+  { 
+    id: 'click_2', 
+    name: 'Premium Coffee Beans', 
+    description: '+2 coffee per click', 
+    cost: 15000, 
+    effect: () => { gameState.clickPower += 2; },
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 10000
+  },
+  { 
+    id: 'click_3', 
+    name: 'Exotic Coffee Beans', 
+    description: '+5 coffee per click', 
+    cost: 150000, 
+    effect: () => { gameState.clickPower += 5; },
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 100000
+  },
+  
+  // Item Specific Upgrades
+  { 
+    id: 'brewer_1', 
+    name: 'Upgraded Brewers', 
+    description: 'Auto Brewers produce 2x coffee', 
+    cost: 2500, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 10
+  },
+  { 
+    id: 'brewer_2', 
+    name: 'Industrial Brewers', 
+    description: 'Auto Brewers produce 2x coffee', 
+    cost: 25000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 50
+  },
+  { 
+    id: 'brewer_3', 
+    name: 'Quantum Brewers', 
+    description: 'Auto Brewers produce 2x coffee', 
+    cost: 250000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 100
+  },
+  
+  { 
+    id: 'barista_1', 
+    name: 'Barista Training', 
+    description: 'Baristas produce 2x coffee', 
+    cost: 7500, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 10
+  },
+  { 
+    id: 'barista_2', 
+    name: 'Master Baristas', 
+    description: 'Baristas produce 2x coffee', 
+    cost: 75000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 50
+  },
+  
+  { 
+    id: 'grinder_1', 
+    name: 'Industrial Grinders', 
+    description: 'Coffee Grinders produce 2x coffee', 
+    cost: 20000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 10
+  },
+  
+  // Global Upgrades
+  { 
+    id: 'global_1', 
+    name: 'Efficient Operations', 
+    description: 'All items produce 1.5x coffee', 
+    cost: 500000, 
+    effect: () => { 
+      shopItems.forEach(item => {
+        gameState.itemMultipliers[item.id] = (gameState.itemMultipliers[item.id] || 1) * 1.5;
+      });
+    },
+    unlockCondition: () => {
+      return shopItems.every(item => gameState.items[item.id].count >= 10);
+    }
+  },
+  { 
+    id: 'global_2', 
+    name: 'Coffee Revolution', 
+    description: 'All items produce 2x coffee', 
+    cost: 5000000, 
+    effect: () => { 
+      shopItems.forEach(item => {
+        gameState.itemMultipliers[item.id] = (gameState.itemMultipliers[item.id] || 1) * 2;
+      });
+    },
+    unlockCondition: () => {
+      return shopItems.every(item => gameState.items[item.id].count >= 25);
+    }
+  }
+];
+
+// ========== ACHIEVEMENTS ==========
+const achievements = [
+  // Coffee milestones
+  { id: 'first', name: '🥉 First Coffee', requirement: 'Brew 1 coffee', condition: () => gameState.totalCoffeeAllTime >= 1, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1", percent: () => Math.min(gameState.totalCoffeeAllTime / 1 * 100, 100) },
+  { id: 'ten', name: '☕ Ten Brews', requirement: 'Brew 10 coffees', condition: () => gameState.totalCoffeeAllTime >= 10, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10", percent: () => Math.min(gameState.totalCoffeeAllTime / 10 * 100, 100) },
+  { id: 'hundred', name: '☕ Hundred Brews', requirement: 'Brew 100 coffees', condition: () => gameState.totalCoffeeAllTime >= 100, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100", percent: () => Math.min(gameState.totalCoffeeAllTime / 100 * 100, 100) },
+  { id: 'thousand', name: '☕ Thousand Brews', requirement: 'Brew 1,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000 * 100, 100) },
+  { id: 'tenk', name: '☕ Ten Thousand', requirement: 'Brew 10,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000 * 100, 100) },
+  { id: 'hundredk', name: '☕ Hundred Thousand', requirement: 'Brew 100,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000 * 100, 100) },
+  { id: 'million', name: '🏆 Million Brews', requirement: 'Brew 1,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000 * 100, 100) },
+  
+  // General item achievements
+  { id: 'first_item', name: '🥉 Novice Collector', requirement: 'Purchase your first item', condition: () => Object.values(gameState.items).some(i => i.count >= 1), earned: false, progress: () => Object.values(gameState.items).some(i => i.count >= 1) ? "1/1" : "0/1", percent: () => Object.values(gameState.items).some(i => i.count >= 1) ? 100 : 0 },
+  { id: 'five_any', name: '🥈 Apprentice Purchaser', requirement: 'Have 5 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 5), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/5";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 5 * 100, 100);
+  }},
+  { id: 'ten_any', name: '🥇 Seasoned Buyer', requirement: 'Have 10 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 10), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/10";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 10 * 100, 100);
+  }},
+  { id: 'fifty_any', name: '💎 Bulk Investor', requirement: 'Have 50 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 50), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/50";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 50 * 100, 100);
+  }},
+  { id: 'hundred_any', name: '💯 Century Collector', requirement: 'Have 100 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 100), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/100";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 100 * 100, 100);
+  }},
+  { id: '200_any', name: '💯💯 Double Century', requirement: 'Have 200 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 200), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/200";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 200 * 100, 100);
+  }},
+  { id: '300_any', name: '💯💯💯 Triple Century', requirement: 'Have 300 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 300), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/300";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 300 * 100, 100);
+  }},
+  { id: '400_any', name: '💯💯💯💯 Quad Century', requirement: 'Have 400 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 400), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/400";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 400 * 100, 100);
+  }},
+  { id: '500_any', name: '🏅 Quint Century', requirement: 'Have 500 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 500), earned: false, progress: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return max + "/500";
+  }, percent: () => {
+    const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
+    return Math.min(max / 500 * 100, 100);
+  }}
+];
+
+// Add item-specific achievements for each shop item
+shopItems.forEach(item => {
+  achievements.push(
+    { 
+      id: `${item.id}_10`, 
+      name: `🔟 ${item.name} Expert`, 
+      requirement: `Own 10 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 10, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/10", 
+      percent: () => Math.min(gameState.items[item.id].count / 10 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_50`, 
+      name: `⭐ ${item.name} Master`, 
+      requirement: `Own 50 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 50, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/50", 
+      percent: () => Math.min(gameState.items[item.id].count / 50 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_100`, 
+      name: `💯 ${item.name} Century`, 
+      requirement: `Own 100 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 100, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/100", 
+      percent: () => Math.min(gameState.items[item.id].count / 100 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_200`, 
+      name: `💯💯 ${item.name} Bicentennial`, 
+      requirement: `Own 200 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 200, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/200", 
+      percent: () => Math.min(gameState.items[item.id].count / 200 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_300`, 
+      name: `💯💯💯 ${item.name} Tricentennial`, 
+      requirement: `Own 300 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 300, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/300", 
+      percent: () => Math.min(gameState.items[item.id].count / 300 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_400`, 
+      name: `💯💯💯💯 ${item.name} Quadcentennial`, 
+      requirement: `Own 400 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 400, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/400", 
+      percent: () => Math.min(gameState.items[item.id].count / 400 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_500`, 
+      name: `🏅 ${item.name} Quincentennial`, 
+      requirement: `Own 500 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 500, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/500", 
+      percent: () => Math.min(gameState.items[item.id].count / 500 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_600`, 
+      name: `🌟 ${item.name} Sexcentennial`, 
+      requirement: `Own 600 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 600, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/600", 
+      percent: () => Math.min(gameState.items[item.id].count / 600 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_700`, 
+      name: `🌟🌟 ${item.name} Septcentennial`, 
+      requirement: `Own 700 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 700, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/700", 
+      percent: () => Math.min(gameState.items[item.id].count / 700 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_800`, 
+      name: `🌟🌟🌟 ${item.name} Octcentennial`, 
+      requirement: `Own 800 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 800, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/800", 
+      percent: () => Math.min(gameState.items[item.id].count / 800 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_900`, 
+      name: `⭐⭐⭐ ${item.name} Noncentennial`, 
+      requirement: `Own 900 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 900, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/900", 
+      percent: () => Math.min(gameState.items[item.id].count / 900 * 100, 100) 
+    },
+    { 
+      id: `${item.id}_1000`, 
+      name: `👑 ${item.name} Millennium`, 
+      requirement: `Own 1,000 ${item.name}s`, 
+      condition: () => gameState.items[item.id].count >= 1000, 
+      earned: false, 
+      progress: () => gameState.items[item.id].count + "/1,000", 
+      percent: () => Math.min(gameState.items[item.id].count / 1000 * 100, 100) 
+    }
+  );
+});
+
+gameState.achievements = achievements;
+
+// ========== ACHIEVEMENT PACKS ==========
+function getAchievementPacks() {
+  const packs = [
+    {
+      id: 'coffee_milestones',
+      title: '☕ Coffee Milestones',
+      description: 'Achievements for brewing coffee',
+      icon: '☕',
+      achievements: achievements.filter(a => a.id.includes('first') || a.id.includes('ten') || a.id.includes('hundred') || a.id.includes('thousand') || a.id.includes('million'))
+    },
+    {
+      id: 'general_collection',
+      title: '🏆 General Collection',
+      description: 'Achievements for collecting any items',
+      icon: '🏆',
+      achievements: achievements.filter(a => 
+        a.id.includes('_item') || 
+        a.id.includes('_any') || 
+        (a.id.match(/^\d+_any$/))
+      )
+    }
+  ];
+
+  // Add a pack for each shop item
+  shopItems.forEach(item => {
+    const itemAchievements = achievements.filter(a => a.id.startsWith(item.id + '_'));
+    if (itemAchievements.length > 0) {
+      packs.push({
+        id: item.id + '_pack',
+        title: `${item.name} Collection`,
+        description: `Achievements for owning ${item.name}s`,
+        icon: '🏪',
+        achievements: itemAchievements
+      });
+    }
+  });
+
+  return packs;
+}
+
+// ========== UTILITY FUNCTIONS ==========
 function abbreviateNumber(num) {
   if (num < 1000) return Math.floor(num).toString();
   if (num < 1000000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
@@ -682,36 +1077,121 @@ function abbreviateNumber(num) {
   return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + 'T';
 }
 
-// Achievements
-const achievements = [
-  { id: 'first_item', name: '🥉 Novice Collector', desc: 'Purchase your first item', check: () => Object.values(gameState.items).some(i => i.count >= 1) },
-  { id: 'five_any', name: '🥈 Apprentice Purchaser', desc: 'Have 5 of any single item', check: () => Object.values(gameState.items).some(i => i.count >= 5) },
-  { id: 'ten_any', name: '🥇 Seasoned Buyer', desc: 'Have 10 of any single item', check: () => Object.values(gameState.items).some(i => i.count >= 10) },
-  { id: 'fifty_any', name: '💎 Bulk Investor', desc: 'Have 50 of any single item', check: () => Object.values(gameState.items).some(i => i.count >= 50) },
-  { id: 'hundred_any', name: '🏆 Master Tycoon', desc: 'Have 100 of any single item', check: () => Object.values(gameState.items).some(i => i.count >= 100) },
-  { id: 'coffee_10', name: '☕ Ten Brews', desc: 'Brew 10 coffees', check: () => gameState.coffee >= 10 },
-  { id: 'coffee_100', name: '☕ Hundred Brews', desc: 'Brew 100 coffees', check: () => gameState.coffee >= 100 },
-  { id: 'coffee_1000', name: '☕ Thousand Brews', desc: 'Brew 1,000 coffees', check: () => gameState.coffee >= 1000 },
-  { id: 'coffee_10000', name: '☕ Ten Thousand Brews', desc: 'Brew 10,000 coffees', check: () => gameState.coffee >= 10000 },
-  { id: 'coffee_100000', name: '☕ Hundred Thousand Brews', desc: 'Brew 100,000 coffees', check: () => gameState.coffee >= 100000 }
-];
-
-// Initialize items for each shop item
-shopItems.forEach(item => {
-  achievements.push({
-    id: `five_${item.id}`,
-    name: `🥈 ${item.name} Enthusiast`,
-    desc: `Own 5 ${item.name}s`,
-    check: () => gameState.items[item.id].count >= 5
+function calculateTotalCPS() {
+  let totalCPS = 0;
+  shopItems.forEach(item => {
+    const itemState = gameState.items[item.id];
+    const multiplier = gameState.itemMultipliers[item.id] || 1;
+    totalCPS += item.cps * itemState.count * multiplier;
   });
-});
+  return totalCPS * gameState.prestigeMultiplier;
+}
 
-// UI Functions
+function calculateItemCPS(item) {
+  const multiplier = gameState.itemMultipliers[item.id] || 1;
+  return item.cps * multiplier;
+}
+
+function showToast(message, isAchievement = false) {
+  const toast = document.createElement('div');
+  toast.className = 'toast' + (isAchievement ? ' achievement' : '');
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// ========== SAVE/LOAD SYSTEM ==========
+function saveGame() {
+  const saveData = {
+    coffee: gameState.coffee,
+    totalCoffeeAllTime: gameState.totalCoffeeAllTime,
+    clickPower: gameState.clickPower,
+    goldenCoffee: gameState.goldenCoffee,
+    prestigeMultiplier: gameState.prestigeMultiplier,
+    items: gameState.items,
+    purchasedUpgrades: Array.from(gameState.purchasedUpgrades),
+    itemMultipliers: gameState.itemMultipliers,
+    viewedUpgrades: Array.from(gameState.viewedUpgrades),
+    viewedAchievements: Array.from(gameState.viewedAchievements),
+    achievements: gameState.achievements.map(a => ({ id: a.id, earned: a.earned }))
+  };
+  localStorage.setItem('coffeeTycoonSave', JSON.stringify(saveData));
+}
+
+function loadGame() {
+  const saved = localStorage.getItem('coffeeTycoonSave');
+  if (saved) {
+    const data = JSON.parse(saved);
+    gameState.coffee = data.coffee || 0;
+    gameState.totalCoffeeAllTime = data.totalCoffeeAllTime || 0;
+    gameState.clickPower = data.clickPower || 1;
+    gameState.goldenCoffee = data.goldenCoffee || 0;
+    gameState.prestigeMultiplier = data.prestigeMultiplier || 1.0;
+    gameState.items = data.items || {};
+    gameState.purchasedUpgrades = new Set(data.purchasedUpgrades || []);
+    gameState.itemMultipliers = data.itemMultipliers || {};
+    gameState.viewedUpgrades = new Set(data.viewedUpgrades || []);
+    gameState.viewedAchievements = new Set(data.viewedAchievements || []);
+    
+    if (data.achievements) {
+      data.achievements.forEach(savedAch => {
+        const ach = gameState.achievements.find(a => a.id === savedAch.id);
+        if (ach) ach.earned = savedAch.earned;
+      });
+    }
+    
+    return true;
+  }
+  return false;
+}
+
+// ========== NOTIFICATION BADGES ==========
+function updateNotificationBadges() {
+  // Upgrades badge
+  const availableUpgrades = upgrades.filter(u => 
+    u.unlockCondition() && 
+    !gameState.purchasedUpgrades.has(u.id) && 
+    !gameState.viewedUpgrades.has(u.id)
+  );
+  
+  const upgradesBtn = document.querySelector('[data-tab="upgrades"]');
+  let upgradeBadge = upgradesBtn.querySelector('.notification-badge');
+  
+  if (availableUpgrades.length > 0 && !upgradeBadge) {
+    upgradeBadge = document.createElement('div');
+    upgradeBadge.className = 'notification-badge';
+    upgradesBtn.appendChild(upgradeBadge);
+  } else if (availableUpgrades.length === 0 && upgradeBadge) {
+    upgradeBadge.remove();
+  }
+  
+  // Achievements badge
+  const newAchievements = gameState.achievements.filter(a => 
+    a.earned && !gameState.viewedAchievements.has(a.id)
+  );
+  
+  const achievementsBtn = document.querySelector('[data-tab="achievements"]');
+  let achievementBadge = achievementsBtn.querySelector('.notification-badge');
+  
+  if (newAchievements.length > 0 && !achievementBadge) {
+    achievementBadge = document.createElement('div');
+    achievementBadge.className = 'notification-badge';
+    achievementsBtn.appendChild(achievementBadge);
+  } else if (newAchievements.length === 0 && achievementBadge) {
+    achievementBadge.remove();
+  }
+}
+
+// ========== UI RENDERING ==========
 function updateUI() {
-  document.getElementById('money').textContent = abbreviateNumber(gameState.coffee);
-  document.getElementById('cps').textContent = abbreviateNumber(gameState.cps * gameState.prestigeMultiplier);
-  document.getElementById('goldenBeans').textContent = gameState.goldenBeans;
+  document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.coffee);
+  document.getElementById('cpsDisplay').textContent = abbreviateNumber(calculateTotalCPS());
+  document.getElementById('goldenCoffeeDisplay').textContent = gameState.goldenCoffee;
+  document.getElementById('clickPowerDisplay').textContent = gameState.clickPower;
+  
+  updateNotificationBadges();
   renderShop();
+  renderUpgrades();
   renderPrestige();
   renderAchievements();
   checkAchievements();
@@ -724,6 +1204,7 @@ function renderShop() {
   shopItems.forEach(item => {
     const itemState = gameState.items[item.id];
     const canAfford = gameState.coffee >= itemState.cost;
+    const itemCPS = calculateItemCPS(item);
     
     const div = document.createElement('div');
     div.className = 'shop-item' + (canAfford ? ' affordable' : '');
@@ -731,7 +1212,7 @@ function renderShop() {
     div.innerHTML = `
       <div class="item-info">
         <div class="item-name">${item.name}</div>
-        <div class="item-effect">Effect: +${abbreviateNumber(item.cps)} CPS</div>
+        <div class="item-effect">Effect: +${abbreviateNumber(itemCPS)} CPS</div>
       </div>
       <div class="item-actions">
         <div class="quantity-display">${itemState.count}</div>
@@ -745,87 +1226,196 @@ function renderShop() {
   });
 }
 
-function renderOwned() {
-  // Removed - no longer needed
+function renderUpgrades() {
+  const container = document.getElementById('upgradesList');
+  container.innerHTML = '';
+  
+  const currentTab = document.querySelector('.tab-btn.active')?.dataset.tab;
+  const availableUpgrades = upgrades.filter(u => u.unlockCondition());
+  
+  availableUpgrades.forEach(upgrade => {
+    const purchased = gameState.purchasedUpgrades.has(upgrade.id);
+    const canAfford = gameState.coffee >= upgrade.cost && !purchased;
+    const isNew = !gameState.viewedUpgrades.has(upgrade.id) && !purchased;
+    
+    if (currentTab === 'upgrades' && isNew) {
+      gameState.viewedUpgrades.add(upgrade.id);
+    }
+    
+    const div = document.createElement('div');
+    div.className = 'upgrade-item';
+    if (canAfford) div.classList.add('affordable');
+    if (purchased) div.classList.add('purchased');
+    
+    div.innerHTML = `
+      <div class="upgrade-header">
+        <div class="upgrade-name">${upgrade.name}</div>
+        <div class="upgrade-status">${purchased ? '✓ OWNED' : ''}</div>
+      </div>
+      <div class="upgrade-description">${upgrade.description}</div>
+      <div class="upgrade-footer">
+        <div class="cost-tile">☕ ${abbreviateNumber(upgrade.cost)}</div>
+        <button class="upgrade-buy-btn" ${!canAfford || purchased ? 'disabled' : ''}>
+          ${purchased ? 'PURCHASED' : 'BUY UPGRADE'}
+        </button>
+      </div>
+    `;
+    
+    div.querySelector('.upgrade-buy-btn').onclick = () => buyUpgrade(upgrade.id);
+    container.appendChild(div);
+  });
+  
+  if (container.children.length === 0) {
+    container.innerHTML = '<div class="empty-state">No upgrades available yet. Keep brewing and purchasing items!</div>';
+  }
 }
 
 function renderPrestige() {
   const container = document.getElementById('prestigeContent');
-  const beansToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
-  const beansAfterPrestige = beansToGain;
-  const newMultiplier = 1 + (beansAfterPrestige * 0.1);
-  const canPrestige = beansToGain > gameState.goldenBeans;
+  const goldenCoffeeToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
+  const newMultiplier = 1 + (goldenCoffeeToGain * 0.1);
+  const canPrestige = goldenCoffeeToGain > gameState.goldenCoffee;
   
   container.innerHTML = `
     <div class="prestige-container">
       <div class="prestige-info">
-        <h3>✨ Golden Coffee System</h3>
-        <p>Reset your progress to earn Golden Coffee, which provide permanent production multipliers!</p>
-        <div class="multiplier-display">Current Multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x</div>
+        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">✨ Golden Coffee System</h3>
+        <p>Reset your progress to earn Golden Coffee for permanent production multipliers!</p>
+        <div style="font-size: 2rem; font-weight: 700; color: #ffd700; margin: 16px 0;">
+          Current Multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x
+        </div>
       </div>
 
-      <div class="prestige-description">
+      <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
         <p><strong>How it works:</strong></p>
-        <p>• Every 1M total coffees brewed = 1 Golden Coffee</p>
-        <p>• Each Golden Coffee gives +10% production multiplier (permanently!)</p>
-        <p>• Prestiging resets your coffee, items, and CPS</p>
-        <p>• Your Golden Coffee and multiplier are kept forever</p>
+        <p>• Every 1M total coffees = 1 Golden Coffee</p>
+        <p>• Each Golden Coffee gives +10% production (permanent!)</p>
+        <p>• Prestiging resets coffee, items, and upgrades</p>
+        <p>• Golden Coffee and multiplier are kept forever</p>
       </div>
 
-      <div class="prestige-stats">
-        <div class="prestige-stat">
-          <div class="prestige-stat-label">Total Coffee Brewed</div>
-          <div class="prestige-stat-value">${abbreviateNumber(gameState.totalCoffeeAllTime)}</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">${abbreviateNumber(gameState.totalCoffeeAllTime)}</div>
         </div>
-        <div class="prestige-stat">
-          <div class="prestige-stat-label">Current Golden Coffee</div>
-          <div class="prestige-stat-value">${gameState.goldenBeans}</div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">${gameState.goldenCoffee}</div>
         </div>
-        <div class="prestige-stat">
-          <div class="prestige-stat-label">Golden Coffee After Prestige</div>
-          <div class="prestige-stat-value">${beansAfterPrestige}</div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">After Prestige</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">${goldenCoffeeToGain}</div>
         </div>
       </div>
 
       ${canPrestige ? `
-        <div class="beans-gain">
-          You will gain ${beansAfterPrestige - gameState.goldenBeans} Golden Coffee!
+        <div style="text-align: center; font-size: 1.2rem; color: #4CAF50; font-weight: 600; margin: 12px 0;">
+          You will gain ${goldenCoffeeToGain - gameState.goldenCoffee} Golden Coffee!
         </div>
-        <div class="beans-gain">
+        <div style="text-align: center; font-size: 1.2rem; color: #4CAF50; font-weight: 600; margin: 12px 0;">
           New Multiplier: ${newMultiplier.toFixed(1)}x (from ${gameState.prestigeMultiplier.toFixed(1)}x)
         </div>
       ` : `
         <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
-          You need ${abbreviateNumber((gameState.goldenBeans + 1) * 1000000)} total coffees to prestige.
+          Need ${abbreviateNumber((gameState.goldenCoffee + 1) * 1000000)} total coffees to prestige
           <br>Current: ${abbreviateNumber(gameState.totalCoffeeAllTime)}
         </div>
       `}
 
-      <button class="prestige-button" ${!canPrestige ? 'disabled' : ''} onclick="doPrestige()">
+      <button class="prestige-button" ${!canPrestige ? 'disabled' : ''}>
         ${canPrestige ? '✨ PRESTIGE NOW ✨' : '🔒 Not Enough Coffee Yet'}
       </button>
     </div>
   `;
+  
+  const btn = container.querySelector('.prestige-button');
+  if (canPrestige) {
+    btn.onclick = doPrestige;
+  }
 }
 
 function renderAchievements() {
   const container = document.getElementById('achievementsList');
   container.innerHTML = '';
+  container.className = 'achievements-grid';
   
-  achievements.forEach(ach => {
-    const unlocked = gameState.unlockedAchievements.has(ach.id);
+  const currentTab = document.querySelector('.tab-btn.active')?.dataset.tab;
+  const packs = getAchievementPacks();
+  
+  packs.forEach(pack => {
+    const earnedCount = pack.achievements.filter(a => a.earned).length;
+    const totalCount = pack.achievements.length;
+    const progressPercent = totalCount > 0 ? Math.round((earnedCount / totalCount) * 100) : 0;
+    
+    // Mark achievements in this pack as viewed if on achievements tab
+    if (currentTab === 'achievements') {
+      pack.achievements.forEach(a => {
+        if (a.earned) {
+          gameState.viewedAchievements.add(a.id);
+        }
+      });
+    }
+    
     const div = document.createElement('div');
-    div.className = 'achievement' + (unlocked ? ' unlocked' : '');
+    div.className = 'achievement-pack';
     
     div.innerHTML = `
-      <div class="achievement-icon">${unlocked ? ach.name.split(' ')[0] : '🔒'}</div>
-      <div class="achievement-name">${unlocked ? ach.name.substring(ach.name.indexOf(' ') + 1) : '???'}</div>
-      <div class="achievement-desc">${unlocked ? ach.desc : 'Locked'}</div>
+      <div class="pack-header">
+        <div class="pack-title">${pack.title}</div>
+        <div class="pack-progress">${earnedCount}/${totalCount}</div>
+      </div>
+      <div class="pack-description">${pack.description}</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: ${progressPercent}%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        ${pack.achievements.slice(0, 8).map(a => 
+          `<span class="pack-badge">${a.earned ? '✅' : '❌'}</span>`
+        ).join('')}
+        ${pack.achievements.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
+      </div>
     `;
+    
+    div.onclick = () => openAchievementModal(pack);
     container.appendChild(div);
   });
 }
 
+function openAchievementModal(pack) {
+  const modal = document.getElementById('achievementModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalAchievements = document.getElementById('modalAchievements');
+  
+  modalTitle.textContent = pack.title;
+  modalAchievements.innerHTML = '';
+  
+  pack.achievements.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'modal-achievement' + (a.earned ? ' unlocked' : '');
+    
+    div.innerHTML = `
+      <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">
+        ${a.earned ? '✅' : '❌'} ${a.name}
+      </div>
+      <div style="opacity: 0.9; margin-bottom: 8px; font-size: 0.9rem;">${a.requirement}</div>
+      <div style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 4px;">Progress: ${a.progress()}</div>
+      <div class="progress">
+        <div class="progress-bar" style="width: ${a.percent()}%; ${a.earned ? 'background: #4CAF50;' : ''}"></div>
+      </div>
+    `;
+    
+    modalAchievements.appendChild(div);
+  });
+  
+  modal.classList.remove('hidden');
+}
+
+function closeAchievementModal() {
+  document.getElementById('achievementModal').classList.add('hidden');
+}
+
+// ========== GAME ACTIONS ==========
 function buyItem(itemId) {
   const shopItem = shopItems.find(i => i.id === itemId);
   const itemState = gameState.items[itemId];
@@ -833,69 +1423,79 @@ function buyItem(itemId) {
   if (gameState.coffee >= itemState.cost) {
     gameState.coffee -= itemState.cost;
     itemState.count++;
-    gameState.cps += shopItem.cps;
     itemState.cost = Math.floor(shopItem.baseCost * Math.pow(shopItem.scale, itemState.count));
     
     showToast(`Purchased ${shopItem.name}!`);
+    saveGame();
     updateUI();
   }
 }
 
-function showToast(message, isAchievement = false) {
-  const toast = document.createElement('div');
-  toast.className = 'toast' + (isAchievement ? ' achievement' : '');
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
+function buyUpgrade(upgradeId) {
+  const upgrade = upgrades.find(u => u.id === upgradeId);
+  if (!upgrade || gameState.purchasedUpgrades.has(upgradeId)) return;
+  
+  if (gameState.coffee >= upgrade.cost) {
+    gameState.coffee -= upgrade.cost;
+    gameState.purchasedUpgrades.add(upgradeId);
+    gameState.viewedUpgrades.add(upgradeId);
+    upgrade.effect();
+    showToast(`Purchased ${upgrade.name}!`);
+    saveGame();
+    updateUI();
+  }
 }
 
 function doPrestige() {
-  const beansToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
+  const goldenCoffeeToGain = Math.floor(gameState.totalCoffeeAllTime / 1000000);
   
-  if (beansToGain > gameState.goldenBeans) {
-    const beansGained = beansToGain - gameState.goldenBeans;
+  if (goldenCoffeeToGain > gameState.goldenCoffee) {
+    const gained = goldenCoffeeToGain - gameState.goldenCoffee;
     
-    if (confirm(`Are you sure you want to prestige?\n\nYou will gain ${beansGained} Golden Coffee!\n\nThis will reset:\n• Coffee count\n• All items\n• CPS\n\nYou will keep:\n• Golden Coffee\n• ${(beansToGain * 0.1 * 100).toFixed(0)}% production multiplier\n• All achievements`)) {
-      gameState.goldenBeans = beansToGain;
-      gameState.prestigeMultiplier = 1 + (gameState.goldenBeans * 0.1);
+    if (confirm(`Prestige and gain ${gained} Golden Coffee?\n\nThis will reset:\n• Coffee count\n• All items\n• All upgrades\n\nYou will keep:\n• Golden Coffee\n• ${(goldenCoffeeToGain * 10)}% production multiplier\n• All achievements`)) {
+      gameState.goldenCoffee = goldenCoffeeToGain;
+      gameState.prestigeMultiplier = 1 + (gameState.goldenCoffee * 0.1);
       
       // Reset progress
       gameState.coffee = 0;
-      gameState.cps = 0;
-      gameState.items = {};
+      gameState.clickPower = 1;
+      gameState.purchasedUpgrades = new Set();
+      gameState.itemMultipliers = {};
       shopItems.forEach(item => {
         gameState.items[item.id] = { count: 0, cost: item.baseCost };
       });
       
-      showToast(`🌟 Prestiged! Gained ${beansGained} Golden Coffee! New multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x`, true);
+      showToast(`🌟 Prestiged! Gained ${gained} Golden Coffee!`, true);
+      saveGame();
       updateUI();
     }
   }
 }
 
 function checkAchievements() {
-  achievements.forEach(ach => {
-    if (!gameState.unlockedAchievements.has(ach.id) && ach.check()) {
-      gameState.unlockedAchievements.add(ach.id);
-      showToast(`🏆 Achievement Unlocked: ${ach.name.substring(ach.name.indexOf(' ') + 1)}`, true);
-      renderAchievements();
+  gameState.achievements.forEach(a => {
+    if (a.condition() && !a.earned) {
+      a.earned = true;
+      showToast(`🏆 Achievement: ${a.name}!`, true);
+      saveGame();
     }
   });
 }
 
-// Click Handler
+// ========== COFFEE BUTTON ==========
 document.getElementById('coffeeButton').onclick = () => {
-  const earnedCoffee = gameState.clickValue * gameState.prestigeMultiplier;
-  gameState.coffee += earnedCoffee;
-  gameState.totalCoffeeAllTime += earnedCoffee;
-  updateUI();
+  const earned = gameState.clickPower * gameState.prestigeMultiplier;
+  gameState.coffee += earned;
+  gameState.totalCoffeeAllTime += earned;
   
   const btn = document.getElementById('coffeeButton');
   btn.style.transform = 'scale(0.9)';
   setTimeout(() => btn.style.transform = 'scale(1)', 100);
+  
+  updateUI();
 };
 
-// Tab System
+// ========== TAB SYSTEM ==========
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.onclick = () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -904,52 +1504,62 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.add('active');
     const tabId = btn.dataset.tab + 'Tab';
     document.getElementById(tabId).classList.add('active');
+    
+    updateUI();
+    saveGame();
   };
 });
 
-// Game Loop
+// ========== KEYBOARD SHORTCUTS ==========
+document.addEventListener('keydown', (e) => {
+  const key = e.key;
+  const tabs = ['brew', 'shop', 'upgrades', 'prestige', 'achievements'];
+  const index = parseInt(key) - 1;
+  
+  if (index >= 0 && index < tabs.length) {
+    const btn = document.querySelector(`[data-tab="${tabs[index]}"]`);
+    if (btn) btn.click();
+  }
+});
+
+// ========== GAME LOOP ==========
 setInterval(() => {
-  const earnedCoffee = gameState.cps * gameState.prestigeMultiplier;
-  gameState.coffee += earnedCoffee;
-  gameState.totalCoffeeAllTime += earnedCoffee;
-  updateUI();
+  const totalCPS = calculateTotalCPS();
+  if (totalCPS > 0) {
+    gameState.coffee += totalCPS;
+    gameState.totalCoffeeAllTime += totalCPS;
+    updateUI();
+  }
 }, 1000);
 
-// Initialize
-updateUI();
+// Auto-save every 30 seconds
+setInterval(() => {
+  saveGame();
+}, 30000);
 
-// Close instructions overlay
+// ========== INSTRUCTIONS OVERLAY ==========
 function closeInstructions() {
   document.getElementById('instructionsOverlay').classList.add('hidden');
 }
 
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-  const key = e.key;
-  
-  if (key === '1') {
-    switchToTab('click');
-  } else if (key === '2') {
-    switchToTab('shop');
-  } else if (key === '3') {
-    switchToTab('prestige');
-  } else if (key === '4') {
-    switchToTab('achievements');
-  }
-});
-
-function switchToTab(tabName) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  
-  const btn = document.querySelector(`[data-tab="${tabName}"]`);
-  const content = document.getElementById(tabName + 'Tab');
-  
-  if (btn && content) {
-    btn.classList.add('active');
-    content.classList.add('active');
-  }
+// ========== INITIALIZATION ==========
+const hasExistingSave = loadGame();
+if (!hasExistingSave) {
+  // Show instructions for new players
+  document.getElementById('instructionsOverlay').classList.remove('hidden');
+} else {
+  // Hide instructions for returning players
+  document.getElementById('instructionsOverlay').classList.add('hidden');
 }
+
+// Close modal when clicking outside
+document.getElementById('achievementModal').onclick = (e) => {
+  if (e.target.id === 'achievementModal') {
+    closeAchievementModal();
+  }
+};
+
+updateUI();
 </script>
 </body>
 </html>

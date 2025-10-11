@@ -33,6 +33,7 @@ A game where you brew coffee.
 #### Bug Fixes
 - Fixed minor bugs and stability issues
 
+
 ### Last Major Update: v1.5: Upgrades!
 #### New Stuff
 - Introduced the new upgrade system

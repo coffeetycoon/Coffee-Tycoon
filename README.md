@@ -81,7 +81,7 @@ A game where you brew coffee.
   - With notifications saying "Bought 10x Barista" etc.
 - Enabling shop item selling
 
-### Undecided Additions
+## Undecided Additions
 #### Stuff here may be moved to any planned (above) or unplanned update
 #### Any of these items may be removed entirely, and never added
 - Mobile UI

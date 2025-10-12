@@ -73,6 +73,8 @@ A game where you brew coffee.
 ### v1.9 – TBD
 - Progressive shop unlocking of items
 - More shop items beyond coffee franchise
+- Enabling players to buy multiple of an shop item at a time (1 item, 10 items, 100 items)
+- Enabling shop item selling
 
 ### Undecided Additions
 #### Stuff here may be moved to any planned (above) or unplanned update

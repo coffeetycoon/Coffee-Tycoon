@@ -710,7 +710,12 @@ const gameState = {
   itemMultipliers: {},
   viewedUpgrades: new Set(),
   viewedAchievements: new Set(),
-  achievements: []
+  achievements: [],
+  // Smooth animation state
+  displayCoffee: 0,
+  displayCPS: 0,
+  targetCoffee: 0,
+  targetCPS: 0
 };
 
 // ========== SHOP ITEMS ==========
@@ -1184,8 +1189,9 @@ function updateNotificationBadges() {
 
 // ========== UI RENDERING ==========
 function updateUI() {
-  document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.coffee);
-  document.getElementById('cpsDisplay').textContent = abbreviateNumber(calculateTotalCPS());
+  // Use smoothly animated values for display
+  document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.displayCoffee);
+  document.getElementById('cpsDisplay').textContent = abbreviateNumber(gameState.displayCPS);
   document.getElementById('goldenCoffeeDisplay').textContent = gameState.goldenCoffee;
   document.getElementById('clickPowerDisplay').textContent = gameState.clickPower;
   
@@ -1488,14 +1494,72 @@ document.getElementById('coffeeButton').onclick = () => {
   gameState.coffee += earned;
   gameState.totalCoffeeAllTime += earned;
   
+  // Update animation targets
+  gameState.targetCoffee = gameState.coffee;
+  
   const btn = document.getElementById('coffeeButton');
   btn.style.transform = 'scale(0.9)';
   setTimeout(() => btn.style.transform = 'scale(1)', 100);
   
-  updateUI();
+  // No need to call updateUI() here - the animation loop handles it
 };
 
-// ========== TAB SYSTEM ==========
+// ========== SMOOTH ANIMATION SYSTEM ==========
+// Smoothly interpolate displayed values toward targets
+function smoothAnimate() {
+  const lerpFactor = 0.15; // Lower = smoother but slower, higher = snappier
+  
+  // Animate coffee display
+  const coffeeDiff = gameState.targetCoffee - gameState.displayCoffee;
+  if (Math.abs(coffeeDiff) > 0.01) {
+    gameState.displayCoffee += coffeeDiff * lerpFactor;
+  } else {
+    gameState.displayCoffee = gameState.targetCoffee;
+  }
+  
+  // Animate CPS display
+  const cpsDiff = gameState.targetCPS - gameState.displayCPS;
+  if (Math.abs(cpsDiff) > 0.01) {
+    gameState.displayCPS += cpsDiff * lerpFactor;
+  } else {
+    gameState.displayCPS = gameState.targetCPS;
+  }
+}
+
+// ========== MAIN GAME LOOP (100ms TICK) ==========
+// Runs every 0.1 seconds for smooth updates
+// Adds (CPS / 10) coffee each tick, so total per second = CPS
+let lastRenderTime = Date.now();
+
+setInterval(() => {
+  const totalCPS = calculateTotalCPS();
+  const coffeePerTick = totalCPS / 10; // Divide by 10 for 0.1s ticks
+  
+  if (totalCPS > 0) {
+    gameState.coffee += coffeePerTick;
+    gameState.totalCoffeeAllTime += coffeePerTick;
+    gameState.targetCoffee = gameState.coffee;
+  }
+  
+  // Update target CPS for smooth display
+  gameState.targetCPS = totalCPS;
+  
+  // Animate displayed values
+  smoothAnimate();
+  
+  // Update UI efficiently (throttled to ~60fps max)
+  const now = Date.now();
+  if (now - lastRenderTime > 16) { // ~60fps
+    document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.displayCoffee);
+    document.getElementById('cpsDisplay').textContent = abbreviateNumber(gameState.displayCPS);
+    lastRenderTime = now;
+  }
+}, 100); // 100ms = 0.1 seconds
+
+// Full UI update every second for achievements, shop, etc.
+setInterval(() => {
+  updateUI();
+}, 1000);
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.onclick = () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1551,6 +1615,12 @@ if (!hasExistingSave) {
   // Hide instructions for returning players
   document.getElementById('instructionsOverlay').classList.add('hidden');
 }
+
+// Initialize animation targets
+gameState.targetCoffee = gameState.coffee;
+gameState.displayCoffee = gameState.coffee;
+gameState.targetCPS = calculateTotalCPS();
+gameState.displayCPS = gameState.targetCPS;
 
 // Close modal when clicking outside
 document.getElementById('achievementModal').onclick = (e) => {

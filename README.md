@@ -15,7 +15,7 @@ A game where you brew coffee.
 
 ---
 
-## 🕹️ How to Download and Play
+## How to Download and Play
 
 ### Option 1: File
 1. Download the coffeetycoon.html file above  

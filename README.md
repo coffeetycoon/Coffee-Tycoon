@@ -90,6 +90,8 @@ A game where you brew coffee.
   - You will lose the production boost from the Golden Coffee, but the Golden Upgrades will have major buffs
 - Export and Import save system, based on save string
 - Erase progress option
+- Coffee Cup animation, coffee cup falls down whenever you click (based on how many coffees that click produces)
+  - This should also work for CPS, but it may be like each 10 or 100 or 1000 coffee depending on CPS to prevent lag
 ---
 
 💡 *Stay tuned for more updates as the Coffee Tycoon improves!*

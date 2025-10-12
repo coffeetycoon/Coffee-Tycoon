@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Coffee Tycoon</title>
+<title>Coffee Tycoon v1.6 - Upgrades 2.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
@@ -20,6 +20,7 @@
     background: rgba(45, 45, 45, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: relative;
   }
   
   header h1 { 
@@ -36,6 +37,38 @@
     margin: 4px 0; 
     font-size: 1rem; 
     opacity: 0.9;
+  }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Added help and info buttons to header */
+  .header-buttons {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    gap: 12px;
+  }
+  
+  .help-btn, .info-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(212, 165, 116, 0.5);
+    color: #d4a574;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .help-btn:hover, .info-btn:hover {
+    background: rgba(212, 165, 116, 0.2);
+    transform: scale(1.1);
+    border-color: #d4a574;
   }
   
   .status-bar {
@@ -226,6 +259,19 @@
     background: rgba(255, 215, 0, 0.1);
     opacity: 0.6;
   }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Locked upgrade styling for progressive unlocking */
+  .upgrade-item.locked {
+    border-color: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    opacity: 0.5;
+  }
+  
+  .upgrade-item.locked:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+  }
 
   .upgrade-header {
     display: flex;
@@ -239,6 +285,12 @@
     font-weight: 600;
     color: #ffd700;
   }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Locked status indicator */
+  .upgrade-status.locked {
+    color: #ff6b6b;
+  }
 
   .upgrade-description {
     font-size: 1rem;
@@ -246,11 +298,102 @@
     margin-bottom: 16px;
     opacity: 0.9;
   }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Unlock requirement text for locked upgrades */
+  .upgrade-unlock-req {
+    font-size: 0.9rem;
+    color: #ff6b6b;
+    margin-top: 8px;
+    font-style: italic;
+  }
 
   .upgrade-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Upgrade pack system styled like achievement packs */
+  .upgrade-pack {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 16px;
+  }
+  
+  .upgrade-pack:hover {
+    border-color: rgba(212, 165, 116, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+  
+  .upgrade-pack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .upgrade-pack-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #d4a574;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .upgrade-pack-icon {
+    font-size: 1.5rem;
+  }
+  
+  .upgrade-pack-progress {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4CAF50;
+  }
+  
+  .upgrade-pack-description {
+    opacity: 0.9;
+    margin-bottom: 12px;
+  }
+  
+  .upgrade-pack-preview {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  
+  .upgrade-pack-badge {
+    font-size: 1.5rem;
+  }
+  
+  .upgrade-pack-toggle {
+    font-size: 1rem;
+    opacity: 0.6;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .upgrade-pack-content {
+    max-height: 10000px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 16px;
+  }
+  
+  .upgrade-pack-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
   }
 
   #coffeeButton {
@@ -424,6 +567,38 @@
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.1);
   }
+  
+  /* === Coffee Tycoon v1.6 – Upgrades 2.0 === */
+  /* Version info modal specific styles */
+  .version-content {
+    line-height: 1.8;
+  }
+  
+  .version-content h3 {
+    color: #d4a574;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .version-content ul {
+    margin: 12px 0;
+    padding-left: 24px;
+  }
+  
+  .version-content li {
+    margin: 8px 0;
+  }
+  
+  .version-content a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .version-content a:hover {
+    color: #66BB6A;
+    text-decoration: underline;
+  }
 
   .progress {
     height: 8px;
@@ -594,6 +769,11 @@
     opacity: 0.6;
     font-size: 1.1rem;
   }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 </style>
 </head>
 <body>
@@ -631,11 +811,53 @@
     <h3 style="color: #d4a574; margin-top: 24px;">Goal:</h3>
     <p>Earn coffee, unlock upgrades progressively, and reach 1 million coffee to prestige for permanent Golden Coffee bonuses!</p>
     
-    <button class="start-btn" onclick="closeInstructions()">Start Brewing!</button>
+    <button class="start-btn" id="startGameBtn">Start Brewing!</button>
+  </div>
+</div>
+
+<!-- === Coffee Tycoon v1.6 – Upgrades 2.0 === -->
+<!-- Version Info Modal -->
+<div id="versionModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">ℹ️ Coffee Tycoon v1.6</div>
+      <button class="modal-close" id="closeVersionModal">×</button>
+    </div>
+    <div class="version-content">
+      <h3>🎉 What's New in v1.6 - Upgrades 2.0</h3>
+      <ul>
+        <li><strong>🏗️ Organized Upgrade Packs:</strong> Upgrades are now grouped into collapsible thematic packs for easier navigation</li>
+        <li><strong>🔢 8-Tier Upgrade Series:</strong> Each shop item now has up to 8 "Produces 2×" upgrades (10, 25, 50, 100, 200, 400, 700, 1000 owned)</li>
+        <li><strong>📦 Complete Item Coverage:</strong> Added missing upgrade tiers for Espresso Machine, Coffee Roaster, Coffee Shop, Coffee Plantation, and Coffee Franchise</li>
+        <li><strong>🎨 Visual Pack Identity:</strong> Each upgrade pack has unique colors and icons for easy identification</li>
+        <li><strong>🔓 Progressive Unlocking:</strong> Locked upgrades show clear requirements and unlock conditions</li>
+        <li><strong>❓ Tutorial Re-Access:</strong> Click the ? button anytime to review the tutorial</li>
+      </ul>
+      
+      <h3>🎮 Gameplay Tips</h3>
+      <ul>
+        <li>Focus on one shop item at a time to unlock its upgrade series</li>
+        <li>Upgrade costs scale ×10 per tier - plan your purchases carefully</li>
+        <li>Global upgrades affect all items - save up for huge boosts!</li>
+        <li>Check locked upgrades to see what milestones to reach next</li>
+      </ul>
+      
+      <h3>💻 About</h3>
+      <p><strong>Version:</strong> 1.6 - Upgrades 2.0</p>
+      <p><strong>Created by:</strong> Coffee Tycoon Team</p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/coffee-tycoon/game" target="_blank">View on GitHub</a></p>
+    </div>
   </div>
 </div>
 
 <header>
+  <!-- === Coffee Tycoon v1.6 – Upgrades 2.0 === -->
+  <!-- Added help (?) and info (ℹ) buttons -->
+  <div class="header-buttons">
+    <button class="help-btn" id="helpBtn" title="Help">?</button>
+    <button class="info-btn" id="infoBtn" title="Version Info">ℹ</button>
+  </div>
+  
   <h1>Coffee Tycoon</h1>
   <p>Brew coffee, earn money, and build your empire!</p>
   
@@ -691,7 +913,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <div class="modal-title" id="modalTitle">Achievement Pack</div>
-      <button class="modal-close" onclick="closeAchievementModal()">×</button>
+      <button class="modal-close" id="closeAchievementModal">×</button>
     </div>
     <div class="modal-achievements" id="modalAchievements"></div>
   </div>
@@ -711,6 +933,9 @@ const gameState = {
   viewedUpgrades: new Set(),
   viewedAchievements: new Set(),
   achievements: [],
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // Track collapsed/expanded state of upgrade packs
+  collapsedPacks: new Set(),
   // Smooth animation state
   displayCoffee: 0,
   displayCPS: 0,
@@ -735,6 +960,8 @@ shopItems.forEach(item => {
   gameState.items[item.id] = { count: 0, cost: item.baseCost };
 });
 
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Expanded upgrade system with 8-tier progression for all items
 // ========== UPGRADES ==========
 const upgrades = [
   // Click Power Upgrades
@@ -744,7 +971,8 @@ const upgrades = [
     description: '+1 coffee per click', 
     cost: 1500, 
     effect: () => { gameState.clickPower += 1; },
-    unlockCondition: () => gameState.totalCoffeeAllTime >= 1000
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 1000,
+    pack: 'click-power'
   },
   { 
     id: 'click_2', 
@@ -752,7 +980,8 @@ const upgrades = [
     description: '+2 coffee per click', 
     cost: 15000, 
     effect: () => { gameState.clickPower += 2; },
-    unlockCondition: () => gameState.totalCoffeeAllTime >= 10000
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 10000,
+    pack: 'click-power'
   },
   { 
     id: 'click_3', 
@@ -760,66 +989,613 @@ const upgrades = [
     description: '+5 coffee per click', 
     cost: 150000, 
     effect: () => { gameState.clickPower += 5; },
-    unlockCondition: () => gameState.totalCoffeeAllTime >= 100000
+    unlockCondition: () => gameState.totalCoffeeAllTime >= 100000,
+    pack: 'click-power'
   },
   
-  // Item Specific Upgrades
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // Auto Brewer Upgrades (8 tiers)
   { 
     id: 'brewer_1', 
     name: 'Upgraded Brewers', 
-    description: 'Auto Brewers produce 2x coffee', 
-    cost: 2500, 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 500, 
     effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
-    unlockCondition: () => gameState.items.brewer.count >= 10
+    unlockCondition: () => gameState.items.brewer.count >= 10,
+    pack: 'brewer'
   },
   { 
     id: 'brewer_2', 
-    name: 'Industrial Brewers', 
-    description: 'Auto Brewers produce 2x coffee', 
-    cost: 25000, 
+    name: 'Advanced Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 5000, 
     effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
-    unlockCondition: () => gameState.items.brewer.count >= 50
+    unlockCondition: () => gameState.items.brewer.count >= 25,
+    pack: 'brewer'
   },
   { 
     id: 'brewer_3', 
-    name: 'Quantum Brewers', 
-    description: 'Auto Brewers produce 2x coffee', 
-    cost: 250000, 
+    name: 'Industrial Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 50000, 
     effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
-    unlockCondition: () => gameState.items.brewer.count >= 100
+    unlockCondition: () => gameState.items.brewer.count >= 50,
+    pack: 'brewer'
+  },
+  { 
+    id: 'brewer_4', 
+    name: 'Quantum Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 500000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 100,
+    pack: 'brewer'
+  },
+  { 
+    id: 'brewer_5', 
+    name: 'Hyper Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 5000000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 200,
+    pack: 'brewer'
+  },
+  { 
+    id: 'brewer_6', 
+    name: 'Ultra Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 50000000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 400,
+    pack: 'brewer'
+  },
+  { 
+    id: 'brewer_7', 
+    name: 'Mega Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 500000000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 700,
+    pack: 'brewer'
+  },
+  { 
+    id: 'brewer_8', 
+    name: 'Divine Brewers', 
+    description: 'Auto Brewers produce 2× coffee', 
+    cost: 5000000000, 
+    effect: () => { gameState.itemMultipliers.brewer = (gameState.itemMultipliers.brewer || 1) * 2; },
+    unlockCondition: () => gameState.items.brewer.count >= 1000,
+    pack: 'brewer'
   },
   
+  // Barista Upgrades (8 tiers)
   { 
     id: 'barista_1', 
     name: 'Barista Training', 
-    description: 'Baristas produce 2x coffee', 
-    cost: 7500, 
+    description: 'Baristas produce 2× coffee', 
+    cost: 1500, 
     effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
-    unlockCondition: () => gameState.items.barista.count >= 10
+    unlockCondition: () => gameState.items.barista.count >= 10,
+    pack: 'barista'
   },
   { 
     id: 'barista_2', 
-    name: 'Master Baristas', 
-    description: 'Baristas produce 2x coffee', 
-    cost: 75000, 
+    name: 'Expert Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 15000, 
     effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
-    unlockCondition: () => gameState.items.barista.count >= 50
+    unlockCondition: () => gameState.items.barista.count >= 25,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_3', 
+    name: 'Master Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 150000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 50,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_4', 
+    name: 'Legendary Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 1500000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 100,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_5', 
+    name: 'Mythic Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 15000000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 200,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_6', 
+    name: 'Cosmic Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 150000000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 400,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_7', 
+    name: 'Celestial Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 1500000000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 700,
+    pack: 'barista'
+  },
+  { 
+    id: 'barista_8', 
+    name: 'Transcendent Baristas', 
+    description: 'Baristas produce 2× coffee', 
+    cost: 15000000000, 
+    effect: () => { gameState.itemMultipliers.barista = (gameState.itemMultipliers.barista || 1) * 2; },
+    unlockCondition: () => gameState.items.barista.count >= 1000,
+    pack: 'barista'
   },
   
+  // Coffee Grinder Upgrades (8 tiers)
   { 
     id: 'grinder_1', 
-    name: 'Industrial Grinders', 
-    description: 'Coffee Grinders produce 2x coffee', 
-    cost: 20000, 
+    name: 'Steel Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 4000, 
     effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
-    unlockCondition: () => gameState.items.grinder.count >= 10
+    unlockCondition: () => gameState.items.grinder.count >= 10,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_2', 
+    name: 'Titanium Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 40000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 25,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_3', 
+    name: 'Industrial Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 400000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 50,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_4', 
+    name: 'Precision Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 4000000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 100,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_5', 
+    name: 'Nano Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 40000000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 200,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_6', 
+    name: 'Molecular Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 400000000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 400,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_7', 
+    name: 'Atomic Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 4000000000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 700,
+    pack: 'grinder'
+  },
+  { 
+    id: 'grinder_8', 
+    name: 'Quantum Grinders', 
+    description: 'Coffee Grinders produce 2× coffee', 
+    cost: 40000000000, 
+    effect: () => { gameState.itemMultipliers.grinder = (gameState.itemMultipliers.grinder || 1) * 2; },
+    unlockCondition: () => gameState.items.grinder.count >= 1000,
+    pack: 'grinder'
+  },
+  
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // NEW: Espresso Machine Upgrades (8 tiers)
+  { 
+    id: 'espresso_1', 
+    name: 'High-Pressure Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 8000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 10,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_2', 
+    name: 'Dual Boiler Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 80000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 25,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_3', 
+    name: 'Professional Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 800000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 50,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_4', 
+    name: 'Commercial Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 8000000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 100,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_5', 
+    name: 'Automated Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 80000000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 200,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_6', 
+    name: 'AI Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 800000000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 400,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_7', 
+    name: 'Fusion Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 8000000000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 700,
+    pack: 'espresso'
+  },
+  { 
+    id: 'espresso_8', 
+    name: 'Singularity Espresso', 
+    description: 'Espresso Machines produce 2× coffee', 
+    cost: 80000000000, 
+    effect: () => { gameState.itemMultipliers.espresso = (gameState.itemMultipliers.espresso || 1) * 2; },
+    unlockCondition: () => gameState.items.espresso.count >= 1000,
+    pack: 'espresso'
+  },
+  
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // NEW: Coffee Roaster Upgrades (8 tiers)
+  { 
+    id: 'roaster_1', 
+    name: 'Convection Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 20000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 10,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_2', 
+    name: 'Drum Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 200000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 25,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_3', 
+    name: 'Fluid Bed Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 2000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 50,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_4', 
+    name: 'Infrared Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 20000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 100,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_5', 
+    name: 'Microwave Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 200000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 200,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_6', 
+    name: 'Plasma Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 2000000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 400,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_7', 
+    name: 'Solar Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 20000000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 700,
+    pack: 'roaster'
+  },
+  { 
+    id: 'roaster_8', 
+    name: 'Stellar Roasters', 
+    description: 'Coffee Roasters produce 2× coffee', 
+    cost: 200000000000, 
+    effect: () => { gameState.itemMultipliers.roaster = (gameState.itemMultipliers.roaster || 1) * 2; },
+    unlockCondition: () => gameState.items.roaster.count >= 1000,
+    pack: 'roaster'
+  },
+  
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // NEW: Coffee Shop Upgrades (8 tiers)
+  { 
+    id: 'shop_1', 
+    name: 'Cozy Ambiance', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 50000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 10,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_2', 
+    name: 'Premium Menu', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 500000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 25,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_3', 
+    name: 'WiFi & Workspace', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 5000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 50,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_4', 
+    name: 'Loyalty Program', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 50000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 100,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_5', 
+    name: 'Drive-Thru Service', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 500000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 200,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_6', 
+    name: 'Mobile App Ordering', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 5000000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 400,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_7', 
+    name: 'Celebrity Endorsements', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 50000000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 700,
+    pack: 'shop'
+  },
+  { 
+    id: 'shop_8', 
+    name: 'Global Coffee Culture', 
+    description: 'Coffee Shops produce 2× coffee', 
+    cost: 500000000000, 
+    effect: () => { gameState.itemMultipliers.shop = (gameState.itemMultipliers.shop || 1) * 2; },
+    unlockCondition: () => gameState.items.shop.count >= 1000,
+    pack: 'shop'
+  },
+  
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // NEW: Coffee Plantation Upgrades (8 tiers)
+  { 
+    id: 'plantation_1', 
+    name: 'Irrigation Systems', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 150000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 10,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_2', 
+    name: 'Shade-Grown Techniques', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 1500000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 25,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_3', 
+    name: 'Organic Certification', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 15000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 50,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_4', 
+    name: 'Precision Agriculture', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 150000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 100,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_5', 
+    name: 'Genetic Enhancement', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 1500000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 200,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_6', 
+    name: 'Climate Control Domes', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 15000000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 400,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_7', 
+    name: 'Vertical Farming', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 150000000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 700,
+    pack: 'plantation'
+  },
+  { 
+    id: 'plantation_8', 
+    name: 'Orbital Plantations', 
+    description: 'Coffee Plantations produce 2× coffee', 
+    cost: 1500000000000, 
+    effect: () => { gameState.itemMultipliers.plantation = (gameState.itemMultipliers.plantation || 1) * 2; },
+    unlockCondition: () => gameState.items.plantation.count >= 1000,
+    pack: 'plantation'
+  },
+  
+  // === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+  // NEW: Coffee Franchise Upgrades (8 tiers)
+  { 
+    id: 'franchise_1', 
+    name: 'Regional Marketing', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 500000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 10,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_2', 
+    name: 'Brand Recognition', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 5000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 25,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_3', 
+    name: 'National Expansion', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 50000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 50,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_4', 
+    name: 'International Markets', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 500000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 100,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_5', 
+    name: 'Stock Market IPO', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 5000000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 200,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_6', 
+    name: 'Multinational Corporation', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 50000000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 400,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_7', 
+    name: 'Intergalactic Franchise', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 500000000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 700,
+    pack: 'franchise'
+  },
+  { 
+    id: 'franchise_8', 
+    name: 'Universal Coffee Empire', 
+    description: 'Coffee Franchises produce 2× coffee', 
+    cost: 5000000000000, 
+    effect: () => { gameState.itemMultipliers.franchise = (gameState.itemMultipliers.franchise || 1) * 2; },
+    unlockCondition: () => gameState.items.franchise.count >= 1000,
+    pack: 'franchise'
   },
   
   // Global Upgrades
   { 
     id: 'global_1', 
     name: 'Efficient Operations', 
-    description: 'All items produce 1.5x coffee', 
+    description: 'All items produce 1.5× coffee', 
     cost: 500000, 
     effect: () => { 
       shopItems.forEach(item => {
@@ -828,12 +1604,13 @@ const upgrades = [
     },
     unlockCondition: () => {
       return shopItems.every(item => gameState.items[item.id].count >= 10);
-    }
+    },
+    pack: 'global'
   },
   { 
     id: 'global_2', 
     name: 'Coffee Revolution', 
-    description: 'All items produce 2x coffee', 
+    description: 'All items produce 2× coffee', 
     cost: 5000000, 
     effect: () => { 
       shopItems.forEach(item => {
@@ -842,7 +1619,73 @@ const upgrades = [
     },
     unlockCondition: () => {
       return shopItems.every(item => gameState.items[item.id].count >= 25);
-    }
+    },
+    pack: 'global'
+  }
+];
+
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Upgrade pack definitions for organizing upgrades
+const upgradePacks = [
+  { 
+    id: 'click-power', 
+    name: 'Click Power Upgrades', 
+    icon: '👆', 
+    description: 'Increase coffee per click'
+  },
+  { 
+    id: 'brewer', 
+    name: 'Auto Brewer Upgrades', 
+    icon: '☕', 
+    description: 'Boost Auto Brewer production'
+  },
+  { 
+    id: 'barista', 
+    name: 'Barista Upgrades', 
+    icon: '👨‍🍳', 
+    description: 'Enhance Barista efficiency'
+  },
+  { 
+    id: 'grinder', 
+    name: 'Coffee Grinder Upgrades', 
+    icon: '⚙️', 
+    description: 'Improve Coffee Grinder output'
+  },
+  { 
+    id: 'espresso', 
+    name: 'Espresso Machine Upgrades', 
+    icon: '🎰', 
+    description: 'Upgrade Espresso Machine power'
+  },
+  { 
+    id: 'roaster', 
+    name: 'Coffee Roaster Upgrades', 
+    icon: '🔥', 
+    description: 'Amplify Coffee Roaster performance'
+  },
+  { 
+    id: 'shop', 
+    name: 'Coffee Shop Upgrades', 
+    icon: '🏪', 
+    description: 'Expand Coffee Shop capabilities'
+  },
+  { 
+    id: 'plantation', 
+    name: 'Coffee Plantation Upgrades', 
+    icon: '🌱', 
+    description: 'Optimize Coffee Plantation yield'
+  },
+  { 
+    id: 'franchise', 
+    name: 'Coffee Franchise Upgrades', 
+    icon: '🌍', 
+    description: 'Scale Coffee Franchise reach'
+  },
+  { 
+    id: 'global', 
+    name: 'Global Upgrades', 
+    icon: '✨', 
+    description: 'Universal production multipliers'
   }
 ];
 
@@ -1064,7 +1907,7 @@ function getAchievementPacks() {
         id: item.id + '_pack',
         title: `${item.name} Collection`,
         description: `Achievements for owning ${item.name}s`,
-        icon: '🏪',
+        icon: '🪙',
         achievements: itemAchievements
       });
     }
@@ -1105,6 +1948,40 @@ function showToast(message, isAchievement = false) {
   setTimeout(() => toast.remove(), 3000);
 }
 
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Helper function to get unlock requirement text for locked upgrades
+function getUnlockRequirementText(upgrade) {
+  // Check if it's a click power upgrade
+  if (upgrade.pack === 'click-power') {
+    const requiredCoffee = upgrade.id === 'click_1' ? 1000 : 
+                          upgrade.id === 'click_2' ? 10000 : 100000;
+    return `Requires ${abbreviateNumber(requiredCoffee)} total coffee brewed`;
+  }
+  
+  // Check if it's an item-specific upgrade
+  const itemMatch = upgrade.id.match(/^(\w+)_(\d+)$/);
+  if (itemMatch) {
+    const itemId = itemMatch[1];
+    const tier = parseInt(itemMatch[2]);
+    const itemName = shopItems.find(i => i.id === itemId)?.name || itemId;
+    const requirements = [10, 25, 50, 100, 200, 400, 700, 1000];
+    const required = requirements[tier - 1] || 0;
+    const current = gameState.items[itemId]?.count || 0;
+    return `Requires ${required} ${itemName}s (Currently: ${current})`;
+  }
+  
+  // Check if it's a global upgrade
+  if (upgrade.pack === 'global') {
+    if (upgrade.id === 'global_1') {
+      return `Requires 10 of each item type`;
+    } else if (upgrade.id === 'global_2') {
+      return `Requires 25 of each item type`;
+    }
+  }
+  
+  return 'Unlock requirements not met';
+}
+
 // ========== SAVE/LOAD SYSTEM ==========
 function saveGame() {
   const saveData = {
@@ -1118,7 +1995,8 @@ function saveGame() {
     itemMultipliers: gameState.itemMultipliers,
     viewedUpgrades: Array.from(gameState.viewedUpgrades),
     viewedAchievements: Array.from(gameState.viewedAchievements),
-    achievements: gameState.achievements.map(a => ({ id: a.id, earned: a.earned }))
+    achievements: gameState.achievements.map(a => ({ id: a.id, earned: a.earned })),
+    collapsedPacks: Array.from(gameState.collapsedPacks)
   };
   localStorage.setItem('coffeeTycoonSave', JSON.stringify(saveData));
 }
@@ -1137,6 +2015,7 @@ function loadGame() {
     gameState.itemMultipliers = data.itemMultipliers || {};
     gameState.viewedUpgrades = new Set(data.viewedUpgrades || []);
     gameState.viewedAchievements = new Set(data.viewedAchievements || []);
+    gameState.collapsedPacks = new Set(data.collapsedPacks || []);
     
     if (data.achievements) {
       data.achievements.forEach(savedAch => {
@@ -1232,48 +2111,134 @@ function renderShop() {
   });
 }
 
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Completely rewritten render function with pack organization (styled like achievement packs)
 function renderUpgrades() {
   const container = document.getElementById('upgradesList');
   container.innerHTML = '';
+  container.className = 'achievements-grid'; // Use same grid layout as achievements
   
   const currentTab = document.querySelector('.tab-btn.active')?.dataset.tab;
-  const availableUpgrades = upgrades.filter(u => u.unlockCondition());
   
-  availableUpgrades.forEach(upgrade => {
-    const purchased = gameState.purchasedUpgrades.has(upgrade.id);
-    const canAfford = gameState.coffee >= upgrade.cost && !purchased;
-    const isNew = !gameState.viewedUpgrades.has(upgrade.id) && !purchased;
+  // Group upgrades by pack
+  upgradePacks.forEach(pack => {
+    const packUpgrades = upgrades.filter(u => u.pack === pack.id);
+    if (packUpgrades.length === 0) return;
     
-    if (currentTab === 'upgrades' && isNew) {
-      gameState.viewedUpgrades.add(upgrade.id);
+    // Calculate pack statistics
+    const unlockedUpgrades = packUpgrades.filter(u => u.unlockCondition());
+    const purchasedUpgrades = packUpgrades.filter(u => gameState.purchasedUpgrades.has(u.id));
+    const affordableUpgrades = packUpgrades.filter(u => 
+      u.unlockCondition() && 
+      !gameState.purchasedUpgrades.has(u.id) && 
+      gameState.coffee >= u.cost
+    );
+    
+    // Mark upgrades as viewed if on upgrades tab
+    if (currentTab === 'upgrades') {
+      unlockedUpgrades.forEach(u => {
+        if (!gameState.purchasedUpgrades.has(u.id)) {
+          gameState.viewedUpgrades.add(u.id);
+        }
+      });
     }
     
-    const div = document.createElement('div');
-    div.className = 'upgrade-item';
-    if (canAfford) div.classList.add('affordable');
-    if (purchased) div.classList.add('purchased');
+    const isCollapsed = gameState.collapsedPacks.has(pack.id);
+    const progressPercent = packUpgrades.length > 0 ? Math.round((purchasedUpgrades.length / packUpgrades.length) * 100) : 0;
     
-    div.innerHTML = `
-      <div class="upgrade-header">
-        <div class="upgrade-name">${upgrade.name}</div>
-        <div class="upgrade-status">${purchased ? '✓ OWNED' : ''}</div>
+    // Create pack container (styled like achievement pack)
+    const packDiv = document.createElement('div');
+    packDiv.className = 'upgrade-pack';
+    
+    packDiv.innerHTML = `
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">${pack.icon}</span>
+          <span>${pack.name}</span>
+        </div>
+        <div class="upgrade-pack-progress">${purchasedUpgrades.length}/${packUpgrades.length}</div>
       </div>
-      <div class="upgrade-description">${upgrade.description}</div>
-      <div class="upgrade-footer">
-        <div class="cost-tile">☕ ${abbreviateNumber(upgrade.cost)}</div>
-        <button class="upgrade-buy-btn" ${!canAfford || purchased ? 'disabled' : ''}>
-          ${purchased ? 'PURCHASED' : 'BUY UPGRADE'}
-        </button>
+      <div class="upgrade-pack-description">${pack.description}</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: ${progressPercent}%; background: #d4a574;"></div>
       </div>
+      <div class="upgrade-pack-preview">
+        ${packUpgrades.slice(0, 8).map(u => {
+          const purchased = gameState.purchasedUpgrades.has(u.id);
+          const unlocked = u.unlockCondition();
+          const affordable = unlocked && !purchased && gameState.coffee >= u.cost;
+          return `<span class="upgrade-pack-badge">${purchased ? '✅' : (affordable ? '🟢' : (unlocked ? '⬜' : '🔒'))}</span>`;
+        }).join('')}
+        ${packUpgrades.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
+      </div>
+      ${affordableUpgrades.length > 0 ? `<div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem; margin-top: 8px;">💚 ${affordableUpgrades.length} affordable upgrade${affordableUpgrades.length !== 1 ? 's' : ''}</div>` : ''}
+      <div class="upgrade-pack-toggle">${isCollapsed ? '▼ Click to expand' : '▲ Click to collapse'}</div>
     `;
     
-    div.querySelector('.upgrade-buy-btn').onclick = () => buyUpgrade(upgrade.id);
-    container.appendChild(div);
+    // Make the entire pack clickable to toggle
+    packDiv.onclick = (e) => {
+      // Don't toggle if clicking on a button inside the content
+      if (!e.target.closest('.upgrade-buy-btn')) {
+        toggleUpgradePack(pack.id);
+      }
+    };
+    
+    // Add content area for individual upgrades
+    const contentDiv = document.createElement('div');
+    contentDiv.className = `upgrade-pack-content ${isCollapsed ? 'collapsed' : ''}`;
+    
+    // Add upgrades to pack
+    packUpgrades.forEach(upgrade => {
+      const purchased = gameState.purchasedUpgrades.has(upgrade.id);
+      const unlocked = upgrade.unlockCondition();
+      const canAfford = gameState.coffee >= upgrade.cost && !purchased && unlocked;
+      
+      const upgradeDiv = document.createElement('div');
+      upgradeDiv.className = 'upgrade-item';
+      if (canAfford) upgradeDiv.classList.add('affordable');
+      if (purchased) upgradeDiv.classList.add('purchased');
+      if (!unlocked) upgradeDiv.classList.add('locked');
+      
+      upgradeDiv.innerHTML = `
+        <div class="upgrade-header">
+          <div class="upgrade-name">${upgrade.name}</div>
+          <div class="upgrade-status ${!unlocked ? 'locked' : ''}">${purchased ? '✓ OWNED' : (!unlocked ? '🔒 LOCKED' : '')}</div>
+        </div>
+        <div class="upgrade-description">${upgrade.description}</div>
+        ${!unlocked ? `<div class="upgrade-unlock-req">${getUnlockRequirementText(upgrade)}</div>` : ''}
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ ${abbreviateNumber(upgrade.cost)}</div>
+          <button class="upgrade-buy-btn" ${!canAfford || purchased || !unlocked ? 'disabled' : ''}>
+            ${purchased ? 'PURCHASED' : (!unlocked ? 'LOCKED' : 'BUY UPGRADE')}
+          </button>
+        </div>
+      `;
+      
+      if (unlocked && !purchased) {
+        upgradeDiv.querySelector('.upgrade-buy-btn').onclick = (e) => {
+          e.stopPropagation(); // Prevent pack toggle when clicking buy button
+          buyUpgrade(upgrade.id);
+        };
+      }
+      
+      contentDiv.appendChild(upgradeDiv);
+    });
+    
+    packDiv.appendChild(contentDiv);
+    container.appendChild(packDiv);
   });
-  
-  if (container.children.length === 0) {
-    container.innerHTML = '<div class="empty-state">No upgrades available yet. Keep brewing and purchasing items!<br><br>💡 Upgrades unlock as you progress through the game.<br>Reach coffee milestones and buy more shop items to unlock powerful upgrades!</div>';
+}
+
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Toggle upgrade pack collapsed state
+function toggleUpgradePack(packId) {
+  if (gameState.collapsedPacks.has(packId)) {
+    gameState.collapsedPacks.delete(packId);
+  } else {
+    gameState.collapsedPacks.add(packId);
   }
+  renderUpgrades();
+  saveGame();
 }
 
 function renderPrestige() {
@@ -1377,7 +2342,7 @@ function renderAchievements() {
       </div>
       <div class="pack-preview">
         ${pack.achievements.slice(0, 8).map(a => 
-          `<span class="pack-badge">${a.earned ? '✅' : '❌'}</span>`
+          `<span class="pack-badge">${a.earned ? '✅' : '⬜'}</span>`
         ).join('')}
         ${pack.achievements.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
       </div>
@@ -1402,7 +2367,7 @@ function openAchievementModal(pack) {
     
     div.innerHTML = `
       <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">
-        ${a.earned ? '✅' : '❌'} ${a.name}
+        ${a.earned ? '✅' : '⬜'} ${a.name}
       </div>
       <div style="opacity: 0.9; margin-bottom: 8px; font-size: 0.9rem;">${a.requirement}</div>
       <div style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 4px;">Progress: ${a.progress()}</div>
@@ -1419,6 +2384,26 @@ function openAchievementModal(pack) {
 
 function closeAchievementModal() {
   document.getElementById('achievementModal').classList.add('hidden');
+}
+
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// New function to open version info modal
+function openVersionInfo() {
+  document.getElementById('versionModal').classList.remove('hidden');
+}
+
+function closeVersionInfo() {
+  document.getElementById('versionModal').classList.add('hidden');
+}
+
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// New function to reopen tutorial/help
+function openHelp() {
+  document.getElementById('instructionsOverlay').classList.remove('hidden');
+}
+
+function closeInstructions() {
+  document.getElementById('instructionsOverlay').classList.add('hidden');
 }
 
 // ========== GAME ACTIONS ==========
@@ -1500,16 +2485,12 @@ document.getElementById('coffeeButton').onclick = () => {
   const btn = document.getElementById('coffeeButton');
   btn.style.transform = 'scale(0.9)';
   setTimeout(() => btn.style.transform = 'scale(1)', 100);
-  
-  // No need to call updateUI() here - the animation loop handles it
 };
 
 // ========== SMOOTH ANIMATION SYSTEM ==========
-// Smoothly interpolate displayed values toward targets
 function smoothAnimate() {
-  const lerpFactor = 0.15; // Lower = smoother but slower, higher = snappier
+  const lerpFactor = 0.15;
   
-  // Animate coffee display
   const coffeeDiff = gameState.targetCoffee - gameState.displayCoffee;
   if (Math.abs(coffeeDiff) > 0.01) {
     gameState.displayCoffee += coffeeDiff * lerpFactor;
@@ -1517,7 +2498,6 @@ function smoothAnimate() {
     gameState.displayCoffee = gameState.targetCoffee;
   }
   
-  // Animate CPS display
   const cpsDiff = gameState.targetCPS - gameState.displayCPS;
   if (Math.abs(cpsDiff) > 0.01) {
     gameState.displayCPS += cpsDiff * lerpFactor;
@@ -1526,14 +2506,12 @@ function smoothAnimate() {
   }
 }
 
-// ========== MAIN GAME LOOP (100ms TICK) ==========
-// Runs every 0.1 seconds for smooth updates
-// Adds (CPS / 10) coffee each tick, so total per second = CPS
+// ========== MAIN GAME LOOP ==========
 let lastRenderTime = Date.now();
 
 setInterval(() => {
   const totalCPS = calculateTotalCPS();
-  const coffeePerTick = totalCPS / 10; // Divide by 10 for 0.1s ticks
+  const coffeePerTick = totalCPS / 10;
   
   if (totalCPS > 0) {
     gameState.coffee += coffeePerTick;
@@ -1541,25 +2519,27 @@ setInterval(() => {
     gameState.targetCoffee = gameState.coffee;
   }
   
-  // Update target CPS for smooth display
   gameState.targetCPS = totalCPS;
-  
-  // Animate displayed values
   smoothAnimate();
   
-  // Update UI efficiently (throttled to ~60fps max)
   const now = Date.now();
-  if (now - lastRenderTime > 16) { // ~60fps
+  if (now - lastRenderTime > 16) {
     document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.displayCoffee);
     document.getElementById('cpsDisplay').textContent = abbreviateNumber(gameState.displayCPS);
     lastRenderTime = now;
   }
-}, 100); // 100ms = 0.1 seconds
+}, 100);
 
-// Full UI update every second for achievements, shop, etc.
 setInterval(() => {
   updateUI();
 }, 1000);
+
+// Auto-save every 30 seconds
+setInterval(() => {
+  saveGame();
+}, 30000);
+
+// ========== TAB SWITCHING ==========
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.onclick = () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1586,48 +2566,45 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ========== GAME LOOP ==========
-setInterval(() => {
-  const totalCPS = calculateTotalCPS();
-  if (totalCPS > 0) {
-    gameState.coffee += totalCPS;
-    gameState.totalCoffeeAllTime += totalCPS;
-    updateUI();
-  }
-}, 1000);
+// === Coffee Tycoon v1.6 – Upgrades 2.0 ===
+// Event listeners for new buttons
+document.getElementById('helpBtn').onclick = openHelp;
+document.getElementById('infoBtn').onclick = openVersionInfo;
+document.getElementById('startGameBtn').onclick = closeInstructions;
+document.getElementById('closeVersionModal').onclick = closeVersionInfo;
+document.getElementById('closeAchievementModal').onclick = closeAchievementModal;
 
-// Auto-save every 30 seconds
-setInterval(() => {
-  saveGame();
-}, 30000);
-
-// ========== INSTRUCTIONS OVERLAY ==========
-function closeInstructions() {
-  document.getElementById('instructionsOverlay').classList.add('hidden');
-}
-
-// ========== INITIALIZATION ==========
-const hasExistingSave = loadGame();
-if (!hasExistingSave) {
-  // Show instructions for new players
-  document.getElementById('instructionsOverlay').classList.remove('hidden');
-} else {
-  // Hide instructions for returning players
-  document.getElementById('instructionsOverlay').classList.add('hidden');
-}
-
-// Initialize animation targets
-gameState.targetCoffee = gameState.coffee;
-gameState.displayCoffee = gameState.coffee;
-gameState.targetCPS = calculateTotalCPS();
-gameState.displayCPS = gameState.targetCPS;
-
-// Close modal when clicking outside
+// Close modals when clicking outside
 document.getElementById('achievementModal').onclick = (e) => {
   if (e.target.id === 'achievementModal') {
     closeAchievementModal();
   }
 };
+
+document.getElementById('versionModal').onclick = (e) => {
+  if (e.target.id === 'versionModal') {
+    closeVersionInfo();
+  }
+};
+
+document.getElementById('instructionsOverlay').onclick = (e) => {
+  if (e.target.id === 'instructionsOverlay') {
+    closeInstructions();
+  }
+};
+
+// ========== INITIALIZATION ==========
+const hasExistingSave = loadGame();
+if (!hasExistingSave) {
+  document.getElementById('instructionsOverlay').classList.remove('hidden');
+} else {
+  document.getElementById('instructionsOverlay').classList.add('hidden');
+}
+
+gameState.targetCoffee = gameState.coffee;
+gameState.displayCoffee = gameState.coffee;
+gameState.targetCPS = calculateTotalCPS();
+gameState.displayCPS = gameState.targetCPS;
 
 updateUI();
 </script>

@@ -55,6 +55,7 @@ A game where you brew coffee.
   - Organize upgrades into packs
   - Each pack/upgrade unlocks progressively
   - Adding more "Produces 2x" upgrades with up to 8 such upgrades for each shop item, with final at 1k of shop item
+  - Adding upgrades for Espresso Machine, Coffee Roaster, Coffee Shop, Coffee Plantation, Coffee Franchise
 - Updated UI
   - Add info button for current version info and upcoming updates
     - Info should also have git repo link
@@ -76,6 +77,7 @@ A game where you brew coffee.
 ### v1.9 – TBD
 - Progressive shop unlocking of items
 - More shop items beyond coffee franchise
+  - Upgrades for new shop items
 - Enabling players to buy multiple of an shop item at a time (1 item, 10 items, 100 items)
   - With notifications saying "Bought 10x Barista" etc.
 - Enabling shop item selling

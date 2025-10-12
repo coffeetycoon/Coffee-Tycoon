@@ -36,7 +36,7 @@ A game where you brew coffee.
 
 ### Latest Version: v1.6.1: Bugs
 #### Bug Fixes
-- Fixed links in info tab
+- Fixed stuff in info tab
 
 ---
 

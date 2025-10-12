@@ -50,6 +50,9 @@ A game where you brew coffee.
 
 ## Future Updates
 
+### v1.5.4 - Dashboard
+- Changing coffees to be added to total every 0.1 sec for better continuity (CPS will not be buffed by 10, just display will update faster)
+
 ### v1.6 – Upgrades 2.0
 - Upgrades
   - Organize upgrades into packs

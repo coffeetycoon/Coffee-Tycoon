@@ -11,6 +11,7 @@ A game where you brew coffee.
 - [Updates](#updates)
   - [Latest Version](#latest-version-v154-dashboard)
   - [Last Major Update](#last-major-update-v15-upgrades)
+  - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
 
 ---
@@ -44,6 +45,9 @@ A game where you brew coffee.
 
 #### Bug Fixes
 - Fixed minor bugs and stability issues
+
+### Last Major Build: v1.0
+#### Coffee Tycoon beta test ends, and full release is live
 
 ---
 

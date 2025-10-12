@@ -15,7 +15,7 @@ A game where you brew coffee.
 
 ---
 
-## How to Download and Play
+## 🕹️ How to Download and Play
 
 ### Option 1: File
 1. Download the coffeetycoon.html file above  
@@ -89,6 +89,8 @@ A game where you brew coffee.
 #### Stuff here may be moved to any planned (above) or unplanned update
 #### Any of these items may be removed entirely, and never added
 - Mobile UI
+- Golden Coffee can now be used to buy Golden Upgrades
+  - You will lose the production boost from the Golden Coffee, but the Golden Upgrades will have major buffs
 ---
 
 💡 *Stay tuned for more updates as the Coffee Tycoon improves!*

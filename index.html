@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coffee Tycoon v1.6.1</title>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
   body { 
@@ -777,7 +775,7 @@
 </style>
 </head>
 <body>
-<div id="instructionsOverlay" class="overlay">
+<div id="instructionsOverlay" class="overlay hidden">
   <div class="instructions-modal">
     <h2>☕ Welcome to Coffee Tycoon!</h2>
     
@@ -817,21 +815,21 @@
 
 <!-- === Coffee Tycoon v1.6.1 – Upgrades 2.0 === -->
 <!-- Version Info Modal -->
-<div id="versionModal" class="modal hidden">
+<div id="versionModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">ℹ️ Coffee Tycoon v1.6</div>
+      <div class="modal-title">ℹ️ Coffee Tycoon v1.6.1</div>
       <button class="modal-close" id="closeVersionModal">×</button>
     </div>
     <div class="version-content">
-      <h3>🎉 What's New in v1.6 - Upgrades 2.0</h3>
+      <h3>🎉 What's New in v1.6.1</h3>
       <ul>
-        <li><strong>🏗️ Organized Upgrade Packs:</strong> Upgrades are now grouped into collapsible thematic packs for easier navigation</li>
-        <li><strong>🔢 8-Tier Upgrade Series:</strong> Each shop item now has up to 8 "Produces 2×" upgrades (10, 25, 50, 100, 200, 400, 700, 1000 owned)</li>
-        <li><strong>📦 Complete Item Coverage:</strong> Added missing upgrade tiers for Espresso Machine, Coffee Roaster, Coffee Shop, Coffee Plantation, and Coffee Franchise</li>
-        <li><strong>🎨 Visual Pack Identity:</strong> Each upgrade pack has unique colors and icons for easy identification</li>
-        <li><strong>🔓 Progressive Unlocking:</strong> Locked upgrades show clear requirements and unlock conditions</li>
-        <li><strong>❓ Tutorial Re-Access:</strong> Click the ? button anytime to review the tutorial</li>
+        <li><strong>🏗️ Fixed Info Tab:</strong> Info tab would not display</li>
+        
+        
+        
+        
+        
       </ul>
       
       <h3>🎮 Gameplay Tips</h3>
@@ -843,7 +841,7 @@
       </ul>
       
       <h3>💻 About</h3>
-      <p><strong>Version:</strong> 1.6.1 - Upgrades 2.0</p>
+      <p><strong>Version:</strong> 1.6.1 - Bug Fixes</p>
       <p><strong>Created by:</strong> Coffee Tycoon Team</p>
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/CoffeeTycoon/Coffee-Tycoon" target="_blank">View Repository</a></p>
@@ -863,9 +861,9 @@
   <p>Brew coffee, earn money, and build your empire!</p>
   
   <div class="status-bar">
-    <div class="stat">☕ Coffee: <span id="coffeeDisplay">0</span></div>
-    <div class="stat">⚡ CPS: <span id="cpsDisplay">0</span></div>
-    <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">0</span></div>
+    <div class="stat">☕ Coffee: <span id="coffeeDisplay">386k</span></div>
+    <div class="stat">⚡ CPS: <span id="cpsDisplay">1k</span></div>
+    <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">134</span></div>
   </div>
 </header>
 
@@ -883,28 +881,1361 @@
       <div style="text-align: center;">
         <button id="coffeeButton">☕</button>
         <div style="font-size: 1.2rem; margin-top: 16px;">Click the cup to brew coffee!</div>
-        <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">1</span> Coffee</div>
+        <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">9</span> Coffee</div>
       </div>
     </div>
     
     <div id="shopTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Shop</h2>
-      <div id="shopList"></div>
+      <div id="shopList"><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Auto Brewer</div>
+        <div class="item-effect">Effect: +1 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">12</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 267</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Barista</div>
+        <div class="item-effect">Effect: +5 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">12</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 802</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Coffee Grinder</div>
+        <div class="item-effect">Effect: +10 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 400</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Espresso Machine</div>
+        <div class="item-effect">Effect: +25 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 800</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Coffee Roaster</div>
+        <div class="item-effect">Effect: +60 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 2k</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Coffee Shop</div>
+        <div class="item-effect">Effect: +150 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 5k</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Coffee Plantation</div>
+        <div class="item-effect">Effect: +400 CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 15k</div>
+      </div>
+    </div><div class="shop-item affordable">
+      <div class="item-info">
+        <div class="item-name">Coffee Franchise</div>
+        <div class="item-effect">Effect: +1.2k CPS</div>
+      </div>
+      <div class="item-actions">
+        <div class="quantity-display">0</div>
+        <button class="buy-btn">BUY</button>
+        <div class="cost-tile">☕ 50k</div>
+      </div>
+    </div></div>
     </div>
     
     <div id="upgradesTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Upgrades</h2>
-      <div id="upgradesList"></div>
+      <div id="upgradesList" class="achievements-grid"><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">👆</span>
+          <span>Click Power Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">3/3</div>
+      </div>
+      <div class="upgrade-pack-description">Increase coffee per click</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 100%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Better Coffee Beans</div>
+          <div class="upgrade-status ">✓ OWNED</div>
+        </div>
+        <div class="upgrade-description">+1 coffee per click</div>
+        
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            PURCHASED
+          </button>
+        </div>
+      </div><div class="upgrade-item purchased">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Premium Coffee Beans</div>
+          <div class="upgrade-status ">✓ OWNED</div>
+        </div>
+        <div class="upgrade-description">+2 coffee per click</div>
+        
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            PURCHASED
+          </button>
+        </div>
+      </div><div class="upgrade-item purchased">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Exotic Coffee Beans</div>
+          <div class="upgrade-status ">✓ OWNED</div>
+        </div>
+        <div class="upgrade-description">+5 coffee per click</div>
+        
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            PURCHASED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">☕</span>
+          <span>Auto Brewer Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Boost Auto Brewer production</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🟢</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      <div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem; margin-top: 8px;">💚 1 affordable upgrade</div>
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item affordable">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Upgraded Brewers</div>
+          <div class="upgrade-status "></div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500</div>
+          <button class="upgrade-buy-btn">
+            BUY UPGRADE
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Advanced Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Industrial Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Quantum Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Hyper Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Ultra Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Mega Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Divine Brewers</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Auto Brewers (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">👨&zwj;🍳</span>
+          <span>Barista Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Enhance Barista efficiency</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🟢</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      <div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem; margin-top: 8px;">💚 1 affordable upgrade</div>
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item affordable">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Barista Training</div>
+          <div class="upgrade-status "></div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5k</div>
+          <button class="upgrade-buy-btn">
+            BUY UPGRADE
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Expert Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Master Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Legendary Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Mythic Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Cosmic Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Celestial Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Transcendent Baristas</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Baristas produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Baristas (Currently: 12)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">⚙️</span>
+          <span>Coffee Grinder Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Improve Coffee Grinder output</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Steel Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 4k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Titanium Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 40k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Industrial Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 400k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Precision Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 4M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Nano Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 40M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Molecular Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 400M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Atomic Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 4B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Quantum Grinders</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Coffee Grinders (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 40B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">🎰</span>
+          <span>Espresso Machine Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Upgrade Espresso Machine power</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">High-Pressure Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 8k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Dual Boiler Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 80k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Professional Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 800k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Commercial Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 8M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Automated Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 80M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">AI Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 800M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Fusion Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 8B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Singularity Espresso</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Espresso Machines (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 80B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">🔥</span>
+          <span>Coffee Roaster Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Amplify Coffee Roaster performance</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Convection Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 20k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Drum Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 200k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Fluid Bed Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 2M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Infrared Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 20M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Microwave Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 200M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Plasma Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 2B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Solar Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 20B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Stellar Roasters</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Roasters produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Coffee Roasters (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 200B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">🏪</span>
+          <span>Coffee Shop Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Expand Coffee Shop capabilities</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Cozy Ambiance</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Premium Menu</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">WiFi &amp; Workspace</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Loyalty Program</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Drive-Thru Service</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Mobile App Ordering</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Celebrity Endorsements</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Global Coffee Culture</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Shops produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Coffee Shops (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">🌱</span>
+          <span>Coffee Plantation Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Optimize Coffee Plantation yield</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Irrigation Systems</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Shade-Grown Techniques</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Organic Certification</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Precision Agriculture</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Genetic Enhancement</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Climate Control Domes</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 15B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Vertical Farming</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 150B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Orbital Plantations</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Plantations produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Coffee Plantations (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 1.5T</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">🌍</span>
+          <span>Coffee Franchise Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/8</div>
+      </div>
+      <div class="upgrade-pack-description">Scale Coffee Franchise reach</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Regional Marketing</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Brand Recognition</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">National Expansion</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 50 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">International Markets</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 100 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Stock Market IPO</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 200 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Multinational Corporation</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 400 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 50B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Intergalactic Franchise</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 700 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500B</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Universal Coffee Empire</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">Coffee Franchises produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 1000 Coffee Franchises (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5T</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div><div class="upgrade-pack">
+      <div class="upgrade-pack-header">
+        <div class="upgrade-pack-title">
+          <span class="upgrade-pack-icon">✨</span>
+          <span>Global Upgrades</span>
+        </div>
+        <div class="upgrade-pack-progress">0/2</div>
+      </div>
+      <div class="upgrade-pack-description">Universal production multipliers</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 0%; background: #d4a574;"></div>
+      </div>
+      <div class="upgrade-pack-preview">
+        <span class="upgrade-pack-badge">🔒</span><span class="upgrade-pack-badge">🔒</span>
+        
+      </div>
+      
+      <div class="upgrade-pack-toggle">▼ Click to expand</div>
+    <div class="upgrade-pack-content collapsed"><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Efficient Operations</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">All items produce 1.5× coffee</div>
+        <div class="upgrade-unlock-req">Requires 10 globals (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 500k</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div><div class="upgrade-item locked">
+        <div class="upgrade-header">
+          <div class="upgrade-name">Coffee Revolution</div>
+          <div class="upgrade-status locked">🔒 LOCKED</div>
+        </div>
+        <div class="upgrade-description">All items produce 2× coffee</div>
+        <div class="upgrade-unlock-req">Requires 25 globals (Currently: 0)</div>
+        <div class="upgrade-footer">
+          <div class="cost-tile">☕ 5M</div>
+          <button class="upgrade-buy-btn" disabled="">
+            LOCKED
+          </button>
+        </div>
+      </div></div></div></div>
     </div>
     
     <div id="prestigeTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Prestige</h2>
-      <div id="prestigeContent"></div>
+      <div id="prestigeContent">
+    <div class="prestige-container">
+      <div class="prestige-info">
+        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">✨ Golden Coffee System</h3>
+        <p>Reset your progress to earn Golden Coffee for permanent production multipliers!</p>
+        <div style="font-size: 2rem; font-weight: 700; color: #ffd700; margin: 16px 0;">
+          Current Multiplier: 14.4x
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+        <p><strong>How it works:</strong></p>
+        <p>• Every 1M total coffees = 1 Golden Coffee</p>
+        <p>• Each Golden Coffee gives +10% production (permanent!)</p>
+        <p>• Prestiging resets coffee, items, and upgrades</p>
+        <p>• Golden Coffee and multiplier are kept forever</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">135.5M</div>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">134</div>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+          <div style="opacity: 0.8; margin-bottom: 8px;">After Prestige</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">135</div>
+        </div>
+      </div>
+
+      
+        <div style="text-align: center; font-size: 1.2rem; color: #4CAF50; font-weight: 600; margin: 12px 0;">
+          You will gain 1 Golden Coffee!
+        </div>
+        <div style="text-align: center; font-size: 1.2rem; color: #4CAF50; font-weight: 600; margin: 12px 0;">
+          New Multiplier: 14.5x (from 14.4x)
+        </div>
+      
+
+      <button class="prestige-button">
+        ✨ PRESTIGE NOW ✨
+      </button>
+    </div>
+  </div>
     </div>
     
     <div id="achievementsTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Achievements</h2>
-      <div id="achievementsList"></div>
+      <div id="achievementsList" class="achievements-grid"><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">☕ Coffee Milestones</div>
+        <div class="pack-progress">9/10</div>
+      </div>
+      <div class="pack-description">Achievements for brewing coffee</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 90%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">🏆 General Collection</div>
+        <div class="pack-progress">4/9</div>
+      </div>
+      <div class="pack-description">Achievements for collecting any items</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 44%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Auto Brewer Collection</div>
+        <div class="pack-progress">2/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Auto Brewers</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 17%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Barista Collection</div>
+        <div class="pack-progress">2/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Baristas</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 17%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Coffee Grinder Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Coffee Grinders</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Espresso Machine Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Espresso Machines</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Coffee Roaster Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Coffee Roasters</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Coffee Shop Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Coffee Shops</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Coffee Plantation Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Coffee Plantations</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div><div class="achievement-pack">
+      <div class="pack-header">
+        <div class="pack-title">Coffee Franchise Collection</div>
+        <div class="pack-progress">1/12</div>
+      </div>
+      <div class="pack-description">Achievements for owning Coffee Franchises</div>
+      <div class="progress" style="margin-bottom: 12px;">
+        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
+      </div>
+      <div class="pack-preview">
+        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span style="opacity: 0.6;">...</span>
+      </div>
+    </div></div>
     </div>
   </div>
 </main>
@@ -1643,7 +2974,7 @@ const upgradePacks = [
   { 
     id: 'barista', 
     name: 'Barista Upgrades', 
-    icon: '👨‍🍳', 
+    icon: '👨&zwj;🍳', 
     description: 'Enhance Barista efficiency'
   },
   { 
@@ -2609,5 +3940,6 @@ gameState.displayCPS = gameState.targetCPS;
 
 updateUI();
 </script>
-</body>
-</html>
+
+
+</body></html>

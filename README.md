@@ -38,7 +38,7 @@ A game where you brew coffee.
 
 
 ### Last Major Update: v1.5: Upgrades!
-#### New Stuff
+#### Main Changes
 - Introduced the new upgrade system
 - Added progression-based coffee boosts
 - Improved balance and pacing for early gameplay
@@ -74,6 +74,7 @@ A game where you brew coffee.
 - Progressive shop unlocking of items
 - More shop items beyond coffee franchise
 - Enabling players to buy multiple of an shop item at a time (1 item, 10 items, 100 items)
+  - With notifications saying "Bought 10x Barista" etc.
 - Enabling shop item selling
 
 ### Undecided Additions

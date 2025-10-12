@@ -34,7 +34,13 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.6: Upgrades 2.0
+### Latest Version: v1.6.1: Bugs
+#### Bug Fixes
+- Fixed links in info tab
+
+---
+
+### Last Major Update: v1.6: Upgrades 2.0
 #### Main Changes
 - **Upgrades**
   - Organized upgrades into packs  
@@ -52,11 +58,6 @@ A game where you brew coffee.
 - Fixed minor balancing issues with upgrade pricing  
 - Adjusted UI layout for better visibility  
 - Fixed upgrade unlock timing inconsistencies  
-
----
-
-### Last Major Update: v1.6: Upgrades 2.0
-*(See above for details)*
 
 ---
 

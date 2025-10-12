@@ -9,7 +9,7 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v153-bug-fixes)
+  - [Latest Version](#latest-version-v154-dashboard)
   - [Last Major Update](#last-major-update-v15-upgrades)
 - [Future Updates](#future-updates)
 
@@ -32,12 +32,11 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.5.3: Bug Fixes
-#### Bug Fixes
-- Fixed minor bugs and stability issues
+### Latest Version: v1.5.4: Dashboard
+- Changing coffees to be added to total every 0.1 sec for better continuity (CPS will not be buffed by 10, just display will update faster)
 
 
-### Last Major Update: v1.5: Upgrades!
+### Last Major Update: v1.5: Upgrades 1.0
 #### Main Changes
 - Introduced the new upgrade system
 - Added progression-based coffee boosts
@@ -49,9 +48,6 @@ A game where you brew coffee.
 ---
 
 ## Future Updates
-
-### v1.5.4 - Dashboard
-- Changing coffees to be added to total every 0.1 sec for better continuity (CPS will not be buffed by 10, just display will update faster)
 
 ### v1.6 – Upgrades 2.0
 - Upgrades

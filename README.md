@@ -55,7 +55,8 @@ A game where you brew coffee.
   - Each pack/upgrade unlocks progressively
   - Adding more "Produces 2x" upgrades with up to 8 such upgrades for each shop item, with final at 1k of shop item
   - Adding upgrades for Espresso Machine, Coffee Roaster, Coffee Shop, Coffee Plantation, Coffee Franchise
-- Updated UI
+  - Click upgrades will have "Clicks will now produce 2% of your CPS", instead of "Clicks now produce +2 coffee per click"
+- Updated UI 
   - Add info button for current version info and upcoming updates
     - Info should also have git repo link
   - Add a "?" button which makes the tutorial pop-up show up again

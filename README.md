@@ -91,6 +91,8 @@ A game where you brew coffee.
 - Mobile UI
 - Golden Coffee can now be used to buy Golden Upgrades
   - You will lose the production boost from the Golden Coffee, but the Golden Upgrades will have major buffs
+- Export and Import save system, based on save string
+- Erase progress option
 ---
 
 💡 *Stay tuned for more updates as the Coffee Tycoon improves!*

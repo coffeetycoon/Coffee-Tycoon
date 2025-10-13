@@ -75,6 +75,7 @@ A game where you brew coffee.
 #### Release Target: Oct 13, 2025
 - Improving buy button formatting in upgrades (making the packs and upgrades wider), by having less packs per row
 - Changing purchased indicator to not overflow the upgrade - maybe above will fix this issue
+- Center "upgrades not available" text on upgrades patch
 
 ### v1.7 – Achievement Rewards
 #### Release Target: Oct 17, 2025

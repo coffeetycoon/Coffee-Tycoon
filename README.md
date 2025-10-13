@@ -76,6 +76,7 @@ A game where you brew coffee.
 - Improving buy button formatting in upgrades (making the packs and upgrades wider), by having less packs per row
 - Changing purchased indicator to not overflow the upgrade - maybe above will fix this issue
 - Center "upgrades not available" text on upgrades patch
+- Space out shop items more, like having item spaced by powers of 10, first item is 50, then next is 500, etc
 
 ### v1.7 – Achievement Rewards
 #### Release Target: Oct 17, 2025
@@ -103,7 +104,11 @@ A game where you brew coffee.
 #### These may move to planned or unplanned updates, or be removed entirely:
 - Mobile UI  
 - Golden Coffee can buy **Golden Upgrades**  
-  - Loses production boost but gains stronger buffs  
+  - Loses production boost but gains stronger buffs
+  - Golden Upgrades:
+    - Auto-Buy Upgrades
+    - Auto-Buy Shop Items
+    - TBD
 - Export/Import save system using save strings  
 - Erase progress option  
 - Coffee cup animation (cups fall based on click/CPS output)  

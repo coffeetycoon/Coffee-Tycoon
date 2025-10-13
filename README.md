@@ -71,7 +71,8 @@ A game where you brew coffee.
 
 ### v1.6.2 - Upgrades 2.0 Patch 2
 - Fixing broken formatting in upgrades tab and dropdown
-- Upgrades and packs should't show up until they're unlocked
+- Upgrades and packs shouldn't show up until they're unlocked
+- Info tab shouldn't show up when user opens page, it should show when the button is clicked
 
 ### v1.7 – Achievement Rewards
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)

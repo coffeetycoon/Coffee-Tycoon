@@ -73,6 +73,7 @@ A game where you brew coffee.
 
 ### v1.6.3 - Upgrades 2.0 Patch 3
 - Improving buy button formatting in upgrades (making the packs and upgrades wider)
+- Changing purchased indicator to not overflow the upgrade - maybe above will fix this issue
 
 ### v1.7 – Achievement Rewards
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)

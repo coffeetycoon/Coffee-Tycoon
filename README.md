@@ -82,21 +82,22 @@ A game where you brew coffee.
 #### Release Target: Oct 17, 2025
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
 - Reordered achievement packs and fixed overlapping issues
-- Fixed game description under title (removed “money”)
+- Fix game description under title (removed “money”)
+- Each Golden Coffee will now cost 10 billion coffee
 
 ### v1.8 – Notifications & UI Tweaks
 - Added notifications for **new Achievements and Upgrade Packs**
 - Notifications disappear after buying upgrade or claiming rewards
 - Removed achievement emojis for a cleaner look
-- Added **Claim All** button for achievements
-- Added **Mark All Notifications As Read** for upgrades
+- Add **Claim All** as a button for achievements (this button is greyed out until the corresponding upgrade is purchased)
+- Add **Mark All Notifications As Read** button for upgrades
 
 ### v1.9 – TBD
 - Progressive unlocking of shop items
-- Added new shop items beyond Coffee Franchise
-- Added bulk buying options (×1, ×10, ×100)
+- Add new shop items beyond Coffee Franchise
+- Add bulk buying options (×1, ×10, ×100)
   - Notifications like “Bought 10× Barista”
-- Added ability to **sell shop items**
+- Add ability to **sell shop items**
 
 ---
 
@@ -106,12 +107,13 @@ A game where you brew coffee.
 - Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
   - Golden Upgrades:
-    - Auto-Buy Upgrades
-    - Auto-Buy Shop Items
-    - TBD
+    - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades)
+    - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought
+    - Auto Claim Achievment Rewards
 - Export/Import save system using save strings  
 - Erase progress option  
-- Coffee cup animation (cups fall based on click/CPS output)  
+- Coffee cup animation (cups fall based on click/CPS output)
+- Turn the CPS into a button, which opens up a window (like info button does), which shows you how much of your CPS comes from what building (percent of CPS and actual number of CPS) - represented as a table
 
 ---
 

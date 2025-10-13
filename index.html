@@ -6,7 +6,7 @@
 
 <title>Coffee Tycoon v1.6.2</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
 
@@ -1634,7 +1634,7 @@
 
 <!-- Version Info Modal -->
 
-<div id="versionModal" class="modal hidden">
+<div id="versionModal" class="modal">
 
   <div class="modal-content">
 
@@ -1682,7 +1682,7 @@
 
       <p><strong>Version:</strong> 1.6.2 - Upgrades 2.0 Patch 2</p>
 
-      <p><strong>Created by:</strong> Coffee Tycoon Team</p>
+      <p><strong>Created by:</strong> sdphadke</p>
 
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
 
@@ -1720,7 +1720,7 @@
 
   <div class="status-bar">
 
-    <div class="stat">☕ Coffee: <span id="coffeeDisplay">0</span></div>
+    <div class="stat">☕ Coffee: <span id="coffeeDisplay">35</span></div>
 
     <div class="stat">⚡ CPS: <span id="cpsDisplay">0</span></div>
 
@@ -1756,7 +1756,7 @@
 
       <div style="text-align: center;">
 
-        <button id="coffeeButton">☕</button>
+        <button id="coffeeButton" style="transform: scale(1);">☕</button>
 
         <div style="font-size: 1.2rem; margin-top: 16px;">Click the cup to brew coffee!</div>
 
@@ -1772,7 +1772,167 @@
 
       <h2 style="margin-top: 0; color: #d4a574;">Shop</h2>
 
-      <div id="shopList"></div>
+      <div id="shopList"><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Auto Brewer</div>
+
+        <div class="item-effect">Effect: +1 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 50</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Barista</div>
+
+        <div class="item-effect">Effect: +5 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 150</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Coffee Grinder</div>
+
+        <div class="item-effect">Effect: +10 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 400</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Espresso Machine</div>
+
+        <div class="item-effect">Effect: +25 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 800</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Coffee Roaster</div>
+
+        <div class="item-effect">Effect: +60 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 2k</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Coffee Shop</div>
+
+        <div class="item-effect">Effect: +150 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 5k</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Coffee Plantation</div>
+
+        <div class="item-effect">Effect: +400 CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 15k</div>
+
+      </div>
+
+    </div><div class="shop-item">
+
+      <div class="item-info">
+
+        <div class="item-name">Coffee Franchise</div>
+
+        <div class="item-effect">Effect: +1.2k CPS</div>
+
+      </div>
+
+      <div class="item-actions">
+
+        <div class="quantity-display">0</div>
+
+        <button class="buy-btn" disabled="">BUY</button>
+
+        <div class="cost-tile">☕ 50k</div>
+
+      </div>
+
+    </div></div>
 
     </div>
 
@@ -1782,7 +1942,7 @@
 
       <h2 style="margin-top: 0; color: #d4a574;">Upgrades</h2>
 
-      <div id="upgradesList"></div>
+      <div id="upgradesList" class="achievements-grid"><div class="empty-state">No upgrades available yet. Keep brewing coffee and purchasing items to unlock upgrades!</div></div>
 
     </div>
 
@@ -1792,7 +1952,95 @@
 
       <h2 style="margin-top: 0; color: #d4a574;">Prestige</h2>
 
-      <div id="prestigeContent"></div>
+      <div id="prestigeContent">
+
+    <div class="prestige-container">
+
+      <div class="prestige-info">
+
+        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">✨ Golden Coffee System</h3>
+
+        <p>Reset your progress to earn Golden Coffee for permanent production multipliers!</p>
+
+        <div style="font-size: 2rem; font-weight: 700; color: #ffd700; margin: 16px 0;">
+
+          Current Multiplier: 1.0x
+
+        </div>
+
+      </div>
+
+
+
+      <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+
+        <p><strong>How it works:</strong></p>
+
+        <p>• Every 1M total coffees = 1 Golden Coffee</p>
+
+        <p>• Each Golden Coffee gives +10% production (permanent!)</p>
+
+        <p>• Prestiging resets coffee, items, and upgrades</p>
+
+        <p>• Golden Coffee and multiplier are kept forever</p>
+
+      </div>
+
+
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+
+          <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
+
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">35</div>
+
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+
+          <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
+
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">0</div>
+
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
+
+          <div style="opacity: 0.8; margin-bottom: 8px;">After Prestige</div>
+
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">0</div>
+
+        </div>
+
+      </div>
+
+
+
+      
+
+        <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
+
+          Need 1M total coffees to prestige
+
+          <br>Current: 35
+
+        </div>
+
+      
+
+
+
+      <button class="prestige-button" disabled="">
+
+        🔒 Not Enough Coffee Yet
+
+      </button>
+
+    </div>
+
+  </div>
 
     </div>
 
@@ -1802,7 +2050,267 @@
 
       <h2 style="margin-top: 0; color: #d4a574;">Achievements</h2>
 
-      <div id="achievementsList" class="achievements-grid"></div>
+      <div id="achievementsList" class="achievements-grid"><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">☕ Coffee Milestones</div>
+
+        <div class="pack-progress">2/13</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for brewing coffee</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 15%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">🏆 General Collection</div>
+
+        <div class="pack-progress">0/9</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for collecting any items</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Auto Brewer Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Auto Brewers</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Barista Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Baristas</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Coffee Grinder Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Coffee Grinders</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Espresso Machine Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Espresso Machines</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Coffee Roaster Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Coffee Roasters</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Coffee Shop Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Coffee Shops</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Coffee Plantation Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Coffee Plantations</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div><div class="achievement-pack">
+
+      <div class="pack-header">
+
+        <div class="pack-title">Coffee Franchise Collection</div>
+
+        <div class="pack-progress">0/12</div>
+
+      </div>
+
+      <div class="pack-description">Achievements for owning Coffee Franchises</div>
+
+      <div class="progress" style="margin-bottom: 12px;">
+
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
+
+      </div>
+
+      <div class="pack-preview">
+
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+
+        <span style="opacity: 0.6;">...</span>
+
+      </div>
+
+    </div></div>
 
     </div>
 
@@ -3280,7 +3788,7 @@ const upgradePacks = [
 
     name: 'Barista Upgrades', 
 
-    icon: '👨‍🍳', 
+    icon: '👨&zwj;🍳', 
 
     description: 'Enhance Barista efficiency'
 
@@ -5242,6 +5750,7 @@ updateUI();
 
 
 
-</body>
 
-</html>
+
+
+</body></html>

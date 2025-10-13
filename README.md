@@ -10,7 +10,7 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v16-upgrades-20-patch-1)
+  - [Latest Version](#latest-version-v162-upgrades-20-patch-2)
   - [Last Major Update](#last-major-update-v16-upgrades-20)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
@@ -35,9 +35,11 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.6.1: Upgrades 2.0 Patch 1
+### Latest Version: v1.6.2: Upgrades 2.0 Patch 2
 #### Bug Fixes
-- Fixed stuff in info tab
+- Fixing broken formatting in upgrades tab and dropdown
+- Upgrades and packs shouldn't show up until they're unlocked
+- Info tab shouldn't show up when user opens page, it should show when the button is clicked
 
 ---
 
@@ -69,10 +71,8 @@ A game where you brew coffee.
 
 ## Future Updates
 
-### v1.6.2 - Upgrades 2.0 Patch 2
-- Fixing broken formatting in upgrades tab and dropdown
-- Upgrades and packs shouldn't show up until they're unlocked
-- Info tab shouldn't show up when user opens page, it should show when the button is clicked
+### v1.6.3 - Upgrades 2.0 Patch 3
+- Improving buy button formatting in upgrades (making the packs and upgrades wider)
 
 ### v1.7 – Achievement Rewards
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)

@@ -72,10 +72,12 @@ A game where you brew coffee.
 ## Future Updates
 
 ### v1.6.3 - Upgrades 2.0 Patch 3
+#### Release Target: Oct 13, 2025
 - Improving buy button formatting in upgrades (making the packs and upgrades wider), by having less packs per row
 - Changing purchased indicator to not overflow the upgrade - maybe above will fix this issue
 
 ### v1.7 – Achievement Rewards
+#### Release Target: Oct 17, 2025
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
 - Reordered achievement packs and fixed overlapping issues
 - Fixed game description under title (removed “money”)

@@ -1,4 +1,3 @@
-
 # Coffee Tycoon
 
 A game where you brew coffee.
@@ -10,7 +9,7 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v162-upgrades-20-patch-2)
+  - [Latest Version](#latest-version-v163-upgrades-20-patch-3)
   - [Last Major Update](#last-major-update-v16-upgrades-20)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
@@ -35,15 +34,18 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.6.2: Upgrades 2.0 Patch 2
-#### Bug Fixes
-- Fixing broken formatting in upgrades tab and dropdown
-- Upgrades and packs shouldn't show up until they're unlocked
-- Info tab shouldn't show up when user opens page, it should show when the button is clicked
+### Latest Version: v1.6.3: Upgrades 2.0 Patch 3
+#### Release Date: Oct 13, 2025
+#### Bug Fixes & Improvements
+- Improved **buy button formatting** in upgrades by making packs and upgrades wider (fewer packs per row)
+- Changed **purchased indicator** to prevent overflow (formatting fixes)
+- Centered **“Upgrades not available”** text on the upgrades page
+- Adjusted **shop item spacing** by powers of 10 (first item at 50, next at 500, etc.)
 
 ---
 
 ### Last Major Update: v1.6: Upgrades 2.0
+#### Release Date: Oct 11, 2025
 #### Main Changes
 - **Upgrades**
   - Organized upgrades into packs  
@@ -65,24 +67,18 @@ A game where you brew coffee.
 ---
 
 ### Last Major Build: v1.0
+#### Release Date: Oct 31, 2025
 #### Coffee Tycoon beta test ends, and full release is live
 
 ---
 
 ## Future Updates
 
-### v1.6.3 - Upgrades 2.0 Patch 3
-#### Release Target: Oct 13, 2025
-- Improving buy button formatting in upgrades (making the packs and upgrades wider), by having less packs per row
-- Changing purchased indicator to not overflow the upgrade - maybe above will fix this issue
-- Center "upgrades not available" text on upgrades patch
-- Space out shop items more, like having item spaced by powers of 10, first item is 50, then next is 500, etc
-
 ### v1.7 – Achievement Rewards
 #### Release Target: Oct 17, 2025
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
 - Reordered achievement packs and fixed overlapping issues
-- Fix game description under title (removed “money”)
+- Fixed game description under title (removed “money”)
 - Each Golden Coffee will now cost 10 billion coffee
 
 ### v1.8 – Notifications & UI Tweaks
@@ -106,18 +102,18 @@ A game where you brew coffee.
 - Mobile UI  
 - Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
-  - Golden Upgrades (New Pack:
+  - Golden Upgrades (New Pack):
     - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades)
-    - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought
-    - Auto Claim Achievment Rewards - (Claims max one reward every minute, will have level 2 upgrade where it is claim all every 5 minutes)
+    - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought)
+    - Auto Claim Achievement Rewards - (Claims max one reward every minute, will have level 2 upgrade where it is claim all every 5 minutes)
 - Export/Import save system using save strings  
 - Erase progress option  
 - Coffee cup animation (cups fall based on click/CPS output)
-- Turn the CPS into a button, which opens up a window (like info button does), which shows you how much of your CPS comes from what building (percent of CPS and actual number of CPS) - represented as a table
-- Looping Background Music: Track Decided:
+- Turn the CPS into a button, which opens up a window (like info button does), showing how much of your CPS comes from each building (percent and number), represented as a table
+- Looping Background Music: Track Decided
 - Generic sound effect for buttons
 - Affordable upgrades notifications
-- Setting Button
+- Settings Button
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
 

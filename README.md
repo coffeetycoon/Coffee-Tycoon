@@ -134,12 +134,13 @@ if (savedVersion !== GAME_VERSION) {
 ---
 Only used for major update when necessary
 // ===== One-time global reset for Coffee Tycoon vx.x.x =====
-const GAME_VERSION = "x.x.x-reset"; // Change this if you ever want another one-time reset
+const GAME_VERSION = "x.x.x-reset";
+// Change this if want another one-time reset
 
 // Check stored version
 const savedVersion = localStorage.getItem("gameVersion");
 
-// If version doesn't match (or no version found), wipe save and set new version\
+// If version doesn't match (or no version found), wipe save and set new version
 
 if (savedVersion !== GAME_VERSION) {
 

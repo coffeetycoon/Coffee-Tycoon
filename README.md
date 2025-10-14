@@ -124,7 +124,7 @@ if (savedVersion !== GAME_VERSION) {
 - Erase progress option  
 - Coffee cup animation (cups fall based on click/CPS output)
 - Turn the CPS into a button, which opens up a window (like info button does), showing how much of your CPS comes from each building (percent and number), represented as a table
-- Looping Background Music: Track Decided
+- Looping Background Music: TBD
 - Generic sound effect for buttons
 - Affordable upgrades notifications
 - Settings Button

@@ -757,7 +757,7 @@
   <h1>Coffee Tycoon</h1>
   <p>Brew coffee, earn money, and build your empire!</p>
   <div class="status-bar">
-    <div class="stat">☕ Coffee: <span id="coffeeDisplay">29</span></div>
+    <div class="stat">☕ Coffee: <span id="coffeeDisplay">0</span></div>
     <div class="stat">⚡ CPS: <span id="cpsDisplay">0</span></div>
     <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">0</span></div>
   </div>
@@ -768,7 +768,7 @@
     <button class="tab-btn" data-tab="shop">Shop</button>
     <button class="tab-btn" data-tab="upgrades">Upgrades</button>
     <button class="tab-btn" data-tab="prestige">Prestige</button>
-    <button class="tab-btn" data-tab="achievements">Achievements<div class="notification-badge"></div></button>
+    <button class="tab-btn" data-tab="achievements">Achievements</button>
   </div>
   <div class="content-area">
     <div id="brewTab" class="tab-content active">
@@ -887,7 +887,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
         <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
           <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
-          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">29</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">0</div>
         </div>
         <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
           <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
@@ -901,7 +901,7 @@
       
         <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
           Need 1M total coffees to prestige
-          <br>Current: 29
+          <br>Current: 0
         </div>
       
       <button class="prestige-button" disabled="">
@@ -915,14 +915,14 @@
       <div id="achievementsList" class="achievements-grid"><div class="achievement-pack">
       <div class="pack-header">
         <div class="pack-title">☕ Coffee Milestones</div>
-        <div class="pack-progress">2/16</div>
+        <div class="pack-progress">0/16</div>
       </div>
       <div class="pack-description">Achievements for brewing coffee</div>
       <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 13%; background: #4CAF50;"></div>
+        <div class="progress-bar" style="width: 0%; background: #4CAF50;"></div>
       </div>
       <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
+        <span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span><span class="pack-badge">⬜</span>
         <span style="opacity: 0.6;">...</span>
       </div>
     </div><div class="achievement-pack">
@@ -1057,6 +1057,16 @@
   </div>
 </div>
 <script>
+
+// ===== One-time global reset for Coffee Tycoon v1.6.3 =====
+const GAME_VERSION = "1.6.3-reset"; // Change this if you ever want another one-time reset
+const savedVersion = localStorage.getItem("gameVersion");
+if (savedVersion !== GAME_VERSION) {
+  console.log("Performing one-time global reset for Coffee Tycoon v1.6.3");
+  localStorage.clear();
+  localStorage.setItem("gameVersion", GAME_VERSION);
+}
+
 // ========== GAME STATE ==========
 const gameState = {
   coffee: 0,

@@ -80,6 +80,19 @@ A game where you brew coffee.
 - Reordered achievement packs and fixed overlapping issues
 - Fixed game description under title (removed “money”)
 - Each Golden Coffee will now cost 10 billion coffee
+- Remove:
+// ===== One-time global reset for Coffee Tycoon v1.6.3 =====
+const GAME_VERSION = "1.6.3-reset"; // Change this if you ever want another one-time reset
+
+// Check stored version
+const savedVersion = localStorage.getItem("gameVersion");
+
+// If version doesn't match (or no version found), wipe save and set new version
+if (savedVersion !== GAME_VERSION) {
+  console.log("Performing one-time global reset for Coffee Tycoon v1.6.3");
+  localStorage.clear(); // completely reset all player progress
+  localStorage.setItem("gameVersion", GAME_VERSION);
+}
 
 ### v1.8 – Notifications & UI Tweaks
 - Added notifications for **new Achievements and Upgrade Packs**

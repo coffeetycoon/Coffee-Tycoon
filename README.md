@@ -41,6 +41,7 @@ A game where you brew coffee.
 - Changed **purchased indicator** to prevent overflow (formatting fixes)
 - Centered **“Upgrades not available”** text on the upgrades page
 - Adjusted **shop item spacing** by powers of 10 (first item at 50, next at 500, etc.)
+- Fixed random typos
 
 ---
 
@@ -67,7 +68,7 @@ A game where you brew coffee.
 ---
 
 ### Last Major Build: v1.0
-#### Release Date: Oct 31, 2025
+#### Release Date: Aug 31, 2025
 #### Coffee Tycoon beta test ends, and full release is live
 
 ---
@@ -130,6 +131,19 @@ if (savedVersion !== GAME_VERSION) {
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
 
+---
+// ===== One-time global reset for Coffee Tycoon vx.x.x =====
+const GAME_VERSION = "x.x.x-reset"; // Change this if you ever want another one-time reset
+
+// Check stored version
+const savedVersion = localStorage.getItem("gameVersion");
+
+// If version doesn't match (or no version found), wipe save and set new version
+if (savedVersion !== GAME_VERSION) {
+  console.log("Performing one-time global reset for Coffee Tycoon vx.x.x");
+  localStorage.clear(); // completely reset all player progress
+  localStorage.setItem("gameVersion", GAME_VERSION);
+}
 ---
 
 *Stay tuned for more updates as Coffee Tycoon continues to brew improvements!*

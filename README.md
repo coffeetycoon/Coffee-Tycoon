@@ -106,14 +106,20 @@ A game where you brew coffee.
 - Mobile UI  
 - Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
-  - Golden Upgrades:
+  - Golden Upgrades (New Pack:
     - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades)
     - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought
-    - Auto Claim Achievment Rewards
+    - Auto Claim Achievment Rewards - (Claims max one reward every minute, will have level 2 upgrade where it is claim all every 5 minutes)
 - Export/Import save system using save strings  
 - Erase progress option  
 - Coffee cup animation (cups fall based on click/CPS output)
 - Turn the CPS into a button, which opens up a window (like info button does), which shows you how much of your CPS comes from what building (percent of CPS and actual number of CPS) - represented as a table
+- Looping Background Music: Track Decided:
+- Generic sound effect for buttons
+- Affordable upgrades notifications
+- Setting Button
+  - Notifications for affordable upgrades (toggle)
+  - Background Music toggle and SFX toggle
 
 ---
 

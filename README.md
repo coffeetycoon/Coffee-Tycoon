@@ -79,7 +79,7 @@ A game where you brew coffee.
 ## Future Updates
 
 ### v1.7.1 - Rewards Rebalance
-- Changed rewards on all achievements
+- Rebalanced rewards on all achievements
 
 ### v1.8 – Notifications & UI Tweaks
 - Added notifications for **new Achievements and Upgrade Packs**

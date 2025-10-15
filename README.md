@@ -35,7 +35,7 @@ A game where you brew coffee.
 ## Updates
 
 ### Latest Version: v1.7 – Achievement Rewards
-#### Release Date: Oct 17, 2025
+#### Release Date: Oct 14, 2025
 #### New Features
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
 - Reordered achievement packs and fixed overlapping issues
@@ -78,8 +78,10 @@ A game where you brew coffee.
 
 ## Future Updates
 
+### v1.7.1 - Rewards Rebalance
+- Changed rewards on all achievements
+
 ### v1.8 – Notifications & UI Tweaks
-#### Planned Changes
 - Added notifications for **new Achievements and Upgrade Packs**
 - Notifications disappear after buying upgrade or claiming rewards
 - Removed achievement emojis for a cleaner look

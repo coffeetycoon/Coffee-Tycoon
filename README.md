@@ -9,8 +9,8 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v163-upgrades-20-patch-3)
-  - [Last Major Update](#last-major-update-v16-upgrades-20)
+  - [Latest Version](#latest-version-v17--achievement-rewards)
+  - [Last Major Update](#last-major-update-v16--upgrades-20)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
 
@@ -34,18 +34,21 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.6.3: Upgrades 2.0 Patch 3
-#### Release Date: Oct 13, 2025
-#### Bug Fixes & Improvements
-- Improved **buy button formatting** in upgrades by making packs and upgrades wider (fewer packs per row)
-- Changed **purchased indicator** to prevent overflow (formatting fixes)
-- Centered **“Upgrades not available”** text on the upgrades page
-- Adjusted **shop item spacing** by powers of 10 (first item at 50, next at 500, etc.)
-- Fixed random typos
+### Latest Version: v1.7 – Achievement Rewards
+#### Release Date: Oct 17, 2025
+#### New Features
+- Achievements now give **bonus rewards** (coffee, production boosts, etc.)
+- Reordered achievement packs and fixed overlapping issues
+- Fixed game description under title (removed “money”)
+- Each Golden Coffee now costs **10 billion coffee**
+
+#### Code Cleanup
+- Removed one-time global reset logic from v1.6.3  
+  *(This was used only once to reset player data for that version.)*
 
 ---
 
-### Last Major Update: v1.6: Upgrades 2.0
+### Last Major Update: v1.6 – Upgrades 2.0
 #### Release Date: Oct 11, 2025
 #### Main Changes
 - **Upgrades**
@@ -75,31 +78,12 @@ A game where you brew coffee.
 
 ## Future Updates
 
-### v1.7 – Achievement Rewards
-#### Release Target: Oct 17, 2025
-- Achievements now give **bonus rewards** (coffee, production boosts, etc.)
-- Reordered achievement packs and fixed overlapping issues
-- Fixed game description under title (removed “money”)
-- Each Golden Coffee will now cost 10 billion coffee
-- Remove:
-// ===== One-time global reset for Coffee Tycoon v1.6.3 =====
-const GAME_VERSION = "1.6.3-reset"; // Change this if you ever want another one-time reset
-
-// Check stored version
-const savedVersion = localStorage.getItem("gameVersion");
-
-// If version doesn't match (or no version found), wipe save and set new version
-if (savedVersion !== GAME_VERSION) {
-  console.log("Performing one-time global reset for Coffee Tycoon v1.6.3");
-  localStorage.clear(); // completely reset all player progress
-  localStorage.setItem("gameVersion", GAME_VERSION);
-}
-
 ### v1.8 – Notifications & UI Tweaks
+#### Planned Changes
 - Added notifications for **new Achievements and Upgrade Packs**
 - Notifications disappear after buying upgrade or claiming rewards
 - Removed achievement emojis for a cleaner look
-- Add **Claim All** as a button for achievements (this button is greyed out until the corresponding upgrade is purchased)
+- Add **Claim All** as a button for achievements (greyed out until the corresponding upgrade is purchased)
 - Add **Mark All Notifications As Read** button for upgrades
 
 ### v1.9 – TBD
@@ -119,11 +103,11 @@ if (savedVersion !== GAME_VERSION) {
   - Golden Upgrades (New Pack):
     - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades)
     - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought)
-    - Auto Claim Achievement Rewards - (Claims max one reward every minute, will have level 2 upgrade where it is claim all every 5 minutes)
+    - Auto Claim Achievement Rewards - (Claims max one reward every minute; Level 2 upgrade claims all every 5 minutes)
 - Export/Import save system using save strings  
 - Erase progress option  
 - Coffee cup animation (cups fall based on click/CPS output)
-- Turn the CPS into a button, which opens up a window (like info button does), showing how much of your CPS comes from each building (percent and number), represented as a table
+- Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
 - Looping Background Music: TBD
 - Generic sound effect for buttons
 - Affordable upgrades notifications
@@ -132,26 +116,18 @@ if (savedVersion !== GAME_VERSION) {
   - Background Music toggle and SFX toggle
 
 ---
-Only used for major update when necessary
+#### Only used for major update when necessary
 // ===== One-time global reset for Coffee Tycoon vx.x.x =====
-const GAME_VERSION = "x.x.x-reset";
-// Change this if want another one-time reset
+const GAME_VERSION = "x.x.x-reset"; // Change this if want another one-time reset
 
 // Check stored version
 const savedVersion = localStorage.getItem("gameVersion");
 
 // If version doesn't match (or no version found), wipe save and set new version
-
 if (savedVersion !== GAME_VERSION) {
-
   console.log("Performing one-time global reset for Coffee Tycoon vx.x.x");
-  
   localStorage.clear(); // completely reset all player progress
-  
   localStorage.setItem("gameVersion", GAME_VERSION);
-  
 }
-
 ---
-
 *Stay tuned for more updates as Coffee Tycoon continues to brew improvements!*

@@ -9,7 +9,7 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v17--achievement-rewards)
+  - [Latest Version](#latest-version-v171-achievement-rewards-patch-1)
   - [Last Major Update](#last-major-update-v16--upgrades-20)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
@@ -34,7 +34,14 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.7 – Achievement Rewards
+### Latest Version: v1.7.1: Achievement Rewards Patch 1
+#### Bug Fixes
+- Rebalanced achievement rewards
+
+---
+
+### Last Major Update: v1.7 – Upgrades 2.0
+#### Release Date: Oct 11, 2025
 #### Release Date: Oct 14, 2025
 #### New Features
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
@@ -48,28 +55,6 @@ A game where you brew coffee.
 
 ---
 
-### Last Major Update: v1.6 – Upgrades 2.0
-#### Release Date: Oct 11, 2025
-#### Main Changes
-- **Upgrades**
-  - Organized upgrades into packs  
-  - Each pack/upgrade now unlocks progressively  
-  - Added more “Produces 2x” upgrades with up to 8 such upgrades for each shop item, with the final one unlocking at 1k of that item  
-  - Added upgrades for Espresso Machine, Coffee Roaster, Coffee Shop, Coffee Plantation, and Coffee Franchise  
-  - Click upgrades now grant *“Clicks produce 2% of your CPS”* instead of *“+2 coffee per click”*  
-
-- **Updated UI**
-  - Added an **info button** showing current version info and upcoming updates  
-  - Info menu includes a link to the GitHub repository  
-  - Added a **“?” button** to replay the tutorial pop-up  
-
-#### Bug Fixes
-- Fixed minor balancing issues with upgrade pricing  
-- Adjusted UI layout for better visibility  
-- Fixed upgrade unlock timing inconsistencies  
-
----
-
 ### Last Major Build: v1.0
 #### Release Date: Aug 31, 2025
 #### Coffee Tycoon beta test ends, and full release is live
@@ -78,8 +63,8 @@ A game where you brew coffee.
 
 ## Future Updates
 
-### v1.7.1 - Rewards Rebalance
-- Rebalanced rewards on all achievements
+### v1.7.2 - Achievements Rewards Patch 2
+- Achievments should only show unlocked ones, and the next one in progression, nothing else
 
 ### v1.8 – Notifications & UI Tweaks
 - Added notifications for **new Achievements and Upgrade Packs**

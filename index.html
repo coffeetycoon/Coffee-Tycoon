@@ -1,7 +1,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coffee Tycoon v1.7</title>
+<title>Coffee Tycoon v1.7.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
@@ -752,17 +752,16 @@
 <div id="versionModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">Coffee Tycoon v1.7</div>
+      <div class="modal-title">Coffee Tycoon v1.7.1</div>
       <button class="modal-close" id="closeVersionModal">×</button>
     </div>
     <div class="version-content">
-      <h3>🎉 What's New in v1.7</h3>
-      <ul>
-        <li><strong>🎁 Achievement Rewards:</strong> Achievements now give bonus rewards (coffee, production boosts, etc.)</li>
-        <li><strong>📋 Reordered Achievement Packs:</strong> Fixed overlapping issues and improved organization</li>
-        <li><strong>✨ UI Polish:</strong> Fixed game description under title</li>
-        <li><strong>💎 New Prestige Cost:</strong> Each Golden Coffee now costs 10 billion coffee</li>
-      </ul>
+      <h3>🎉 What's New in v1.7.1</h3>
+<ul>
+  <li><strong>⚖️ Achievement Rewards Rebalance:</strong> Adjusted reward values for better game progression</li>
+  <li><strong>☕ Coffee Rewards:</strong> Now set to half the requirement amount (more balanced early game)</li>
+  <li><strong>📊 Multiplier Rewards:</strong> Bonus percentages halved for fairer progression</li>
+</ul>
       <h3>🎮 Gameplay Tips</h3>
       <ul>
         <li>Earn achievements to get instant coffee bonuses and permanent production boosts</li>
@@ -771,7 +770,7 @@
         <li>Global upgrades affect all items - save up for huge boosts!</li>
       </ul>
       <h3>💻 About</h3>
-      <p><strong>Version:</strong> 1.7 - Achievement Rewards</p>
+      <p><strong>Version:</strong> 1.7.1 - Achievement Rewards Rebalance</p>
       <p><strong>Created by:</strong> sdphadke</p>
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/CoffeeTycoon/Coffee-Tycoon" target="_blank">View Repository</a></p>
@@ -1609,77 +1608,77 @@ const upgradePacks = [
 // Achievement reward system: { type: 'coffee' | 'multiplier', value: number, itemId?: string }
 const achievements = [
   // Coffee milestones
-  { id: 'first', name: '🥉 First Coffee', requirement: 'Brew 1 coffee', condition: () => gameState.totalCoffeeAllTime >= 1, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1", percent: () => Math.min(gameState.totalCoffeeAllTime / 1 * 100, 100), reward: { type: 'coffee', value: 10 } },
-  { id: 'ten', name: '☕ Ten Brews', requirement: 'Brew 10 coffees', condition: () => gameState.totalCoffeeAllTime >= 10, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10", percent: () => Math.min(gameState.totalCoffeeAllTime / 10 * 100, 100), reward: { type: 'coffee', value: 50 } },
-  { id: 'hundred', name: '☕ Hundred Brews', requirement: 'Brew 100 coffees', condition: () => gameState.totalCoffeeAllTime >= 100, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100", percent: () => Math.min(gameState.totalCoffeeAllTime / 100 * 100, 100), reward: { type: 'coffee', value: 500 } },
-  { id: 'thousand', name: '☕ Thousand Brews', requirement: 'Brew 1,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000 * 100, 100), reward: { type: 'coffee', value: 5000 } },
-  { id: 'tenk', name: '☕ Ten Thousand', requirement: 'Brew 10,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000 * 100, 100), reward: { type: 'coffee', value: 50000 } },
-  { id: 'hundredk', name: '☕ Hundred Thousand', requirement: 'Brew 100,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000 * 100, 100), reward: { type: 'coffee', value: 500000 } },
-  { id: 'million', name: '🏆 Million Brews', requirement: 'Brew 1,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000 * 100, 100), reward: { type: 'coffee', value: 5000000 } },
-  { id: 'tenmill', name: '💎 Ten Million Brews', requirement: 'Brew 10,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000 * 100, 100), reward: { type: 'coffee', value: 50000000 } },
-  { id: 'hundredmill', name: '👑 Hundred Million Brews', requirement: 'Brew 100,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000 * 100, 100), reward: { type: 'coffee', value: 500000000 } },
-  { id: 'billion', name: '🌟 Billion Brews', requirement: 'Brew 1,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000 * 100, 100), reward: { type: 'coffee', value: 5000000000 } },
-  { id: 'tenb', name: '⭐⭐ Ten Billion Brews', requirement: 'Brew 10,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000000 * 100, 100), reward: { type: 'coffee', value: 50000000000 } },
-  { id: 'hundredb', name: '⭐⭐⭐ Hundred Billion Brews', requirement: 'Brew 100,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000000 * 100, 100), reward: { type: 'coffee', value: 500000000000 } },
-  { id: 'trillion', name: '🌌 Trillion Brews', requirement: 'Brew 1,000,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000000 * 100, 100), reward: { type: 'coffee', value: 5000000000000 } },
+  { id: 'first', name: '🥉 First Coffee', requirement: 'Brew 1 coffee', condition: () => gameState.totalCoffeeAllTime >= 1, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1", percent: () => Math.min(gameState.totalCoffeeAllTime / 1 * 100, 100), reward: { type: 'coffee', value: 1 } },
+  { id: 'ten', name: '☕ Ten Brews', requirement: 'Brew 10 coffees', condition: () => gameState.totalCoffeeAllTime >= 10, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10", percent: () => Math.min(gameState.totalCoffeeAllTime / 10 * 100, 100), reward: { type: 'coffee', value: 5 } },
+  { id: 'hundred', name: '☕ Hundred Brews', requirement: 'Brew 100 coffees', condition: () => gameState.totalCoffeeAllTime >= 100, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100", percent: () => Math.min(gameState.totalCoffeeAllTime / 100 * 100, 100), reward: { type: 'coffee', value: 50 } },
+  { id: 'thousand', name: '☕ Thousand Brews', requirement: 'Brew 1,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000 * 100, 100), reward: { type: 'coffee', value: 500 } },
+  { id: 'tenk', name: '☕ Ten Thousand', requirement: 'Brew 10,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000 * 100, 100), reward: { type: 'coffee', value: 5000 } },
+  { id: 'hundredk', name: '☕ Hundred Thousand', requirement: 'Brew 100,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000 * 100, 100), reward: { type: 'coffee', value: 50000 } },
+  { id: 'million', name: '🏆 Million Brews', requirement: 'Brew 1,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000 * 100, 100), reward: { type: 'coffee', value: 500000 } },
+  { id: 'tenmill', name: '💎 Ten Million Brews', requirement: 'Brew 10,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000 * 100, 100), reward: { type: 'coffee', value: 5000000 } },
+  { id: 'hundredmill', name: '👑 Hundred Million Brews', requirement: 'Brew 100,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000 * 100, 100), reward: { type: 'coffee', value: 50000000 } },
+  { id: 'billion', name: '🌟 Billion Brews', requirement: 'Brew 1,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000 * 100, 100), reward: { type: 'coffee', value: 500000000 } },
+  { id: 'tenb', name: '⭐⭐ Ten Billion Brews', requirement: 'Brew 10,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000000 * 100, 100), reward: { type: 'coffee', value: 5000000000 } },
+  { id: 'hundredb', name: '⭐⭐⭐ Hundred Billion Brews', requirement: 'Brew 100,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000000 * 100, 100), reward: { type: 'coffee', value: 50000000000 } },
+  { id: 'trillion', name: '🌌 Trillion Brews', requirement: 'Brew 1,000,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000000 * 100, 100), reward: { type: 'coffee', value: 500000000000 } },
   // General item achievements
-  { id: 'first_item', name: '🥉 Novice Collector', requirement: 'Purchase your first item', condition: () => Object.values(gameState.items).some(i => i.count >= 1), earned: false, progress: () => Object.values(gameState.items).some(i => i.count >= 1) ? "1/1" : "0/1", percent: () => Object.values(gameState.items).some(i => i.count >= 1) ? 100 : 0, reward: { type: 'coffee', value: 100 } },
+  { id: 'first_item', name: '🥉 Novice Collector', requirement: 'Purchase your first item', condition: () => Object.values(gameState.items).some(i => i.count >= 1), earned: false, progress: () => Object.values(gameState.items).some(i => i.count >= 1) ? "1/1" : "0/1", percent: () => Object.values(gameState.items).some(i => i.count >= 1) ? 100 : 0, reward: { type: 'coffee', value: 50 } },
   { id: 'five_any', name: '🥈 Apprentice Purchaser', requirement: 'Have 5 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 5), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/5";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 5 * 100, 100);
-  }, reward: { type: 'coffee', value: 250 } },
+  }, reward: { type: 'coffee', value: 3 } },
   { id: 'ten_any', name: '🥇 Seasoned Buyer', requirement: 'Have 10 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 10), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/10";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 10 * 100, 100);
-  }, reward: { type: 'coffee', value: 1000 } },
+  }, reward: { type: 'coffee', value: 5 } },
   { id: 'fifty_any', name: '💎 Bulk Investor', requirement: 'Have 50 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 50), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/50";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 50 * 100, 100);
-  }, reward: { type: 'coffee', value: 10000 } },
+  }, reward: { type: 'coffee', value: 25 } },
   { id: 'hundred_any', name: '💯 Century Collector', requirement: 'Have 100 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 100), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/100";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 100 * 100, 100);
-  }, reward: { type: 'coffee', value: 100000 } },
+  }, reward: { type: 'coffee', value: 50 } },
   { id: '200_any', name: '💯💯 Double Century', requirement: 'Have 200 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 200), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/200";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 200 * 100, 100);
-  }, reward: { type: 'coffee', value: 1000000 } },
+  }, reward: { type: 'coffee', value: 100 } },
   { id: '300_any', name: '💯💯💯 Triple Century', requirement: 'Have 300 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 300), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/300";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 300 * 100, 100);
-  }, reward: { type: 'coffee', value: 10000000 } },
+  }, reward: { type: 'coffee', value: 150 } },
   { id: '400_any', name: '💯💯💯💯 Quad Century', requirement: 'Have 400 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 400), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/400";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 400 * 100, 100);
-  }, reward: { type: 'coffee', value: 100000000 } },
+  }, reward: { type: 'coffee', value: 200 } },
   { id: '500_any', name: '🏅 Quint Century', requirement: 'Have 500 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 500), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/500";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 500 * 100, 100);
-  }, reward: { type: 'coffee', value: 1000000000 } }
+  }, reward: { type: 'coffee', value: 250 } }
 ];
 
 // Add item-specific achievements for each shop item
@@ -1693,7 +1692,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/10", 
       percent: () => Math.min(gameState.items[item.id].count / 10 * 100, 100),
-      reward: { type: 'multiplier', value: 1.05, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.025, itemId: item.id }
     },
     { 
       id: `${item.id}_50`, 
@@ -1703,7 +1702,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/50", 
       percent: () => Math.min(gameState.items[item.id].count / 50 * 100, 100),
-      reward: { type: 'multiplier', value: 1.1, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.05, itemId: item.id }
     },
     { 
       id: `${item.id}_100`, 
@@ -1713,7 +1712,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/100", 
       percent: () => Math.min(gameState.items[item.id].count / 100 * 100, 100),
-      reward: { type: 'multiplier', value: 1.15, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.075, itemId: item.id }
     },
     { 
       id: `${item.id}_200`, 
@@ -1723,7 +1722,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/200", 
       percent: () => Math.min(gameState.items[item.id].count / 200 * 100, 100),
-      reward: { type: 'multiplier', value: 1.2, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.1, itemId: item.id }
     },
     { 
       id: `${item.id}_300`, 
@@ -1733,7 +1732,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/300", 
       percent: () => Math.min(gameState.items[item.id].count / 300 * 100, 100),
-      reward: { type: 'multiplier', value: 1.25, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.125, itemId: item.id }
     },
     { 
       id: `${item.id}_400`, 
@@ -1743,7 +1742,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/400", 
       percent: () => Math.min(gameState.items[item.id].count / 400 * 100, 100),
-      reward: { type: 'multiplier', value: 1.3, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.15, itemId: item.id }
     },
     { 
       id: `${item.id}_500`, 
@@ -1753,7 +1752,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/500", 
       percent: () => Math.min(gameState.items[item.id].count / 500 * 100, 100),
-      reward: { type: 'multiplier', value: 1.35, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.175, itemId: item.id }
     },
     { 
       id: `${item.id}_600`, 
@@ -1763,7 +1762,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/600", 
       percent: () => Math.min(gameState.items[item.id].count / 600 * 100, 100),
-      reward: { type: 'multiplier', value: 1.4, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.2, itemId: item.id }
     },
     { 
       id: `${item.id}_700`, 
@@ -1773,7 +1772,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/700", 
       percent: () => Math.min(gameState.items[item.id].count / 700 * 100, 100),
-      reward: { type: 'multiplier', value: 1.45, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.225, itemId: item.id }
     },
     { 
       id: `${item.id}_800`, 
@@ -1783,7 +1782,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/800", 
       percent: () => Math.min(gameState.items[item.id].count / 800 * 100, 100),
-      reward: { type: 'multiplier', value: 1.5, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.25, itemId: item.id }
     },
     { 
       id: `${item.id}_900`, 
@@ -1793,7 +1792,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/900", 
       percent: () => Math.min(gameState.items[item.id].count / 900 * 100, 100),
-      reward: { type: 'multiplier', value: 1.6, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.3, itemId: item.id }
     },
     { 
       id: `${item.id}_1000`, 
@@ -1803,7 +1802,7 @@ shopItems.forEach(item => {
       earned: false, 
       progress: () => gameState.items[item.id].count + "/1,000", 
       percent: () => Math.min(gameState.items[item.id].count / 1000 * 100, 100),
-      reward: { type: 'multiplier', value: 2.0, itemId: item.id }
+      reward: { type: 'multiplier', value: 1.5, itemId: item.id }
     }
   );
 });

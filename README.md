@@ -71,15 +71,29 @@ A game where you brew coffee.
 - Notifications disappear after buying upgrade or claiming rewards
 - Removed achievement emojis for a cleaner look
 - Add **Claim All** as a button for achievements (greyed out until the corresponding upgrade is purchased)
-- Add **Mark All Notifications As Read** button for upgrades
+- Add **Mark All Notifications As Read** button for upgrades (greyed out until the corresponding upgrade is purchased)
+- Game Mechanics Upgrade Pack
+  - Claim All
+  - Mark All Notifications As Read
 
-### v1.9 – TBD
+### v1.9 – Shop 2.0
 - Progressive unlocking of shop items
 - Add new shop items beyond Coffee Franchise
 - Add bulk buying options (×1, ×10, ×100)
   - Notifications like “Bought 10× Barista”
 - Add ability to **sell shop items**
 
+### v1.10 - Ambiance and Settings
+- Coffee cup animation (cups fall based on click/CPS output)
+- Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
+- Looping Background Music: TBD
+- Generic sound effect for buttons
+- Affordable upgrades notifications
+- Settings Button
+  - Notifications for affordable upgrades (toggle)
+  - Background Music toggle and SFX toggle
+- Export/Import save system using save strings  
+- Erase progress option
 ---
 
 ## Undecided Additions
@@ -92,15 +106,7 @@ A game where you brew coffee.
     - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought)
     - Auto Claim Achievement Rewards - (Claims max one reward every minute; Level 2 upgrade claims all every 5 minutes)
 - Export/Import save system using save strings  
-- Erase progress option  
-- Coffee cup animation (cups fall based on click/CPS output)
-- Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
-- Looping Background Music: TBD
-- Generic sound effect for buttons
-- Affordable upgrades notifications
-- Settings Button
-  - Notifications for affordable upgrades (toggle)
-  - Background Music toggle and SFX toggle
+- Erase progress option
 
 ---
 #### Only used for major update when necessary

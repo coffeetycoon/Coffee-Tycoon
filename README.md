@@ -83,12 +83,14 @@ A game where you brew coffee.
   - Notifications like “Bought 10× Barista”
 - Add ability to **sell shop items**
 
-### v1.10 - Ambiance and Settings
+### v1.10 - Ambiance and Info
 - Coffee cup animation (cups fall based on click/CPS output)
 - Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
 - Looping Background Music: TBD
 - Generic sound effect for buttons
 - Affordable upgrades notifications
+
+### v1.11 Settings
 - Settings Button
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle

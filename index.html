@@ -1,7 +1,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coffee Tycoon v1.7.1</title>
+<title>Coffee Tycoon v1.7.2</title>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
@@ -752,15 +752,14 @@
 <div id="versionModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">Coffee Tycoon v1.7.1</div>
+      <div class="modal-title">Coffee Tycoon v1.7.2</div>
       <button class="modal-close" id="closeVersionModal">×</button>
     </div>
     <div class="version-content">
-      <h3>🎉 What's New in v1.7.1</h3>
+      <h3>🎉 What's New in v1.7.2</h3>
 <ul>
-  <li><strong>⚖️ Achievement Rewards Rebalance:</strong> Adjusted reward values for better game progression</li>
-  <li><strong>☕ Coffee Rewards:</strong> Now set to half the requirement amount (more balanced early game)</li>
-  <li><strong>📊 Multiplier Rewards:</strong> Bonus percentages halved for fairer progression</li>
+  <li><strong>🎯 Progressive Achievement Display:</strong> Achievements now only show unlocked ones and the next one in progression</li>
+  <li><strong>✨ Minor UI and performance improvements:</strong> Enhanced achievement rendering and display logic</li>
 </ul>
       <h3>🎮 Gameplay Tips</h3>
       <ul>
@@ -770,7 +769,7 @@
         <li>Global upgrades affect all items - save up for huge boosts!</li>
       </ul>
       <h3>💻 About</h3>
-      <p><strong>Version:</strong> 1.7.1 - Achievement Rewards Rebalance</p>
+      <p><strong>Version:</strong> 1.7.2 - Achievement Rewards Patch 2</p>
       <p><strong>Created by:</strong> sdphadke</p>
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/CoffeeTycoon/Coffee-Tycoon" target="_blank">View Repository</a></p>
@@ -1810,8 +1809,35 @@ shopItems.forEach(item => {
 gameState.achievements = achievements;
 
 // ========== ACHIEVEMENT PACKS ==========
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Reordered achievement packs to fix overlapping issues
+// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
+// Helper function to get visible achievements (earned + next in progression)
+function getVisibleAchievements(achievementList) {
+  const visible = [];
+  
+  for (let i = 0; i < achievementList.length; i++) {
+    const achievement = achievementList[i];
+    
+    // Always show earned achievements
+    if (achievement.earned) {
+      visible.push(achievement);
+    } 
+    // Show the next unearned achievement in the sequence
+    else {
+      // Check if this is the first unearned in the sequence
+      const previousEarned = i === 0 || achievementList[i - 1].earned;
+      if (previousEarned) {
+        visible.push(achievement);
+      }
+      // Stop after finding the first unearned to show
+      break;
+    }
+  }
+  
+  return visible;
+}
+
+// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
+// Updated achievement packs with progressive display
 function getAchievementPacks() {
   const packs = [
     {
@@ -2285,6 +2311,8 @@ function renderPrestige() {
   }
 }
 
+// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
+// Updated achievement rendering with progressive display
 function renderAchievements() {
   const container = document.getElementById('achievementsList');
   container.innerHTML = '';
@@ -2292,6 +2320,12 @@ function renderAchievements() {
   
   const packs = getAchievementPacks();
   packs.forEach(pack => {
+    // Get only visible achievements (earned + next)
+    const visibleAchievements = getVisibleAchievements(pack.achievements);
+    
+    // Skip empty packs
+    if (visibleAchievements.length === 0) return;
+    
     const earnedCount = pack.achievements.filter(a => a.earned).length;
     const totalCount = pack.achievements.length;
     const progressPercent = totalCount > 0 ? Math.round((earnedCount / totalCount) * 100) : 0;
@@ -2317,11 +2351,11 @@ function renderAchievements() {
         <div class="progress-bar" style="width: ${progressPercent}%; background: #4CAF50;"></div>
       </div>
       <div class="pack-preview">
-        ${pack.achievements.slice(0, 8).map(a => {
+        ${visibleAchievements.slice(0, 8).map(a => {
           const isUnclaimed = gameState.unclaimedAchievements.has(a.id);
           return `<span class="pack-badge">${a.earned ? (isUnclaimed ? '🎁' : '✅') : '⬜'}</span>`;
         }).join('')}
-        ${pack.achievements.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
+        ${visibleAchievements.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
       </div>
     `;
     
@@ -2338,7 +2372,11 @@ function openAchievementModal(pack) {
   modalTitle.textContent = pack.title;
   modalAchievements.innerHTML = '';
   
-  pack.achievements.forEach(a => {
+  // === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
+  // Only show visible achievements in modal (earned + next)
+  const visibleAchievements = getVisibleAchievements(pack.achievements);
+  
+  visibleAchievements.forEach(a => {
     const isUnclaimed = gameState.unclaimedAchievements.has(a.id);
     const isClaimed = a.earned && !isUnclaimed;
     

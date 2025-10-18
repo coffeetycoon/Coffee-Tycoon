@@ -125,10 +125,15 @@ const GAME_VERSION = "x.x.x-reset"; // Change this if want another one-time rese
 const savedVersion = localStorage.getItem("gameVersion");
 
 // If version doesn't match (or no version found), wipe save and set new version
+
 if (savedVersion !== GAME_VERSION) {
+  
   console.log("Performing one-time global reset for Coffee Tycoon vx.x.x");
+  
   localStorage.clear(); // completely reset all player progress
+  
   localStorage.setItem("gameVersion", GAME_VERSION);
+
 }
 ---
 *Stay tuned for more updates as Coffee Tycoon continues to brew improvements!*

@@ -90,7 +90,7 @@ A game where you brew coffee.
 - Export/Import save system using save strings  
 - Erase progress option
 
-## v1.12 Golden Upgrades Part 1
+### v1.12 Golden Upgrades Part 1
  Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
   - Golden Upgrades (New Pack) - Will not reset after prestige, is permanent upgrade:
@@ -100,7 +100,7 @@ A game where you brew coffee.
     - Permanent Upgrades (Such as +15% CPS boost, etc.)
     - Mark All Notifications As Read
 
-## v1.13 Golden Upgrades Part 2
+### v1.13 Golden Upgrades Part 2
   - Research Lab
     - A new tab where you can spend coffee to discover new drink recipes
     - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato)

@@ -9,8 +9,8 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v172-achievement-rewards-patch-2)
-  - [Last Major Update](#last-major-update-v16--upgrades-20)
+  - [Latest Version](#latest-version-v172-rewards-and-reruns-patch-2)
+  - [Last Major Update](#last-major-update-v1.7-rewards-and-reruns)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
 
@@ -34,13 +34,13 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.7.2: Achievement Rewards Patch 2
+### Latest Version: v1.7.2: Rewards and Reruns Patch 2
 #### Bug Fixes
 - Achievments should only show unlocked ones, and the next one in progression, nothing else
 
 ---
 
-### Last Major Update: v1.7 – Upgrades 2.0
+### Last Major Update: v1.7: Rewards and Reruns
 #### Release Date: Oct 11, 2025
 #### New Features
 - Achievements now give **bonus rewards** (coffee, production boosts, etc.)
@@ -62,35 +62,40 @@ A game where you brew coffee.
 
 ## Future Updates
 
-### v1.8 – Notifications & UI Tweaks
+### v1.8 – Gains and Grains
 - Add notifications for **new Achievements and Upgrade Packs**
 - Notification for upgrade or achievement disappear after buying upgrade or claiming rewards
 - Remove achievement emojis for a cleaner look
 - Notifications for that show up on right side of screen, will not overlap (meaning that if 2 notifications show up, the older one will move down and newer one on top, cooldown for it disappearing will not change)
-- Number of unclaimed achievements under a pack will be removed, but the red indicator dot on the pack will remain
 
-### v1.9 – Shop 2.0
+### v1.9 - Riches and Reaches
+- Number of unclaimed achievements under a pack will be removed, but the red indicator dot on the pack will remain
+- Achievements for coffee collection will scale to 1 quintillion coffee
+- Achievements for shop item collection will scale to 5000 items
+- New achievement pack, upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
+
+### v1.10 – A Whole Latte Trade
 - Progressive unlocking of shop items
 - Add new shop items beyond Coffee Franchise
 - Add bulk buying options (×1, ×10, ×100)
   - Notifications like “Bought 10× Barista”
 - Add ability to **sell shop items**
 
-### v1.10 - Ambiance and Info
+### v1.11 - A Latte Noise
 - Coffee cup animation (cups fall based on click/CPS output)
 - Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
 - Looping Background Music: TBD
 - Generic sound effect for buttons
 - Affordable upgrades notifications
 
-### v1.11 Settings
+### v1.12 Pick Your Brew
 - Settings Button
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
 - Export/Import save system using save strings  
 - Erase progress option
 
-### v1.12 Golden Upgrades Part 1
+### v1.13 Golds and Grains
  Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
   - Golden Upgrades (New Pack) - Will not reset after prestige, is permanent upgrade:
@@ -100,7 +105,7 @@ A game where you brew coffee.
     - Permanent Upgrades (Such as +15% CPS boost, etc.)
     - Mark All Notifications As Read
 
-### v1.13 Golden Upgrades Part 2
+### v1.14 Research and Roastery
   - Research Lab
     - A new tab where you can spend coffee to discover new drink recipes
     - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato)

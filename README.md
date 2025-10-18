@@ -96,13 +96,23 @@ A game where you brew coffee.
 
 ## Undecided Additions
 #### These may move to planned or unplanned updates, or be removed entirely:
-- Mobile UI  
+- Mobile UI
+  - Will use sidebar instead of tabs
 - Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
-  - Golden Upgrades (New Pack):
-    - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades)
-    - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought)
-    - Auto Claim Achievement Rewards - (Claims max one reward every minute; Level 2 upgrade claims all every 5 minutes)
+  - Golden Upgrades (New Pack) - Will not reset after prestige, is permanent upgrade:
+    - Auto-Buy Upgrades - (5 min gap between upgrades being bought - can't spam buy upgrades) {10 Golden Coffee}
+    - Auto-Buy Shop Items - (1 min gap between next cheapest item being bought) {10 Golden Coffee}
+    - Auto Claim Achievement Rewards - (Claims max one reward every minute; Level 2 upgrade claims all every 5 minutes) {10 Golden Coffee}
+    - Permanent Upgrades (Such as +15% CPS boost, etc.)
+    - Research Lab
+      - A new tab where you can spend coffee to discover new drink recipes
+      - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato)
+      - Each unlocked drink provides a unique, permanent passive boost (e.g., "Espressos boost click power by +25%", "Lattes boost all Barista CPS by +10%")
+    - Roastery
+      - A new building/tab that allows you to buy different tiers of raw Coffee Beans
+      - The Roastery processes beans into "Roasted Blends" (e.g., Light, Medium, Dark)
+      - Activating a blend consumes it and provides a powerful, temporary global boost (e.g., "Activate Dark Roast: 2x all CPS for 60 seconds")
 - Export/Import save system using save strings  
 - Erase progress option
 

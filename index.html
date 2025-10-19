@@ -749,7 +749,7 @@
 </div>
 <!-- === Coffee Tycoon v1.7 – Achievement Rewards === -->
 <!-- Version Info Modal -->
-<div id="versionModal" class="modal">
+<div id="versionModal" class="modal hidden">
   <div class="modal-content">
     <div class="modal-header">
       <div class="modal-title">Coffee Tycoon v1.7.2</div>
@@ -782,33 +782,33 @@
   <!-- Added help (?) and info (i) buttons -->
   <div class="header-buttons">
     <button class="help-btn" id="helpBtn" title="Help">?</button>
-    <button class="info-btn" id="infoBtn" title="Version Info">i</button>
+    <button class="info-btn" id="infoBtn" title="Info">i</button>
   </div>
   <h1>Coffee Tycoon</h1>
   <p>Brew coffee, earn rewards, and build your empire!</p>
   <div class="status-bar">
-    <div class="stat">☕ Coffee: <span id="coffeeDisplay">3.1M</span></div>
+    <div class="stat">☕ Coffee: <span id="coffeeDisplay">9.6M</span></div>
     <div class="stat">⚡ CPS: <span id="cpsDisplay">88.8k</span></div>
     <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">134</span></div>
   </div>
 </header>
 <main>
   <div class="tabs">
-    <button class="tab-btn active" data-tab="brew">Brew House</button>
-    <button class="tab-btn" data-tab="shop">Shop</button>
+    <button class="tab-btn" data-tab="brew">Brew House</button>
+    <button class="tab-btn active" data-tab="shop">Shop</button>
     <button class="tab-btn" data-tab="upgrades">Upgrades</button>
     <button class="tab-btn" data-tab="prestige">Prestige</button>
     <button class="tab-btn" data-tab="achievements">Achievements</button>
   </div>
   <div class="content-area">
-    <div id="brewTab" class="tab-content active">
+    <div id="brewTab" class="tab-content">
       <div style="text-align: center;">
         <button id="coffeeButton" style="transform: scale(1);">☕</button>
         <div style="font-size: 1.2rem; margin-top: 16px;">Click the cup to brew coffee!</div>
         <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">9</span> Coffee</div>
       </div>
     </div>
-    <div id="shopTab" class="tab-content">
+    <div id="shopTab" class="tab-content active">
       <h2 style="margin-top: 0; color: #d4a574;">Shop</h2>
       <div id="shopList"><div class="shop-item affordable">
       <div class="item-info">
@@ -1115,7 +1115,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
         <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
           <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
-          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">164M</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">170.6M</div>
         </div>
         <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
           <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
@@ -1129,7 +1129,7 @@
       
         <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
           Need 1.4T total coffees to prestige
-          <br>Current: 164M
+          <br>Current: 170.6M
         </div>
       
       <button class="prestige-button" disabled="">
@@ -3112,6 +3112,7 @@ gameState.displayCPS = gameState.targetCPS;
 updateUI();
 
 </script>
+
 
 
 </body></html>

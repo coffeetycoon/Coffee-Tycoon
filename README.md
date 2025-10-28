@@ -35,6 +35,7 @@ A game where you brew coffee.
 ## Updates
 
 ### Latest Version: v1.7.2: Rewards and Reruns Patch 2
+#### Release Date: Oct 20, 2025
 #### Bug Fixes
 - Achievments should only show unlocked ones, and the next one in progression, nothing else
 

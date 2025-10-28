@@ -64,6 +64,7 @@ A game where you brew coffee.
 ## Future Updates
 
 ### v1.8 – Gains and Grains
+#### Release Target: By Nov 1, 2025
 - Add notifications for **new Achievements and Upgrade Packs**
 - Notification for upgrade or achievement disappear after buying upgrade or claiming rewards
 - Remove achievement emojis for a cleaner look

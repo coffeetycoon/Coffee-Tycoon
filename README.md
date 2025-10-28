@@ -70,10 +70,9 @@ A game where you brew coffee.
 - Fix issue where player starts on shop page, they should start on brew house page
 
 ### v1.9 - Riches and Reaches
-- Number of unclaimed achievements under a pack will be removed, but the red indicator dot on the pack will remain
 - Achievements for coffee collection will scale to 1 quintillion coffee
 - Achievements for shop item collection will scale to 5000 items
-- New achievement pack, upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
+- New achievement pack: upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
 
 ### v1.10 – A Whole Latte Trade
 - Progressive unlocking of shop items
@@ -96,7 +95,7 @@ A game where you brew coffee.
 - Export/Import save system using save strings  
 - Erase progress option
 
-### v1.13 Golds and Grains
+### v1.13 Golden Gains
  Golden Coffee can buy **Golden Upgrades**  
   - Loses production boost but gains stronger buffs
   - Golden Upgrades (New Pack) - Will not reset after prestige, is permanent upgrade:
@@ -106,12 +105,14 @@ A game where you brew coffee.
     - Permanent Upgrades (Such as +15% CPS boost, etc.)
     - Mark All Notifications As Read
 
-### v1.14 Research and Roastery
-  - Research Lab
+### v1.14 Grab a Lab
+  - Research Lab (Available as Golden Upgrade)
     - A new tab where you can spend coffee to discover new drink recipes
     - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato)
     - Each unlocked drink provides a unique, permanent passive boost (e.g., "Espressos boost click power by +25%", "Lattes boost all Barista CPS by +10%")
-  - Roastery
+   
+### v1.15 Roasters and Coasters
+  - Roastery (Available as Golden Upgrade)
     - A new building/tab that allows you to buy different tiers of raw Coffee Beans
     - The Roastery processes beans into "Roasted Blends" (e.g., Light, Medium, Dark)
     - Activating a blend consumes it and provides a powerful, temporary global boost (e.g., "Activate Dark Roast: 2x all CPS for 60 seconds")

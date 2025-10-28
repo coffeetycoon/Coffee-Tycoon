@@ -67,6 +67,7 @@ A game where you brew coffee.
 - Notification for upgrade or achievement disappear after buying upgrade or claiming rewards
 - Remove achievement emojis for a cleaner look
 - Notifications for that show up on right side of screen, will not overlap (meaning that if 2 notifications show up, the older one will move down and newer one on top, cooldown for it disappearing will not change)
+- Fix issue where player starts on shop page, they should start on brew house page
 
 ### v1.9 - Riches and Reaches
 - Number of unclaimed achievements under a pack will be removed, but the red indicator dot on the pack will remain

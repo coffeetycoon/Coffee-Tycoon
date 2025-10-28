@@ -88,7 +88,8 @@ A game where you brew coffee.
 - Turn the CPS into a button that opens a window showing a breakdown of CPS contributions (percent and number)
 - Looping Background Music: TBD
 - Generic sound effect for buttons
-- Affordable upgrades notifications
+- Affordable upgrades notifications (pop-up like unlocking upgrades)
+- Affordable shop items notifications (Red dot)
 
 ### v1.12 Pick Your Brew
 - Settings Button
@@ -124,6 +125,7 @@ A game where you brew coffee.
 #### These may move to planned or unplanned updates, or be removed entirely:
 - Mobile UI
   - Will use sidebar instead of tabs
+- Add "super coffee", which gives random bonuses and randomly spawns once every 10 min
    
 ---
 #### Only used for major update when necessary

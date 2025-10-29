@@ -69,6 +69,9 @@ Refer to the details listed above.
 - Remove the number of attachments from achievement packs ([number unlocked]/[number total] achievements will not show anymore), while keeping the green progress bar
   - Same for upgrade packs
 - Reduce the size of red dot on tabs for notifications, so the dot doesn't overlay onto text
+- Upgrade purchase notifications don't look the same as shop item purchase notifications, so now upgrade purchase will look like shop item purchase notifications
+- Achievement unlock delivers duplicate notification, only the one that matches the shop purchase notification will be kept
+- Achievement claim notification will be restyled to look like the shop purchase notification
 
 ### v1.9 - Riches and Reaches
 - Achievements for coffee collection will scale to 1 quintillion coffee

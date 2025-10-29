@@ -70,10 +70,13 @@ A game where you brew coffee.
 - Achievements for coffee collection will scale to 1 quintillion coffee
 - Achievements for shop item collection will scale to 5000 items
 - New achievement pack: upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
+- Remove number from notifications on achievement packs
+- Claimed achievements will now have a green border/theme, so as not to confuse them with unclaimed achievements
+  - Unclaimed (but completed) achievements will not change
 
 ### v1.10 – A Whole Latte Trade
 - Progressive unlocking of shop items (shop items that you cannot afford 50% of the initial price for will not be shown)
-- Add new shop items beyond Coffee Franchise
+- Add new shop items beyond Coffee Franchise (up till producing 100 billion coffee [named like, coffee planet, galaxy, universe, solar system, continent, country, factory etc, can scale in size till universe if needed])
 - Add bulk buying options (×1, ×10, ×100)
   - Notifications like “Bought 10× Barista”
 - Add ability to **sell shop items**
@@ -91,6 +94,7 @@ A game where you brew coffee.
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
   - Customizable Quick Keys
+  - Toggle to change coffee display to full number instead of abbreviated (also a toggle for CPS, and another one for golden coffee
 - Export/Import save system using save strings  
 - Erase progress option
 
@@ -105,10 +109,13 @@ A game where you brew coffee.
     - Mark All Notifications As Read
 
 ### v1.14 Grab a Lab
+  - Prior to unlocking, the tab is greyed out and when you click on it it should say "Unlock/Purchase the Research Lab Golden Upgrade" in a notification, 
   - Research Lab (Available as Golden Upgrade)
     - A new tab where you can spend coffee to discover new drink recipes
-    - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato)
-    - Each unlocked drink provides a unique, permanent passive boost (e.g., "Espressos boost click power by +25%", "Lattes boost all Barista CPS by +10%")
+    - Research Drink Recipes (e.g., Espresso, Latte, Cappuccino, Macchiato) ~10 drinks total
+    - Each unlocked drink provides a unique, passive boost (e.g., "Espressos boost click power by +25%", "Lattes boost all Barista CPS by +10%") + some will have debuffs and buffs as part of the same drink
+      - You can choose in the tab which drink is active, max 3 is active at a time, 1st one is at 100% power, 2nd is at 75% power, last is at 50% power
+      - To change the drink it costs 1 swap, each swap generates over an hour
    
 ### v1.15 Roasters and Coasters
   - Roastery (Available as Golden Upgrade)

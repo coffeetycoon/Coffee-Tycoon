@@ -67,7 +67,8 @@ Refer to the details listed above.
 
 ### v1.8.1 - Gains and Grains Patch 1
 - Remove the number of attachments from achievement packs ([number unlocked]/[number total] achievements will not show anymore), while keeping the green progress bar
-  - Same for upgrade packs 
+  - Same for upgrade packs
+- Reduce the size of red dot on tabs for notifications, so the dot doesn't overlay onto text
 
 ### v1.9 - Riches and Reaches
 - Achievements for coffee collection will scale to 1 quintillion coffee

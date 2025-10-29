@@ -135,18 +135,20 @@
     flex-shrink: 0;
   }
   /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+  /* === Coffee Tycoon v1.8.1 – Achievement Dot Position Fix === */
   .tab-btn .notification-badge {
-    position: relative;
-    top: auto;
-    right: auto;
+    position: absolute;
+    top: 8px;
+    right: 8px;
     width: 7px;
     height: 7px;
     min-width: 7px;
     padding: 0;
-    margin-left: 6px;
+    margin-left: 0;
     border-radius: 50%;
     font-size: 0;
     border: 1px solid #1a1a2e;
+    pointer-events: none;
   }
   @keyframes pulse-badge {
     0%, 100% { transform: scale(1); opacity: 1; }

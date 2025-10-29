@@ -9,8 +9,8 @@ A game where you brew coffee.
   - [File Download](#option-1-file)
   - [Link to Game](#option-2-link)
 - [Updates](#updates)
-  - [Latest Version](#latest-version-v172-rewards-and-reruns-patch-2)
-  - [Last Major Update](#last-major-update-v1.7-rewards-and-reruns)
+  - [Latest Version](#latest-version-v18-gains-and-grains)
+  - [Last Major Update](#last-major-update-v18-gains-and-grains)
   - [Last Major Build](#last-major-build-v10)
 - [Future Updates](#future-updates)
 
@@ -34,24 +34,26 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.7.2: Rewards and Reruns Patch 2
-#### Release Date: Oct 20, 2025
-#### Bug Fixes
-- Achievments should only show unlocked ones, and the next one in progression, nothing else
+### Latest Version: v1.8 – Gains and Grains
+#### Release Date: Oct 28, 2025
+#### New Features
+- Added notifications for **new Achievements and Upgrade Packs**
+- Notifications disappear after buying upgrades or claiming rewards
+- Cleaned up achievement icons (removed emojis)
+- Notifications now appear on the **right side of the screen** and will not overlap
+  - Older notifications move down, newer ones appear on top
+  - Disappear timing unchanged
+- Fixed issue where players started on the Shop page instead of the Brew House page
+
+#### Improvements
+- General UI polish for smoother transitions and consistent notification behavior
+- Minor bug fixes and stability improvements
 
 ---
 
-### Last Major Update: v1.7: Rewards and Reruns
-#### Release Date: Oct 11, 2025
-#### New Features
-- Achievements now give **bonus rewards** (coffee, production boosts, etc.)
-- Reordered achievement packs and fixed overlapping issues
-- Fixed game description under title (removed “money”)
-- Each Golden Coffee now costs **10 billion coffee**
-
-#### Code Cleanup
-- Removed one-time global reset logic from v1.6.3  
-  *(This was used only once to reset player data for that version.)*
+### Last Major Update: v1.8 – Gains and Grains
+#### Release Date: Oct 28, 2025
+Refer to the details listed above.
 
 ---
 
@@ -62,14 +64,6 @@ A game where you brew coffee.
 ---
 
 ## Future Updates
-
-### v1.8 – Gains and Grains
-#### Release Target: By Nov 1, 2025
-- Add notifications for **new Achievements and Upgrade Packs**
-- Notification for upgrade or achievement disappear after buying upgrade or claiming rewards
-- Remove achievement emojis for a cleaner look
-- Notifications for that show up on right side of screen, will not overlap (meaning that if 2 notifications show up, the older one will move down and newer one on top, cooldown for it disappearing will not change)
-- Fix issue where player starts on shop page, they should start on brew house page
 
 ### v1.9 - Riches and Reaches
 - Achievements for coffee collection will scale to 1 quintillion coffee

@@ -90,7 +90,7 @@ A game where you brew coffee.
 - Affordable shop items notifications (Red dot)
 
 ### v1.12 Pick Your Brew
-- Settings Button
+- Settings Button next to info and help
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
   - Customizable Quick Keys
@@ -122,6 +122,7 @@ A game where you brew coffee.
     - A new building/tab that allows you to buy different tiers of raw Coffee Beans
     - The Roastery processes beans into "Roasted Blends" (e.g., Light, Medium, Dark)
     - Activating a blend consumes it and provides a powerful, temporary global boost (e.g., "Activate Dark Roast: 2x all CPS for 60 seconds")
+
 ---
 
 ## Undecided Additions
@@ -129,6 +130,11 @@ A game where you brew coffee.
 - Mobile UI
   - Will use sidebar instead of tabs
 - Add "super coffee", which gives random bonuses and randomly spawns once every 10 min
+- Progress bar in prestige tab to show with progress till next golden coffee
+- Balance Change: Golden Coffee cost will scale by factor of 10 every with every golden coffee collected, will go down if you spend golden coffee on golden upgrades
+- Stats button, next to settings button: Opens a window like info, but with tabs within it
+  - Tab graph with history of total coffee and total CPS and golden coffee
+  - 
    
 ---
 #### Only used for major update when necessary

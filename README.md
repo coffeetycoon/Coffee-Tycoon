@@ -75,7 +75,7 @@ Refer to the details listed above.
 - New achievement pack: upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
 
 ### v1.10 – A Whole Latte Trade
-- Progressive unlocking of shop items
+- Progressive unlocking of shop items (shop items that you cannot afford 50% of the initial price for will not be shown)
 - Add new shop items beyond Coffee Franchise
 - Add bulk buying options (×1, ×10, ×100)
   - Notifications like “Bought 10× Barista”
@@ -93,6 +93,7 @@ Refer to the details listed above.
 - Settings Button
   - Notifications for affordable upgrades (toggle)
   - Background Music toggle and SFX toggle
+  - Customizable Quick Keys
 - Export/Import save system using save strings  
 - Erase progress option
 

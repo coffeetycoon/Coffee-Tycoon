@@ -1,7 +1,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coffee Tycoon v1.8</title>
+<title>Coffee Tycoon v1.8.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
@@ -111,11 +111,8 @@
     border-color: #d4a574;
     color: #1a1a2e;
   }
-  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
-  .tab-btn .notification-badge {
-    top: 8px;
-    right: 8px;
-  }
+  /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+  /* Tab notification dots are now inline and smaller */
   /* === Coffee Tycoon v1.8 – Final Visual Polish === */
   .notification-badge {
     position: absolute;
@@ -136,6 +133,20 @@
     line-height: 1;
     overflow: hidden;
     flex-shrink: 0;
+  }
+  /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+  .tab-btn .notification-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    padding: 0;
+    margin-left: 6px;
+    border-radius: 50%;
+    font-size: 0;
+    border: 1px solid #1a1a2e;
   }
   @keyframes pulse-badge {
     0%, 100% { transform: scale(1); opacity: 1; }
@@ -854,16 +865,17 @@
 <div id="versionModal" class="modal hidden">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">Coffee Tycoon v1.8</div>
+      <div class="modal-title">Coffee Tycoon v1.8.1</div>
       <button class="modal-close" id="closeVersionModal">×</button>
     </div>
     <div class="version-content">
-      <h3>What's New in v1.8 – Gains and Grains</h3>
+      <h3>What's New in v1.8.1 – Gains and Grains Patch 1</h3>
       <ul>
-        <li><strong>Right-Side Notifications:</strong> New stacking notification system for achievements and upgrade packs that appear on the right side of the screen</li>
-        <li><strong>Cleaner UI:</strong> Removed emojis from all achievement and upgrade titles for a more professional look</li>
-        <li><strong>Smart Notifications:</strong> Notifications auto-dismiss after a few seconds and disappear instantly when you claim rewards or purchase upgrades</li>
-        <li><strong>Better Default:</strong> Game now opens to Brew House tab by default</li>
+        <li><strong>Cleaner Pack Display:</strong> Removed numeric counters from achievement and upgrade packs while keeping progress bars</li>
+        <li><strong>Smaller Tab Dots:</strong> Reduced notification dot size on tabs for better visual clarity</li>
+        <li><strong>Unified Notifications:</strong> Upgrade purchase notifications now match shop purchase style</li>
+        <li><strong>Fixed Duplicates:</strong> Removed duplicate achievement unlock notifications</li>
+        <li><strong>Consistent Styling:</strong> Achievement claim notifications now match purchase notification appearance</li>
       </ul>
       <h3>Gameplay Tips</h3>
       <ul>
@@ -873,7 +885,7 @@
         <li>Global upgrades affect all items - save up for huge boosts!</li>
       </ul>
       <h3>About</h3>
-      <p><strong>Version:</strong> 1.8 - Gains and Grains</p>
+      <p><strong>Version:</strong> 1.8.1 - Gains and Grains Patch 1</p>
       <p><strong>Created by:</strong> randomdoge</p>
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/CoffeeTycoon/Coffee-Tycoon" target="_blank">View Repository</a></p>
@@ -2189,6 +2201,10 @@ function claimAchievementReward(achievement) {
   // Remove related notifications instantly
   removeNotificationsByAchievement(achievement.id);
   
+  /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+  // Show unified claim notification
+  showPurchaseNotification(`Claimed: ${achievement.name}`);
+  
   if (achievement.reward.type === 'coffee') {
     gameState.coffee += achievement.reward.value;
     gameState.targetCoffee = gameState.coffee;
@@ -2384,12 +2400,13 @@ function renderUpgrades() {
     packDiv.className = 'upgrade-pack';
     
     const previewUpgrades = unlockedUpgrades.slice(0, 8);
+    /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+    // Removed numeric progress counter, keeping only visual progress bar
     packDiv.innerHTML = `
       <div class="upgrade-pack-header">
         <div class="upgrade-pack-title">
           <span>${pack.name}</span>
         </div>
-        <div class="upgrade-pack-progress">${purchasedUpgrades.length}/${unlockedUpgrades.length}</div>
       </div>
       <div class="upgrade-pack-description">${pack.description}</div>
       <div class="progress" style="margin-bottom: 12px;">
@@ -2551,11 +2568,12 @@ function renderAchievements() {
     
     const badgeHTML = unclaimedInPack > 0 ? `<div class="notification-badge">${unclaimedInPack}</div>` : '';
     
+    /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+    // Removed numeric progress counter, keeping only visual progress bar
     div.innerHTML = `
       ${badgeHTML}
       <div class="pack-header">
         <div class="pack-title">${pack.title}</div>
-        <div class="pack-progress">${earnedCount}/${totalCount}</div>
       </div>
       <div class="pack-description">${pack.description}</div>
       <div class="progress" style="margin-bottom: 12px;">
@@ -2614,7 +2632,8 @@ function openAchievementModal(pack) {
     if (isUnclaimed) {
       div.onclick = () => {
         const rewardText = claimAchievementReward(a);
-        showToast(`Claimed: ${a.name}!${rewardText}`, true);
+        /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+        // Removed redundant toast - notification now shown in claimAchievementReward
         openAchievementModal(pack);
         renderAchievements();
       };
@@ -2681,7 +2700,10 @@ function buyUpgrade(upgradeId) {
       removeNotificationsByPack(packId);
     }
     
-    showToast(`Purchased ${upgrade.name}!`);
+    /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+    // Use unified purchase notification
+    showPurchaseNotification(upgrade.name);
+    
     saveGame();
     updateUI();
   }
@@ -2721,8 +2743,8 @@ function checkAchievements() {
       a.earned = true;
       gameState.unclaimedAchievements.add(a.id);
       
-      /* === Coffee Tycoon v1.8 – Final Polish === */
-      // Show notification for achievement unlock
+      /* === Coffee Tycoon v1.8.1 – Gains and Grains Patch 1 === */
+      // Single unified notification for achievement unlock
       showNotification(
         'Achievement Unlocked!',
         `${a.name}`,
@@ -2730,7 +2752,6 @@ function checkAchievements() {
         { achievementId: a.id }
       );
       
-      showToast(`Achievement Unlocked: ${a.name}! (Click to claim reward)`, true);
       saveGame();
     }
   });

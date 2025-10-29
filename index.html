@@ -1,8 +1,8 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coffee Tycoon v1.7.2</title>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<title>Coffee Tycoon v1.8</title>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { font-family: 'Comfortaa', cursive; box-sizing: border-box; }
   body { 
@@ -33,8 +33,6 @@
     font-size: 1rem; 
     opacity: 0.9;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Added help and info buttons to header */
   .header-buttons {
     position: absolute;
     top: 24px;
@@ -113,16 +111,31 @@
     border-color: #d4a574;
     color: #1a1a2e;
   }
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
+  .tab-btn .notification-badge {
+    top: 8px;
+    right: 8px;
+  }
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
   .notification-badge {
     position: absolute;
     top: 4px;
     right: 4px;
-    width: 12px;
-    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
     background: #ff4444;
-    border-radius: 50%;
     border: 2px solid #1a1a2e;
-    animation: pulse-badge 2s infinite;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   @keyframes pulse-badge {
     0%, 100% { transform: scale(1); opacity: 1; }
@@ -225,8 +238,6 @@
     background: rgba(255, 215, 0, 0.1);
     opacity: 0.6;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Locked upgrade styling for progressive unlocking */
   .upgrade-item.locked {
     border-color: rgba(255, 255, 255, 0.05);
     background: rgba(255, 255, 255, 0.02);
@@ -254,8 +265,6 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Locked status indicator */
   .upgrade-status.locked {
     color: #ff6b6b;
   }
@@ -265,8 +274,6 @@
     margin-bottom: 16px;
     opacity: 0.9;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Unlock requirement text for locked upgrades */
   .upgrade-unlock-req {
     font-size: 0.9rem;
     color: #ff6b6b;
@@ -278,8 +285,6 @@
     justify-content: space-between;
     align-items: center;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Upgrade pack system styled like achievement packs */
   .upgrade-pack {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -379,14 +384,11 @@
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.1);
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Improved grid layout for upgrades tab */
   .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: 16px;
   }
-  /* Achievement Pack Styles */
   .achievement-pack {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -400,6 +402,11 @@
     border-color: rgba(212, 165, 116, 0.5);
     background: rgba(255, 255, 255, 0.08);
     transform: translateY(-2px);
+  }
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
+  .achievement-pack .notification-badge {
+    top: 16px;
+    right: 16px;
   }
   .pack-header {
     display: flex;
@@ -429,8 +436,6 @@
   .pack-badge {
     font-size: 1.5rem;
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Achievement reward styling */
   .achievement-reward {
     background: rgba(76, 175, 80, 0.1);
     border: 1px solid rgba(76, 175, 80, 0.3);
@@ -441,7 +446,6 @@
     color: #4CAF50;
     font-weight: 600;
   }
-  /* Modal Styles */
   .modal {
     position: fixed;
     top: 0;
@@ -512,8 +516,6 @@
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.1);
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Unclaimed achievement glow effect */
   .modal-achievement.unclaimed {
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.15);
@@ -529,8 +531,6 @@
     0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
     50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Version info modal specific styles */
   .version-content {
     line-height: 1.8;
   }
@@ -621,6 +621,107 @@
     background: linear-gradient(135deg, #ffd700, #ffed4e);
     color: #1a1a2e;
   }
+  /* === Coffee Tycoon v1.8 – Gains and Grains === */
+  /* Right-side notification system */
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
+  .notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+    max-width: 420px;
+  }
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
+  .notification {
+    background: linear-gradient(135deg, #2d2d2d, #1a1a2e);
+    border: 2px solid #d4a574;
+    border-radius: 12px;
+    padding: 16px 20px;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    animation: slideInNotif 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 1;
+    transform: translateX(0);
+    /* === Coffee Tycoon v1.8 – Final Notification Merge Fix === */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .notification:hover {
+    transform: translateX(-4px);
+  }
+  .notification.fade-out {
+    opacity: 0;
+    transform: translateX(450px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .notification.achievement-notif {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, #3d3d1e, #2a2a1e);
+  }
+  .notification.upgrade-notif {
+    border-color: #4CAF50;
+    background: linear-gradient(135deg, #1e3d2d, #1e2a2a);
+  }
+  /* === Coffee Tycoon v1.8 – Notification Combination === */
+  .notification.purchase-notif {
+    border-color: #66BB6A;
+    background: linear-gradient(135deg, #1e2a2a, #1e3d2d);
+  }
+  .notification.purchase-notif .notification-title {
+    color: #66BB6A;
+  }
+  .notification-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #d4a574;
+    line-height: 1.3;
+  }
+  .notification.achievement-notif .notification-title {
+    color: #ffd700;
+  }
+  .notification.upgrade-notif .notification-title {
+    color: #4CAF50;
+  }
+  .notification-message {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.4;
+    /* === Coffee Tycoon v1.8 – Final Notification Merge Fix === */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* === Coffee Tycoon v1.8 – Final Visual Polish === */
+  @keyframes slideInNotif {
+    from { 
+      transform: translateX(450px); 
+      opacity: 0; 
+    }
+    to { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+  }
+  @keyframes slideOutNotif {
+    from { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+    to { 
+      transform: translateX(450px); 
+      opacity: 0; 
+    }
+  }
   @keyframes slideIn {
     from { transform: translateX(400px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -698,8 +799,6 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 165, 116, 0.5);
   }
-  /* === Coffee Tycoon v1.7 – Achievement Rewards === */
-  /* Centered empty state for upgrades tab */
   .empty-state {
     text-align: center;
     padding: 40px;
@@ -714,9 +813,13 @@
 </style>
 </head>
 <body>
+<!-- === Coffee Tycoon v1.8 – Gains and Grains === -->
+<!-- Notification container for right-side stacking notifications -->
+<div id="notificationContainer" class="notification-container"></div>
+
 <div id="instructionsOverlay" class="overlay hidden">
   <div class="instructions-modal">
-    <h2>☕ Welcome to Coffee Tycoon!</h2>
+    <h2>Welcome to Coffee Tycoon!</h2>
     <h3 style="color: #d4a574; margin-top: 24px;">How to Play:</h3>
     <p>Build your coffee empire from the ground up! Click the coffee cup to brew coffee manually, then purchase items from the Shop to automate your production.</p>
     <h3 style="color: #d4a574; margin-top: 24px;">Quick Keys:</h3>
@@ -739,7 +842,7 @@
       </div>
       <div class="key-item">
         <span class="key">5</span>
-        <span>Achievements - Track progress &amp; earn rewards</span>
+        <span>Achievements - Track progress & earn rewards</span>
       </div>
     </div>
     <h3 style="color: #d4a574; margin-top: 24px;">Goal:</h3>
@@ -747,29 +850,30 @@
     <button class="start-btn" id="startGameBtn">Start Brewing!</button>
   </div>
 </div>
-<!-- === Coffee Tycoon v1.7 – Achievement Rewards === -->
-<!-- Version Info Modal -->
+
 <div id="versionModal" class="modal hidden">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">Coffee Tycoon v1.7.2</div>
+      <div class="modal-title">Coffee Tycoon v1.8</div>
       <button class="modal-close" id="closeVersionModal">×</button>
     </div>
     <div class="version-content">
-      <h3>🎉 What's New in v1.7.2</h3>
-<ul>
-  <li><strong>🎯 Progressive Achievement Display:</strong> Achievements now only show unlocked ones and the next one in progression</li>
-  <li><strong>✨ Minor UI and performance improvements:</strong> Enhanced achievement rendering and display logic</li>
-</ul>
-      <h3>🎮 Gameplay Tips</h3>
+      <h3>What's New in v1.8 – Gains and Grains</h3>
+      <ul>
+        <li><strong>Right-Side Notifications:</strong> New stacking notification system for achievements and upgrade packs that appear on the right side of the screen</li>
+        <li><strong>Cleaner UI:</strong> Removed emojis from all achievement and upgrade titles for a more professional look</li>
+        <li><strong>Smart Notifications:</strong> Notifications auto-dismiss after a few seconds and disappear instantly when you claim rewards or purchase upgrades</li>
+        <li><strong>Better Default:</strong> Game now opens to Brew House tab by default</li>
+      </ul>
+      <h3>Gameplay Tips</h3>
       <ul>
         <li>Earn achievements to get instant coffee bonuses and permanent production boosts</li>
         <li>Focus on one shop item at a time to unlock its upgrade series</li>
         <li>Upgrade costs scale ×10 per tier - plan your purchases carefully</li>
         <li>Global upgrades affect all items - save up for huge boosts!</li>
       </ul>
-      <h3>💻 About</h3>
-      <p><strong>Version:</strong> 1.7.2 - Achievement Rewards Patch 2</p>
+      <h3>About</h3>
+      <p><strong>Version:</strong> 1.8 - Gains and Grains</p>
       <p><strong>Created by:</strong> randomdoge</p>
       <p><strong>Play Online:</strong> <a href="https://coffeetycoon.github.io/Coffee-Tycoon/" target="_blank">coffeetycoon.github.io/Coffee-Tycoon</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/CoffeeTycoon/Coffee-Tycoon" target="_blank">View Repository</a></p>
@@ -777,9 +881,8 @@
     </div>
   </div>
 </div>
+
 <header>
-  <!-- === Coffee Tycoon v1.7 – Achievement Rewards === -->
-  <!-- Added help (?) and info (i) buttons -->
   <div class="header-buttons">
     <button class="help-btn" id="helpBtn" title="Help">?</button>
     <button class="info-btn" id="infoBtn" title="Info">i</button>
@@ -787,504 +890,47 @@
   <h1>Coffee Tycoon</h1>
   <p>Brew coffee, earn rewards, and build your empire!</p>
   <div class="status-bar">
-    <div class="stat">☕ Coffee: <span id="coffeeDisplay">9.6M</span></div>
-    <div class="stat">⚡ CPS: <span id="cpsDisplay">88.8k</span></div>
-    <div class="stat">✨ Golden Coffee: <span id="goldenCoffeeDisplay">134</span></div>
+    <div class="stat">Coffee: <span id="coffeeDisplay">0</span></div>
+    <div class="stat">CPS: <span id="cpsDisplay">0</span></div>
+    <div class="stat">Golden Coffee: <span id="goldenCoffeeDisplay">0</span></div>
   </div>
 </header>
+
 <main>
   <div class="tabs">
-    <button class="tab-btn" data-tab="brew">Brew House</button>
-    <button class="tab-btn active" data-tab="shop">Shop</button>
+    <button class="tab-btn active" data-tab="brew">Brew House</button>
+    <button class="tab-btn" data-tab="shop">Shop</button>
     <button class="tab-btn" data-tab="upgrades">Upgrades</button>
     <button class="tab-btn" data-tab="prestige">Prestige</button>
     <button class="tab-btn" data-tab="achievements">Achievements</button>
   </div>
   <div class="content-area">
-    <div id="brewTab" class="tab-content">
+    <div id="brewTab" class="tab-content active">
       <div style="text-align: center;">
-        <button id="coffeeButton" style="transform: scale(1);">☕</button>
+        <button id="coffeeButton">☕</button>
         <div style="font-size: 1.2rem; margin-top: 16px;">Click the cup to brew coffee!</div>
-        <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">9</span> Coffee</div>
+        <div style="margin-top: 12px; opacity: 0.8;">Each click: +<span id="clickPowerDisplay">1</span> Coffee</div>
       </div>
     </div>
-    <div id="shopTab" class="tab-content active">
+    <div id="shopTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Shop</h2>
-      <div id="shopList"><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Auto Brewer</div>
-        <div class="item-effect">Effect: +28 CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">13</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 307</div>
-      </div>
-    </div><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Barista</div>
-        <div class="item-effect">Effect: +576 CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">50</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 541.8k</div>
-      </div>
-    </div><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Coffee Grinder</div>
-        <div class="item-effect">Effect: +288 CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">21</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 230k</div>
-      </div>
-    </div><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Espresso Machine</div>
-        <div class="item-effect">Effect: +720 CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">14</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 642k</div>
-      </div>
-    </div><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Coffee Roaster</div>
-        <div class="item-effect">Effect: +864 CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">7</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 953.7k</div>
-      </div>
-    </div><div class="shop-item affordable">
-      <div class="item-info">
-        <div class="item-name">Coffee Shop</div>
-        <div class="item-effect">Effect: +2.2k CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">4</div>
-        <button class="buy-btn">BUY</button>
-        <div class="cost-tile">☕ 2.4M</div>
-      </div>
-    </div><div class="shop-item">
-      <div class="item-info">
-        <div class="item-name">Coffee Plantation</div>
-        <div class="item-effect">Effect: +5.8k CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">2</div>
-        <button class="buy-btn" disabled="">BUY</button>
-        <div class="cost-tile">☕ 13.5M</div>
-      </div>
-    </div><div class="shop-item">
-      <div class="item-info">
-        <div class="item-name">Coffee Franchise</div>
-        <div class="item-effect">Effect: +17.3k CPS</div>
-      </div>
-      <div class="item-actions">
-        <div class="quantity-display">1</div>
-        <button class="buy-btn" disabled="">BUY</button>
-        <div class="cost-tile">☕ 65M</div>
-      </div>
-    </div></div>
+      <div id="shopList"></div>
     </div>
     <div id="upgradesTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Upgrades</h2>
-      <div id="upgradesList" class="achievements-grid"><div class="upgrade-pack">
-      <div class="upgrade-pack-header">
-        <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">👆</span>
-          <span>Click Power Upgrades</span>
-        </div>
-        <div class="upgrade-pack-progress">3/3</div>
-      </div>
-      <div class="upgrade-pack-description">Increase coffee per click</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 100%; background: #d4a574;"></div>
-      </div>
-      <div class="upgrade-pack-preview">
-        <span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span>
-        
-      </div>
-      
-      <div class="upgrade-pack-toggle">▼ Click to expand</div>
-    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Better Coffee Beans</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">+1 coffee per click</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 1.5k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Premium Coffee Beans</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">+2 coffee per click</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 15k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Exotic Coffee Beans</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">+5 coffee per click</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 150k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div></div></div><div class="upgrade-pack">
-      <div class="upgrade-pack-header">
-        <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">☕</span>
-          <span>Auto Brewer Upgrades</span>
-        </div>
-        <div class="upgrade-pack-progress">1/1</div>
-      </div>
-      <div class="upgrade-pack-description">Boost Auto Brewer production</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 13%; background: #d4a574;"></div>
-      </div>
-      <div class="upgrade-pack-preview">
-        <span class="upgrade-pack-badge">✅</span>
-        
-      </div>
-      
-      <div class="upgrade-pack-toggle">▼ Click to expand</div>
-    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Upgraded Brewers</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Auto Brewers produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 500</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div></div></div><div class="upgrade-pack">
-      <div class="upgrade-pack-header">
-        <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">👨&zwj;🍳</span>
-          <span>Barista Upgrades</span>
-        </div>
-        <div class="upgrade-pack-progress">3/3</div>
-      </div>
-      <div class="upgrade-pack-description">Enhance Barista efficiency</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 38%; background: #d4a574;"></div>
-      </div>
-      <div class="upgrade-pack-preview">
-        <span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span><span class="upgrade-pack-badge">✅</span>
-        
-      </div>
-      
-      <div class="upgrade-pack-toggle">▼ Click to expand</div>
-    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Barista Training</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Baristas produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 1.5k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Expert Baristas</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Baristas produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 15k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Master Baristas</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Baristas produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 150k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div></div></div><div class="upgrade-pack">
-      <div class="upgrade-pack-header">
-        <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">⚙️</span>
-          <span>Coffee Grinder Upgrades</span>
-        </div>
-        <div class="upgrade-pack-progress">1/1</div>
-      </div>
-      <div class="upgrade-pack-description">Improve Coffee Grinder output</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 13%; background: #d4a574;"></div>
-      </div>
-      <div class="upgrade-pack-preview">
-        <span class="upgrade-pack-badge">✅</span>
-        
-      </div>
-      
-      <div class="upgrade-pack-toggle">▼ Click to expand</div>
-    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">Steel Grinders</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Coffee Grinders produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 4k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div></div></div><div class="upgrade-pack">
-      <div class="upgrade-pack-header">
-        <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">🎰</span>
-          <span>Espresso Machine Upgrades</span>
-        </div>
-        <div class="upgrade-pack-progress">1/1</div>
-      </div>
-      <div class="upgrade-pack-description">Upgrade Espresso Machine power</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 13%; background: #d4a574;"></div>
-      </div>
-      <div class="upgrade-pack-preview">
-        <span class="upgrade-pack-badge">✅</span>
-        
-      </div>
-      
-      <div class="upgrade-pack-toggle">▼ Click to expand</div>
-    <div class="upgrade-pack-content collapsed"><div class="upgrade-item purchased">
-        <div class="upgrade-header">
-          <div class="upgrade-name">High-Pressure Espresso</div>
-          <div class="upgrade-status">✓ OWNED</div>
-        </div>
-        <div class="upgrade-description">Espresso Machines produce 2× coffee</div>
-        <div class="upgrade-footer">
-          <div class="cost-tile">☕ 8k</div>
-          <button class="upgrade-buy-btn" disabled="">
-            PURCHASED
-          </button>
-        </div>
-      </div></div></div></div>
+      <div id="upgradesList" class="achievements-grid"></div>
     </div>
     <div id="prestigeTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Prestige</h2>
-      <div id="prestigeContent">
-    <div class="prestige-container">
-      <div class="prestige-info">
-        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">✨ Golden Coffee System</h3>
-        <p>Reset your progress to earn Golden Coffee for permanent production multipliers!</p>
-        <div style="font-size: 2rem; font-weight: 700; color: #ffd700; margin: 16px 0;">
-          Current Multiplier: 14.4x
-        </div>
-      </div>
-      <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-        <p><strong>How it works:</strong></p>
-        <p>• Every 10B total coffees = 1 Golden Coffee</p>
-        <p>• Each Golden Coffee gives +10% production (permanent!)</p>
-        <p>• Prestiging resets coffee, items, and upgrades</p>
-        <p>• Golden Coffee and multiplier are kept forever</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
-          <div style="opacity: 0.8; margin-bottom: 8px;">Total Coffee Brewed</div>
-          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">170.6M</div>
-        </div>
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
-          <div style="opacity: 0.8; margin-bottom: 8px;">Current Golden Coffee</div>
-          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">134</div>
-        </div>
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px;">
-          <div style="opacity: 0.8; margin-bottom: 8px;">After Prestige</div>
-          <div style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">0</div>
-        </div>
-      </div>
-      
-        <div style="text-align: center; margin: 20px 0; font-size: 1.1rem; opacity: 0.8;">
-          Need 1.4T total coffees to prestige
-          <br>Current: 170.6M
-        </div>
-      
-      <button class="prestige-button" disabled="">
-        🔒 Not Enough Coffee Yet
-      </button>
-    </div>
-  </div>
+      <div id="prestigeContent"></div>
     </div>
     <div id="achievementsTab" class="tab-content">
       <h2 style="margin-top: 0; color: #d4a574;">Achievements</h2>
-      <div id="achievementsList" class="achievements-grid"><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">☕ Coffee Milestones</div>
-        <div class="pack-progress">11/16</div>
-      </div>
-      <div class="pack-description">Achievements for brewing coffee</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 69%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span>
-        <span style="opacity: 0.6;">...</span>
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">🏆 General Collection</div>
-        <div class="pack-progress">4/9</div>
-      </div>
-      <div class="pack-description">Achievements for collecting any items</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 44%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Auto Brewer Collection</div>
-        <div class="pack-progress">2/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Auto Brewers</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 17%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Barista Collection</div>
-        <div class="pack-progress">2/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Baristas</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 17%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Coffee Grinder Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Coffee Grinders</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Espresso Machine Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Espresso Machines</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Coffee Roaster Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Coffee Roasters</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Coffee Shop Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Coffee Shops</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Coffee Plantation Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Coffee Plantations</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div><div class="achievement-pack">
-      
-      <div class="pack-header">
-        <div class="pack-title">Coffee Franchise Collection</div>
-        <div class="pack-progress">1/12</div>
-      </div>
-      <div class="pack-description">Achievements for owning Coffee Franchises</div>
-      <div class="progress" style="margin-bottom: 12px;">
-        <div class="progress-bar" style="width: 8%; background: #4CAF50;"></div>
-      </div>
-      <div class="pack-preview">
-        <span class="pack-badge">✅</span><span class="pack-badge">⬜</span>
-        
-      </div>
-    </div></div>
+      <div id="achievementsList" class="achievements-grid"></div>
     </div>
   </div>
 </main>
-<!-- Achievement Pack Modal -->
+
 <div id="achievementModal" class="modal hidden">
   <div class="modal-content">
     <div class="modal-header">
@@ -1294,7 +940,18 @@
     <div class="modal-achievements" id="modalAchievements"></div>
   </div>
 </div>
+
 <script>
+/* === Coffee Tycoon v1.8 – Gains and Grains === */
+// Save/load keys retained from v1.7.2 for backward compatibility
+// New optional keys added: activeNotifications (transient, not saved)
+
+/* === Coffee Tycoon v1.8 – Final Polish === */
+// Single unified notification tracking array
+let activeNotifications = [];
+let notificationIdCounter = 0;
+/* === Coffee Tycoon v1.8 – Notification Combination === */
+let notificationTimers = new Map();
 
 // ========== GAME STATE ==========
 const gameState = {
@@ -1309,12 +966,8 @@ const gameState = {
   viewedUpgrades: new Set(),
   viewedAchievements: new Set(),
   achievements: [],
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Track collapsed/expanded state of upgrade packs
   collapsedPacks: new Set(),
-  // Track unclaimed achievement rewards
   unclaimedAchievements: new Set(),
-  // Smooth animation state
   displayCoffee: 0,
   displayCPS: 0,
   targetCoffee: 0,
@@ -1322,8 +975,6 @@ const gameState = {
 };
 
 // ========== SHOP ITEMS ==========
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Rebalanced pricing with power-of-10 progression
 const shopItems = [
   { id: 'brewer', name: 'Auto Brewer', baseCost: 50, cps: 1, scale: 1.15 },
   { id: 'barista', name: 'Barista', baseCost: 500, cps: 5, scale: 1.15 },
@@ -1335,13 +986,10 @@ const shopItems = [
   { id: 'franchise', name: 'Coffee Franchise', baseCost: 50000000, cps: 1200, scale: 1.3 }
 ];
 
-// Initialize items
 shopItems.forEach(item => {
   gameState.items[item.id] = { count: 0, cost: item.baseCost };
 });
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Expanded upgrade system with 8-tier progression for all items
 // ========== UPGRADES ==========
 const upgrades = [
   // Click Power Upgrades
@@ -1372,8 +1020,7 @@ const upgrades = [
     unlockCondition: () => gameState.totalCoffeeAllTime >= 100000,
     pack: 'click-power'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Auto Brewer Upgrades (8 tiers)
+  // Auto Brewer Upgrades
   { 
     id: 'brewer_1', 
     name: 'Upgraded Brewers', 
@@ -1446,7 +1093,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.brewer.count >= 1000,
     pack: 'brewer'
   },
-  // Barista Upgrades (8 tiers)
+  // Barista Upgrades
   { 
     id: 'barista_1', 
     name: 'Barista Training', 
@@ -1519,7 +1166,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.barista.count >= 1000,
     pack: 'barista'
   },
-  // Coffee Grinder Upgrades (8 tiers)
+  // Coffee Grinder Upgrades
   { 
     id: 'grinder_1', 
     name: 'Steel Grinders', 
@@ -1592,8 +1239,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.grinder.count >= 1000,
     pack: 'grinder'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Espresso Machine Upgrades (8 tiers)
+  // Espresso Machine Upgrades
   { 
     id: 'espresso_1', 
     name: 'High-Pressure Espresso', 
@@ -1666,8 +1312,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.espresso.count >= 1000,
     pack: 'espresso'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Coffee Roaster Upgrades (8 tiers)
+  // Coffee Roaster Upgrades
   { 
     id: 'roaster_1', 
     name: 'Convection Roasters', 
@@ -1740,8 +1385,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.roaster.count >= 1000,
     pack: 'roaster'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Coffee Shop Upgrades (8 tiers)
+  // Coffee Shop Upgrades
   { 
     id: 'shop_1', 
     name: 'Cozy Ambiance', 
@@ -1814,8 +1458,7 @@ const upgrades = [
     unlockCondition:() => gameState.items.shop.count >= 1000,
     pack: 'shop'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Coffee Plantation Upgrades (8 tiers)
+  // Coffee Plantation Upgrades
   { 
     id: 'plantation_1', 
     name: 'Irrigation Systems', 
@@ -1888,8 +1531,7 @@ const upgrades = [
     unlockCondition: () => gameState.items.plantation.count >= 1000,
     pack: 'plantation'
   },
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Coffee Franchise Upgrades (8 tiers)
+  // Coffee Franchise Upgrades
   { 
     id: 'franchise_1', 
     name: 'Regional Marketing', 
@@ -1995,141 +1637,141 @@ const upgrades = [
   }
 ];
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Upgrade pack definitions for organizing upgrades
+/* === Coffee Tycoon v1.8 – Gains and Grains === */
+// Upgrade pack definitions (emojis removed)
 const upgradePacks = [
   { 
     id: 'click-power', 
     name: 'Click Power Upgrades', 
-    icon: '👆', 
+    icon: '', 
     description: 'Increase coffee per click'
   },
   { 
     id: 'brewer', 
     name: 'Auto Brewer Upgrades', 
-    icon: '☕', 
+    icon: '', 
     description: 'Boost Auto Brewer production'
   },
   { 
     id: 'barista', 
     name: 'Barista Upgrades', 
-    icon: '👨&zwj;🍳', 
+    icon: '', 
     description: 'Enhance Barista efficiency'
   },
   { 
     id: 'grinder', 
     name: 'Coffee Grinder Upgrades', 
-    icon: '⚙️', 
+    icon: '', 
     description: 'Improve Coffee Grinder output'
   },
   { 
     id: 'espresso', 
     name: 'Espresso Machine Upgrades', 
-    icon: '🎰', 
+    icon: '', 
     description: 'Upgrade Espresso Machine power'
   },
   { 
     id: 'roaster', 
     name: 'Coffee Roaster Upgrades', 
-    icon: '🔥', 
+    icon: '', 
     description: 'Amplify Coffee Roaster performance'
   },
   { 
     id: 'shop', 
     name: 'Coffee Shop Upgrades', 
-    icon: '🏪', 
+    icon: '', 
     description: 'Expand Coffee Shop capabilities'
   },
   { 
     id: 'plantation', 
     name: 'Coffee Plantation Upgrades', 
-    icon: '🌱', 
+    icon: '', 
     description: 'Optimize Coffee Plantation yield'
   },
   { 
     id: 'franchise', 
     name: 'Coffee Franchise Upgrades', 
-    icon: '🌍', 
+    icon: '', 
     description: 'Scale Coffee Franchise reach'
   },
   { 
     id: 'global', 
     name: 'Global Upgrades', 
-    icon: '✨', 
+    icon: '', 
     description: 'Universal production multipliers'
   }
 ];
 
 // ========== ACHIEVEMENTS ==========
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Achievement reward system: { type: 'coffee' | 'multiplier', value: number, itemId?: string }
+/* === Coffee Tycoon v1.8 – Gains and Grains === */
+// Achievements (emojis removed from titles)
 const achievements = [
   // Coffee milestones
-  { id: 'first', name: '🥉 First Coffee', requirement: 'Brew 1 coffee', condition: () => gameState.totalCoffeeAllTime >= 1, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1", percent: () => Math.min(gameState.totalCoffeeAllTime / 1 * 100, 100), reward: { type: 'coffee', value: 1 } },
-  { id: 'ten', name: '☕ Ten Brews', requirement: 'Brew 10 coffees', condition: () => gameState.totalCoffeeAllTime >= 10, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10", percent: () => Math.min(gameState.totalCoffeeAllTime / 10 * 100, 100), reward: { type: 'coffee', value: 5 } },
-  { id: 'hundred', name: '☕ Hundred Brews', requirement: 'Brew 100 coffees', condition: () => gameState.totalCoffeeAllTime >= 100, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100", percent: () => Math.min(gameState.totalCoffeeAllTime / 100 * 100, 100), reward: { type: 'coffee', value: 50 } },
-  { id: 'thousand', name: '☕ Thousand Brews', requirement: 'Brew 1,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000 * 100, 100), reward: { type: 'coffee', value: 500 } },
-  { id: 'tenk', name: '☕ Ten Thousand', requirement: 'Brew 10,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000 * 100, 100), reward: { type: 'coffee', value: 5000 } },
-  { id: 'hundredk', name: '☕ Hundred Thousand', requirement: 'Brew 100,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000 * 100, 100), reward: { type: 'coffee', value: 50000 } },
-  { id: 'million', name: '🏆 Million Brews', requirement: 'Brew 1,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000 * 100, 100), reward: { type: 'coffee', value: 500000 } },
-  { id: 'tenmill', name: '💎 Ten Million Brews', requirement: 'Brew 10,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000 * 100, 100), reward: { type: 'coffee', value: 5000000 } },
-  { id: 'hundredmill', name: '👑 Hundred Million Brews', requirement: 'Brew 100,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000 * 100, 100), reward: { type: 'coffee', value: 50000000 } },
-  { id: 'billion', name: '🌟 Billion Brews', requirement: 'Brew 1,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000 * 100, 100), reward: { type: 'coffee', value: 500000000 } },
-  { id: 'tenb', name: '⭐⭐ Ten Billion Brews', requirement: 'Brew 10,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000000 * 100, 100), reward: { type: 'coffee', value: 5000000000 } },
-  { id: 'hundredb', name: '⭐⭐⭐ Hundred Billion Brews', requirement: 'Brew 100,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000000 * 100, 100), reward: { type: 'coffee', value: 50000000000 } },
-  { id: 'trillion', name: '🌌 Trillion Brews', requirement: 'Brew 1,000,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000000 * 100, 100), reward: { type: 'coffee', value: 500000000000 } },
+  { id: 'first', name: 'First Coffee', requirement: 'Brew 1 coffee', condition: () => gameState.totalCoffeeAllTime >= 1, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1", percent: () => Math.min(gameState.totalCoffeeAllTime / 1 * 100, 100), reward: { type: 'coffee', value: 1 } },
+  { id: 'ten', name: 'Ten Brews', requirement: 'Brew 10 coffees', condition: () => gameState.totalCoffeeAllTime >= 10, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10", percent: () => Math.min(gameState.totalCoffeeAllTime / 10 * 100, 100), reward: { type: 'coffee', value: 5 } },
+  { id: 'hundred', name: 'Hundred Brews', requirement: 'Brew 100 coffees', condition: () => gameState.totalCoffeeAllTime >= 100, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100", percent: () => Math.min(gameState.totalCoffeeAllTime / 100 * 100, 100), reward: { type: 'coffee', value: 50 } },
+  { id: 'thousand', name: 'Thousand Brews', requirement: 'Brew 1,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000 * 100, 100), reward: { type: 'coffee', value: 500 } },
+  { id: 'tenk', name: 'Ten Thousand', requirement: 'Brew 10,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000 * 100, 100), reward: { type: 'coffee', value: 5000 } },
+  { id: 'hundredk', name: 'Hundred Thousand', requirement: 'Brew 100,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000 * 100, 100), reward: { type: 'coffee', value: 50000 } },
+  { id: 'million', name: 'Million Brews', requirement: 'Brew 1,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000 * 100, 100), reward: { type: 'coffee', value: 500000 } },
+  { id: 'tenmill', name: 'Ten Million Brews', requirement: 'Brew 10,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000 * 100, 100), reward: { type: 'coffee', value: 5000000 } },
+  { id: 'hundredmill', name: 'Hundred Million Brews', requirement: 'Brew 100,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000 * 100, 100), reward: { type: 'coffee', value: 50000000 } },
+  { id: 'billion', name: 'Billion Brews', requirement: 'Brew 1,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000 * 100, 100), reward: { type: 'coffee', value: 500000000 } },
+  { id: 'tenb', name: 'Ten Billion Brews', requirement: 'Brew 10,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 10000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/10,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 10000000000 * 100, 100), reward: { type: 'coffee', value: 5000000000 } },
+  { id: 'hundredb', name: 'Hundred Billion Brews', requirement: 'Brew 100,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 100000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/100,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 100000000000 * 100, 100), reward: { type: 'coffee', value: 50000000000 } },
+  { id: 'trillion', name: 'Trillion Brews', requirement: 'Brew 1,000,000,000,000 coffees', condition: () => gameState.totalCoffeeAllTime >= 1000000000000, earned: false, progress: () => Math.floor(gameState.totalCoffeeAllTime) + "/1,000,000,000,000", percent: () => Math.min(gameState.totalCoffeeAllTime / 1000000000000 * 100, 100), reward: { type: 'coffee', value: 500000000000 } },
   // General item achievements
-  { id: 'first_item', name: '🥉 Novice Collector', requirement: 'Purchase your first item', condition: () => Object.values(gameState.items).some(i => i.count >= 1), earned: false, progress: () => Object.values(gameState.items).some(i => i.count >= 1) ? "1/1" : "0/1", percent: () => Object.values(gameState.items).some(i => i.count >= 1) ? 100 : 0, reward: { type: 'coffee', value: 50 } },
-  { id: 'five_any', name: '🥈 Apprentice Purchaser', requirement: 'Have 5 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 5), earned: false, progress: () => {
+  { id: 'first_item', name: 'Novice Collector', requirement: 'Purchase your first item', condition: () => Object.values(gameState.items).some(i => i.count >= 1), earned: false, progress: () => Object.values(gameState.items).some(i => i.count >= 1) ? "1/1" : "0/1", percent: () => Object.values(gameState.items).some(i => i.count >= 1) ? 100 : 0, reward: { type: 'coffee', value: 50 } },
+  { id: 'five_any', name: 'Apprentice Purchaser', requirement: 'Have 5 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 5), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/5";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 5 * 100, 100);
   }, reward: { type: 'coffee', value: 3 } },
-  { id: 'ten_any', name: '🥇 Seasoned Buyer', requirement: 'Have 10 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 10), earned: false, progress: () => {
+  { id: 'ten_any', name: 'Seasoned Buyer', requirement: 'Have 10 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 10), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/10";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 10 * 100, 100);
   }, reward: { type: 'coffee', value: 5 } },
-  { id: 'fifty_any', name: '💎 Bulk Investor', requirement: 'Have 50 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 50), earned: false, progress: () => {
+  { id: 'fifty_any', name: 'Bulk Investor', requirement: 'Have 50 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 50), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/50";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 50 * 100, 100);
   }, reward: { type: 'coffee', value: 25 } },
-  { id: 'hundred_any', name: '💯 Century Collector', requirement: 'Have 100 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 100), earned: false, progress: () => {
+  { id: 'hundred_any', name: 'Century Collector', requirement: 'Have 100 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 100), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/100";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 100 * 100, 100);
   }, reward: { type: 'coffee', value: 50 } },
-  { id: '200_any', name: '💯💯 Double Century', requirement: 'Have 200 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 200), earned: false, progress: () => {
+  { id: '200_any', name: 'Double Century', requirement: 'Have 200 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 200), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/200";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 200 * 100, 100);
   }, reward: { type: 'coffee', value: 100 } },
-  { id: '300_any', name: '💯💯💯 Triple Century', requirement: 'Have 300 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 300), earned: false, progress: () => {
+  { id: '300_any', name: 'Triple Century', requirement: 'Have 300 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 300), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/300";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 300 * 100, 100);
   }, reward: { type: 'coffee', value: 150 } },
-  { id: '400_any', name: '💯💯💯💯 Quad Century', requirement: 'Have 400 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 400), earned: false, progress: () => {
+  { id: '400_any', name: 'Quad Century', requirement: 'Have 400 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 400), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/400";
   }, percent: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return Math.min(max / 400 * 100, 100);
   }, reward: { type: 'coffee', value: 200 } },
-  { id: '500_any', name: '🏅 Quint Century', requirement: 'Have 500 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 500), earned: false, progress: () => {
+  { id: '500_any', name: 'Quint Century', requirement: 'Have 500 of any single item', condition: () => Object.values(gameState.items).some(i => i.count >= 500), earned: false, progress: () => {
     const max = Math.max(...Object.values(gameState.items).map(i => i.count), 0);
     return max + "/500";
   }, percent: () => {
@@ -2138,12 +1780,12 @@ const achievements = [
   }, reward: { type: 'coffee', value: 250 } }
 ];
 
-// Add item-specific achievements for each shop item
+// Add item-specific achievements
 shopItems.forEach(item => {
   achievements.push(
     { 
       id: `${item.id}_10`, 
-      name: `🔟 ${item.name} Expert`, 
+      name: `${item.name} Expert`, 
       requirement: `Own 10 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 10, 
       earned: false, 
@@ -2153,7 +1795,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_50`, 
-      name: `⭐ ${item.name} Master`, 
+      name: `${item.name} Master`, 
       requirement: `Own 50 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 50, 
       earned: false, 
@@ -2163,7 +1805,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_100`, 
-      name: `💯 ${item.name} Century`, 
+      name: `${item.name} Century`, 
       requirement: `Own 100 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 100, 
       earned: false, 
@@ -2173,7 +1815,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_200`, 
-      name: `💯💯 ${item.name} Bicentennial`, 
+      name: `${item.name} Bicentennial`, 
       requirement: `Own 200 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 200, 
       earned: false, 
@@ -2183,7 +1825,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_300`, 
-      name: `💯💯💯 ${item.name} Tricentennial`, 
+      name: `${item.name} Tricentennial`, 
       requirement: `Own 300 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 300, 
       earned: false, 
@@ -2193,7 +1835,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_400`, 
-      name: `💯💯💯💯 ${item.name} Quadcentennial`, 
+      name: `${item.name} Quadcentennial`, 
       requirement: `Own 400 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 400, 
       earned: false, 
@@ -2203,7 +1845,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_500`, 
-      name: `🏅 ${item.name} Quincentennial`, 
+      name: `${item.name} Quincentennial`, 
       requirement: `Own 500 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 500, 
       earned: false, 
@@ -2213,7 +1855,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_600`, 
-      name: `🌟 ${item.name} Sexcentennial`, 
+      name: `${item.name} Sexcentennial`, 
       requirement: `Own 600 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 600, 
       earned: false, 
@@ -2223,7 +1865,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_700`, 
-      name: `🌟🌟 ${item.name} Septcentennial`, 
+      name: `${item.name} Septcentennial`, 
       requirement: `Own 700 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 700, 
       earned: false, 
@@ -2233,7 +1875,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_800`, 
-      name: `🌟🌟🌟 ${item.name} Octcentennial`, 
+      name: `${item.name} Octcentennial`, 
       requirement: `Own 800 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 800, 
       earned: false, 
@@ -2243,7 +1885,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_900`, 
-      name: `⭐⭐⭐ ${item.name} Noncentennial`, 
+      name: `${item.name} Noncentennial`, 
       requirement: `Own 900 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 900, 
       earned: false, 
@@ -2253,7 +1895,7 @@ shopItems.forEach(item => {
     },
     { 
       id: `${item.id}_1000`, 
-      name: `👑 ${item.name} Millennium`, 
+      name: `${item.name} Millennium`, 
       requirement: `Own 1,000 ${item.name}s`, 
       condition: () => gameState.items[item.id].count >= 1000, 
       earned: false, 
@@ -2267,26 +1909,20 @@ shopItems.forEach(item => {
 gameState.achievements = achievements;
 
 // ========== ACHIEVEMENT PACKS ==========
-// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
-// Helper function to get visible achievements (earned + next in progression)
 function getVisibleAchievements(achievementList) {
   const visible = [];
   
   for (let i = 0; i < achievementList.length; i++) {
     const achievement = achievementList[i];
     
-    // Always show earned achievements
     if (achievement.earned) {
       visible.push(achievement);
     } 
-    // Show the next unearned achievement in the sequence
     else {
-      // Check if this is the first unearned in the sequence
       const previousEarned = i === 0 || achievementList[i - 1].earned;
       if (previousEarned) {
         visible.push(achievement);
       }
-      // Stop after finding the first unearned to show
       break;
     }
   }
@@ -2294,15 +1930,15 @@ function getVisibleAchievements(achievementList) {
   return visible;
 }
 
-// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
-// Updated achievement packs with progressive display
+/* === Coffee Tycoon v1.8 – Gains and Grains === */
+// Achievement packs (emojis removed)
 function getAchievementPacks() {
   const packs = [
     {
       id: 'coffee_milestones',
-      title: '☕ Coffee Milestones',
+      title: 'Coffee Milestones',
       description: 'Achievements for brewing coffee',
-      icon: '☕',
+      icon: '',
       achievements: achievements.filter(a => 
         a.id.includes('first') || a.id.includes('ten') || 
         a.id.includes('hundred') || a.id.includes('thousand') || 
@@ -2312,9 +1948,9 @@ function getAchievementPacks() {
     },
     {
       id: 'general_collection',
-      title: '🏆 General Collection',
+      title: 'General Collection',
       description: 'Achievements for collecting any items',
-      icon: '🏆',
+      icon: '',
       achievements: achievements.filter(a => 
         a.id.includes('_item') || 
         a.id.includes('_any') || 
@@ -2323,7 +1959,6 @@ function getAchievementPacks() {
     }
   ];
   
-  // Add a pack for each shop item
   shopItems.forEach(item => {
     const itemAchievements = achievements.filter(a => a.id.startsWith(item.id + '_'));
     if (itemAchievements.length > 0) {
@@ -2331,7 +1966,7 @@ function getAchievementPacks() {
         id: item.id + '_pack',
         title: `${item.name} Collection`,
         description: `Achievements for owning ${item.name}s`,
-        icon: '🏅',
+        icon: '',
         achievements: itemAchievements
       });
     }
@@ -2372,17 +2007,145 @@ function showToast(message, isAchievement = false) {
   setTimeout(() => toast.remove(), 3000);
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Helper function to get unlock requirement text for locked upgrades
+/* === Coffee Tycoon v1.8 – Final Polish === */
+// Unified notification system with instant removal
+function showNotification(title, message, type = 'default', metadata = {}) {
+  const container = document.getElementById('notificationContainer');
+  const notifId = notificationIdCounter++;
+  
+  const notif = document.createElement('div');
+  notif.className = 'notification';
+  notif.dataset.notifId = notifId;
+  
+  if (type === 'achievement') {
+    notif.classList.add('achievement-notif');
+    notif.dataset.achievementId = metadata.achievementId || '';
+  } else if (type === 'upgrade') {
+    notif.classList.add('upgrade-notif');
+    notif.dataset.packId = metadata.packId || '';
+  }
+  
+  notif.innerHTML = `
+    <div class="notification-title">${title}</div>
+    <div class="notification-message">${message}</div>
+  `;
+  
+  container.appendChild(notif);
+  activeNotifications.push(notif);
+  
+  // Auto-dismiss after 3 seconds
+  const timer = setTimeout(() => {
+    removeNotificationNow(notif);
+  }, 3000);
+  notificationTimers.set(notif, timer);
+  
+  return notifId;
+}
+
+/* === Coffee Tycoon v1.8 – Notification Combination === */
+/* === Coffee Tycoon v1.8 – Final Notification Merge Fix === */
+function showPurchaseNotification(itemName) {
+  const container = document.getElementById('notificationContainer');
+  
+  // Check if there's an existing notification for this item
+  const existing = activeNotifications.find(n => 
+    n.dataset.itemName === itemName && 
+    n.classList.contains('purchase-notif')
+  );
+  
+  if (existing) {
+    // Extract current count from message text
+    const messageEl = existing.querySelector('.notification-message');
+    const match = messageEl.textContent.match(/x(\d+)/);
+    const count = match ? parseInt(match[1]) + 1 : 2;
+    
+    // Update message with new count
+    messageEl.textContent = `Purchased x${count} ${itemName}`;
+    existing.dataset.count = count;
+    
+    // Clear old timer and set new one
+    const oldTimer = notificationTimers.get(existing);
+    if (oldTimer) clearTimeout(oldTimer);
+    
+    const newTimer = setTimeout(() => {
+      removeNotificationNow(existing);
+    }, 4000);
+    notificationTimers.set(existing, newTimer);
+    
+    // Subtle pulse effect to show update without jarring animation
+    existing.style.transform = 'scale(1.02)';
+    setTimeout(() => {
+      existing.style.transform = '';
+    }, 150);
+    
+    return;
+  }
+  
+  // Create new notification
+  const notifId = notificationIdCounter++;
+  const notif = document.createElement('div');
+  notif.className = 'notification purchase-notif';
+  notif.dataset.notifId = notifId;
+  notif.dataset.itemName = itemName;
+  notif.dataset.count = 1;
+  
+  notif.innerHTML = `
+    <div class="notification-title">Purchase Complete</div>
+    <div class="notification-message">Purchased ${itemName}</div>
+  `;
+  
+  container.appendChild(notif);
+  activeNotifications.push(notif);
+  
+  // Auto-dismiss after 4 seconds
+  const timer = setTimeout(() => {
+    removeNotificationNow(notif);
+  }, 4000);
+  notificationTimers.set(notif, timer);
+}
+
+/* === Coffee Tycoon v1.8 – Final Notification Merge Fix === */
+function removeNotificationNow(notificationElement) {
+  if (!notificationElement || !notificationElement.parentNode) return;
+  
+  // Clear any associated timer
+  const timer = notificationTimers.get(notificationElement);
+  if (timer) {
+    clearTimeout(timer);
+    notificationTimers.delete(notificationElement);
+  }
+  
+  // Remove from tracking array immediately to prevent duplicates
+  activeNotifications = activeNotifications.filter(n => n !== notificationElement);
+  
+  // Apply fade-out animation
+  notificationElement.classList.add('fade-out');
+  
+  // Remove from DOM after animation
+  setTimeout(() => {
+    if (notificationElement.parentNode) {
+      notificationElement.remove();
+    }
+  }, 300);
+}
+
+function removeNotificationsByAchievement(achievementId) {
+  const toRemove = activeNotifications.filter(n => n.dataset.achievementId === achievementId);
+  toRemove.forEach(n => removeNotificationNow(n));
+}
+
+function removeNotificationsByPack(packId) {
+  const toRemove = activeNotifications.filter(n => n.dataset.packId === packId);
+  toRemove.forEach(n => removeNotificationNow(n));
+}
+
 function getUnlockRequirementText(upgrade) {
-  // Check if it's a click power upgrade
   if (upgrade.pack === 'click-power') {
     const requiredCoffee = upgrade.id === 'click_1' ? 1000 : 
                           upgrade.id === 'click_2' ? 10000 : 100000;
     return `Requires ${abbreviateNumber(requiredCoffee)} total coffee brewed (Currently: ${abbreviateNumber(gameState.totalCoffeeAllTime)})`;
   }
   
-  // Check if it's an item-specific upgrade
   const itemMatch = upgrade.id.match(/^(\w+)_(\d+)$/);
   if (itemMatch) {
     const itemId = itemMatch[1];
@@ -2394,7 +2157,6 @@ function getUnlockRequirementText(upgrade) {
     return `Requires ${required} ${itemName}s (Currently: ${current})`;
   }
   
-  // Check if it's a global upgrade
   if (upgrade.pack === 'global') {
     if (upgrade.id === 'global_1') {
       return `Requires 10 of each item type`;
@@ -2406,26 +2168,26 @@ function getUnlockRequirementText(upgrade) {
   return 'Unlock requirements not met';
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Helper function to format achievement reward text
 function getRewardText(reward) {
   if (reward.type === 'coffee') {
-    return `🎁 Reward: ${abbreviateNumber(reward.value)} Coffee`;
+    return `Reward: ${abbreviateNumber(reward.value)} Coffee`;
   } else if (reward.type === 'multiplier') {
     const itemName = shopItems.find(i => i.id === reward.itemId)?.name;
     const multiplierPercent = ((reward.value - 1) * 100).toFixed(0);
-    return `🎁 Reward: +${multiplierPercent}% ${itemName} production`;
+    return `Reward: +${multiplierPercent}% ${itemName} production`;
   }
   return '';
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Apply achievement reward when claimed
 function claimAchievementReward(achievement) {
   if (!achievement.reward || !gameState.unclaimedAchievements.has(achievement.id)) return '';
   
   gameState.unclaimedAchievements.delete(achievement.id);
   gameState.viewedAchievements.add(achievement.id);
+  
+  /* === Coffee Tycoon v1.8 – Final Polish === */
+  // Remove related notifications instantly
+  removeNotificationsByAchievement(achievement.id);
   
   if (achievement.reward.type === 'coffee') {
     gameState.coffee += achievement.reward.value;
@@ -2496,7 +2258,6 @@ function loadGame() {
 
 // ========== NOTIFICATION BADGES ==========
 function updateNotificationBadges() {
-  // Upgrades badge
   const availableUpgrades = upgrades.filter(u => 
     u.unlockCondition() && 
     !gameState.purchasedUpgrades.has(u.id) && 
@@ -2512,8 +2273,6 @@ function updateNotificationBadges() {
     upgradeBadge.remove();
   }
   
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Achievements badge - only show for unclaimed rewards
   const unclaimedCount = gameState.unclaimedAchievements.size;
   const achievementsBtn = document.querySelector('[data-tab="achievements"]');
   let achievementBadge = achievementsBtn.querySelector('.notification-badge');
@@ -2528,7 +2287,6 @@ function updateNotificationBadges() {
 
 // ========== UI RENDERING ==========
 function updateUI() {
-  // Use smoothly animated values for display
   document.getElementById('coffeeDisplay').textContent = abbreviateNumber(gameState.displayCoffee);
   document.getElementById('cpsDisplay').textContent = abbreviateNumber(gameState.displayCPS);
   document.getElementById('goldenCoffeeDisplay').textContent = gameState.goldenCoffee;
@@ -2570,9 +2328,10 @@ function renderShop() {
   });
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Completely rewritten render function with pack organization (styled like achievement packs)
-// FIXED: Only shows unlocked upgrades and packs
+/* === Coffee Tycoon v1.8 – Final Polish === */
+// Track previously unlocked upgrades for notification generation
+let previouslyUnlockedUpgrades = new Set();
+
 function renderUpgrades() {
   const container = document.getElementById('upgradesList');
   container.innerHTML = '';
@@ -2580,23 +2339,36 @@ function renderUpgrades() {
   
   const currentTab = document.querySelector('.tab-btn.active')?.dataset.tab;
   
-  // Group upgrades by pack
   upgradePacks.forEach(pack => {
     const packUpgrades = upgrades.filter(u => u.pack === pack.id);
     if (packUpgrades.length === 0) return;
     
-    // === v1.7 FIX: Only show pack if at least one upgrade is unlocked ===
     const unlockedUpgrades = packUpgrades.filter(u => u.unlockCondition());
-    if (unlockedUpgrades.length === 0) return; // Skip pack entirely if no upgrades unlocked
+    if (unlockedUpgrades.length === 0) return;
     
-    // Calculate pack statistics
+    // Check for newly unlocked upgrades in this pack
+    const newlyUnlocked = unlockedUpgrades.filter(u => 
+      !previouslyUnlockedUpgrades.has(u.id) && 
+      !gameState.purchasedUpgrades.has(u.id)
+    );
+    
+    if (newlyUnlocked.length > 0 && currentTab !== 'upgrades') {
+      showNotification(
+        'New Upgrades Available!',
+        `${pack.name}: ${newlyUnlocked.length} upgrade${newlyUnlocked.length > 1 ? 's' : ''} unlocked`,
+        'upgrade',
+        { packId: pack.id }
+      );
+    }
+    
+    newlyUnlocked.forEach(u => previouslyUnlockedUpgrades.add(u.id));
+    
     const purchasedUpgrades = packUpgrades.filter(u => gameState.purchasedUpgrades.has(u.id));
     const affordableUpgrades = unlockedUpgrades.filter(u => 
       !gameState.purchasedUpgrades.has(u.id) && 
       gameState.coffee >= u.cost
     );
     
-    // Mark upgrades as viewed if on upgrades tab
     if (currentTab === 'upgrades') {
       unlockedUpgrades.forEach(u => {
         if (!gameState.purchasedUpgrades.has(u.id)) {
@@ -2608,16 +2380,13 @@ function renderUpgrades() {
     const isCollapsed = gameState.collapsedPacks.has(pack.id);
     const progressPercent = packUpgrades.length > 0 ? Math.round((purchasedUpgrades.length / packUpgrades.length) * 100) : 0;
     
-    // Create pack container (styled like achievement pack)
     const packDiv = document.createElement('div');
     packDiv.className = 'upgrade-pack';
     
-    // === v1.7 FIX: Only show unlocked upgrades in preview ===
     const previewUpgrades = unlockedUpgrades.slice(0, 8);
     packDiv.innerHTML = `
       <div class="upgrade-pack-header">
         <div class="upgrade-pack-title">
-          <span class="upgrade-pack-icon">${pack.icon}</span>
           <span>${pack.name}</span>
         </div>
         <div class="upgrade-pack-progress">${purchasedUpgrades.length}/${unlockedUpgrades.length}</div>
@@ -2630,27 +2399,23 @@ function renderUpgrades() {
         ${previewUpgrades.map(u => {
           const purchased = gameState.purchasedUpgrades.has(u.id);
           const affordable = !purchased && gameState.coffee >= u.cost;
-          return `<span class="upgrade-pack-badge">${purchased ? '✅' : (affordable ? '🟢' : '⬜')}</span>`;
+          return `<span class="upgrade-pack-badge">${purchased ? '✓' : (affordable ? '●' : '○')}</span>`;
         }).join('')}
         ${unlockedUpgrades.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
       </div>
-      ${affordableUpgrades.length > 0 ? `<div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem; margin-top: 8px;">💚 ${affordableUpgrades.length} affordable upgrade${affordableUpgrades.length !== 1 ? 's' : ''}</div>` : ''}
+      ${affordableUpgrades.length > 0 ? `<div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem; margin-top: 8px;">${affordableUpgrades.length} affordable upgrade${affordableUpgrades.length !== 1 ? 's' : ''}</div>` : ''}
       <div class="upgrade-pack-toggle">${isCollapsed ? '▼ Click to expand' : '▲ Click to collapse'}</div>
     `;
     
-    // Make the entire pack clickable to toggle
     packDiv.onclick = (e) => {
-      // Don't toggle if clicking on a button inside the content
       if (!e.target.closest('.upgrade-buy-btn')) {
         toggleUpgradePack(pack.id);
       }
     };
     
-    // Add content area for individual upgrades
     const contentDiv = document.createElement('div');
     contentDiv.className = `upgrade-pack-content ${isCollapsed ? 'collapsed' : ''}`;
     
-    // === v1.7 FIX: Only add unlocked upgrades to pack content ===
     unlockedUpgrades.forEach(upgrade => {
       const purchased = gameState.purchasedUpgrades.has(upgrade.id);
       const canAfford = gameState.coffee >= upgrade.cost && !purchased;
@@ -2676,7 +2441,7 @@ function renderUpgrades() {
       
       if (!purchased) {
         upgradeDiv.querySelector('.upgrade-buy-btn').onclick = (e) => {
-          e.stopPropagation(); // Prevent pack toggle when clicking buy button
+          e.stopPropagation();
           buyUpgrade(upgrade.id);
         };
       }
@@ -2688,14 +2453,11 @@ function renderUpgrades() {
     container.appendChild(packDiv);
   });
   
-  // === v1.7 FIX: Show empty state if no upgrades available ===
   if (container.children.length === 0) {
     container.innerHTML = '<div class="empty-state">No upgrades available yet. Keep brewing coffee and purchasing items to unlock upgrades!</div>';
   }
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Toggle upgrade pack collapsed state
 function toggleUpgradePack(packId) {
   if (gameState.collapsedPacks.has(packId)) {
     gameState.collapsedPacks.delete(packId);
@@ -2708,8 +2470,6 @@ function toggleUpgradePack(packId) {
 
 function renderPrestige() {
   const container = document.getElementById('prestigeContent');
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Changed prestige requirement to 10 billion coffee
   const goldenCoffeeToGain = Math.floor(gameState.totalCoffeeAllTime / 10000000000);
   const newMultiplier = 1 + (goldenCoffeeToGain * 0.1);
   const canPrestige = goldenCoffeeToGain > gameState.goldenCoffee;
@@ -2717,7 +2477,7 @@ function renderPrestige() {
   container.innerHTML = `
     <div class="prestige-container">
       <div class="prestige-info">
-        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">✨ Golden Coffee System</h3>
+        <h3 style="color: #ffd700; font-size: 1.5rem; margin: 0 0 16px 0;">Golden Coffee System</h3>
         <p>Reset your progress to earn Golden Coffee for permanent production multipliers!</p>
         <div style="font-size: 2rem; font-weight: 700; color: #ffd700; margin: 16px 0;">
           Current Multiplier: ${gameState.prestigeMultiplier.toFixed(1)}x
@@ -2758,7 +2518,7 @@ function renderPrestige() {
         </div>
       `}
       <button class="prestige-button" ${!canPrestige ? 'disabled' : ''}>
-        ${canPrestige ? '✨ PRESTIGE NOW ✨' : '🔒 Not Enough Coffee Yet'}
+        ${canPrestige ? 'PRESTIGE NOW' : 'Not Enough Coffee Yet'}
       </button>
     </div>
   `;
@@ -2769,8 +2529,6 @@ function renderPrestige() {
   }
 }
 
-// === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
-// Updated achievement rendering with progressive display
 function renderAchievements() {
   const container = document.getElementById('achievementsList');
   container.innerHTML = '';
@@ -2778,24 +2536,19 @@ function renderAchievements() {
   
   const packs = getAchievementPacks();
   packs.forEach(pack => {
-    // Get only visible achievements (earned + next)
     const visibleAchievements = getVisibleAchievements(pack.achievements);
     
-    // Skip empty packs
     if (visibleAchievements.length === 0) return;
     
     const earnedCount = pack.achievements.filter(a => a.earned).length;
     const totalCount = pack.achievements.length;
     const progressPercent = totalCount > 0 ? Math.round((earnedCount / totalCount) * 100) : 0;
     
-    // === Coffee Tycoon v1.7 – Achievement Rewards ===
-    // Count unclaimed rewards in this pack
     const unclaimedInPack = pack.achievements.filter(a => gameState.unclaimedAchievements.has(a.id)).length;
     
     const div = document.createElement('div');
     div.className = 'achievement-pack';
     
-    // Add notification badge if there are unclaimed rewards
     const badgeHTML = unclaimedInPack > 0 ? `<div class="notification-badge">${unclaimedInPack}</div>` : '';
     
     div.innerHTML = `
@@ -2811,7 +2564,7 @@ function renderAchievements() {
       <div class="pack-preview">
         ${visibleAchievements.slice(0, 8).map(a => {
           const isUnclaimed = gameState.unclaimedAchievements.has(a.id);
-          return `<span class="pack-badge">${a.earned ? (isUnclaimed ? '🎁' : '✅') : '⬜'}</span>`;
+          return `<span class="pack-badge">${a.earned ? (isUnclaimed ? '!' : '✓') : '○'}</span>`;
         }).join('')}
         ${visibleAchievements.length > 8 ? '<span style="opacity: 0.6;">...</span>' : ''}
       </div>
@@ -2830,8 +2583,6 @@ function openAchievementModal(pack) {
   modalTitle.textContent = pack.title;
   modalAchievements.innerHTML = '';
   
-  // === Coffee Tycoon v1.7.2 – Achievement Rewards Patch 2 ===
-  // Only show visible achievements in modal (earned + next)
   const visibleAchievements = getVisibleAchievements(pack.achievements);
   
   visibleAchievements.forEach(a => {
@@ -2840,8 +2591,6 @@ function openAchievementModal(pack) {
     
     const div = document.createElement('div');
     
-    // === Coffee Tycoon v1.7 – Achievement Rewards ===
-    // Only unclaimed achievements get the golden glow
     if (isUnclaimed) {
       div.className = 'modal-achievement unlocked unclaimed';
     } else if (isClaimed) {
@@ -2852,7 +2601,7 @@ function openAchievementModal(pack) {
     
     div.innerHTML = `
       <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">
-        ${a.earned ? (isUnclaimed ? '🎁' : '✅') : '⬜'} ${a.name}
+        ${a.earned ? (isUnclaimed ? '!' : '✓') : '○'} ${a.name}
       </div>
       <div style="opacity: 0.9; margin-bottom: 8px; font-size: 0.9rem;">${a.requirement}</div>
       ${a.reward ? `<div class="achievement-reward">${getRewardText(a.reward)}${isUnclaimed ? ' - Click to claim!' : ''}</div>` : ''}
@@ -2862,14 +2611,12 @@ function openAchievementModal(pack) {
       </div>
     `;
     
-    // === Coffee Tycoon v1.7 – Achievement Rewards ===
-    // Add click handler to claim reward
     if (isUnclaimed) {
       div.onclick = () => {
         const rewardText = claimAchievementReward(a);
-        showToast(`🎁 Claimed: ${a.name}!${rewardText}`, true);
-        openAchievementModal(pack); // Refresh modal
-        renderAchievements(); // Refresh achievement list
+        showToast(`Claimed: ${a.name}!${rewardText}`, true);
+        openAchievementModal(pack);
+        renderAchievements();
       };
     }
     
@@ -2883,8 +2630,6 @@ function closeAchievementModal() {
   document.getElementById('achievementModal').classList.add('hidden');
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Function to open version info modal
 function openVersionInfo() {
   document.getElementById('versionModal').classList.remove('hidden');
 }
@@ -2893,8 +2638,6 @@ function closeVersionInfo() {
   document.getElementById('versionModal').classList.add('hidden');
 }
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Function to reopen tutorial/help
 function openHelp() {
   document.getElementById('instructionsOverlay').classList.remove('hidden');
 }
@@ -2912,7 +2655,10 @@ function buyItem(itemId) {
     gameState.coffee -= itemState.cost;
     itemState.count++;
     itemState.cost = Math.floor(shopItem.baseCost * Math.pow(shopItem.scale, itemState.count));
-    showToast(`Purchased ${shopItem.name}!`);
+    
+    /* === Coffee Tycoon v1.8 – Notification Combination === */
+    showPurchaseNotification(shopItem.name);
+    
     saveGame();
     updateUI();
   }
@@ -2927,6 +2673,14 @@ function buyUpgrade(upgradeId) {
     gameState.purchasedUpgrades.add(upgradeId);
     gameState.viewedUpgrades.add(upgradeId);
     upgrade.effect();
+    
+    /* === Coffee Tycoon v1.8 – Final Polish === */
+    // Remove notifications related to this upgrade pack instantly
+    const packId = upgrade.pack;
+    if (packId) {
+      removeNotificationsByPack(packId);
+    }
+    
     showToast(`Purchased ${upgrade.name}!`);
     saveGame();
     updateUI();
@@ -2934,8 +2688,6 @@ function buyUpgrade(upgradeId) {
 }
 
 function doPrestige() {
-  // === Coffee Tycoon v1.7 – Achievement Rewards ===
-  // Changed prestige calculation to 10 billion per Golden Coffee
   const goldenCoffeeToGain = Math.floor(gameState.totalCoffeeAllTime / 10000000000);
   if (goldenCoffeeToGain > gameState.goldenCoffee) {
     const gained = goldenCoffeeToGain - gameState.goldenCoffee;
@@ -2943,17 +2695,20 @@ function doPrestige() {
       gameState.goldenCoffee = goldenCoffeeToGain;
       gameState.prestigeMultiplier = 1 + (gameState.goldenCoffee * 0.1);
       
-      // Reset progress
       gameState.coffee = 0;
       gameState.clickPower = 1;
       gameState.purchasedUpgrades = new Set();
       gameState.itemMultipliers = {};
       
+      /* === Coffee Tycoon v1.8 – Final Polish === */
+      // Reset upgrade tracking for notifications
+      previouslyUnlockedUpgrades = new Set();
+      
       shopItems.forEach(item => {
         gameState.items[item.id] = { count: 0, cost: item.baseCost };
       });
       
-      showToast(`🌟 Prestiged! Gained ${gained} Golden Coffee!`, true);
+      showToast(`Prestiged! Gained ${gained} Golden Coffee!`, true);
       saveGame();
       updateUI();
     }
@@ -2964,10 +2719,18 @@ function checkAchievements() {
   gameState.achievements.forEach(a => {
     if (a.condition() && !a.earned) {
       a.earned = true;
-      // === Coffee Tycoon v1.7 – Achievement Rewards ===
-      // Mark as unclaimed instead of applying reward immediately
       gameState.unclaimedAchievements.add(a.id);
-      showToast(`🏆 Achievement Unlocked: ${a.name}! (Click to claim reward)`, true);
+      
+      /* === Coffee Tycoon v1.8 – Final Polish === */
+      // Show notification for achievement unlock
+      showNotification(
+        'Achievement Unlocked!',
+        `${a.name}`,
+        'achievement',
+        { achievementId: a.id }
+      );
+      
+      showToast(`Achievement Unlocked: ${a.name}! (Click to claim reward)`, true);
       saveGame();
     }
   });
@@ -2979,7 +2742,6 @@ document.getElementById('coffeeButton').onclick = () => {
   gameState.coffee += earned;
   gameState.totalCoffeeAllTime += earned;
   
-  // Update animation targets
   gameState.targetCoffee = gameState.coffee;
   
   const btn = document.getElementById('coffeeButton');
@@ -3034,7 +2796,6 @@ setInterval(() => {
   updateUI();
 }, 1000);
 
-// Auto-save every 30 seconds
 setInterval(() => {
   saveGame();
 }, 30000);
@@ -3066,15 +2827,12 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// === Coffee Tycoon v1.7 – Achievement Rewards ===
-// Event listeners for buttons
 document.getElementById('helpBtn').onclick = openHelp;
 document.getElementById('infoBtn').onclick = openVersionInfo;
 document.getElementById('startGameBtn').onclick = closeInstructions;
 document.getElementById('closeVersionModal').onclick = closeVersionInfo;
 document.getElementById('closeAchievementModal').onclick = closeAchievementModal;
 
-// Close modals when clicking outside
 document.getElementById('achievementModal').onclick = (e) => {
   if (e.target.id === 'achievementModal') {
     closeAchievementModal();
@@ -3096,6 +2854,8 @@ document.getElementById('instructionsOverlay').onclick = (e) => {
 // ========== INITIALIZATION ==========
 const hasExistingSave = loadGame();
 
+/* === Coffee Tycoon v1.8 – Final Polish === */
+// Default to Brew House tab (already active in HTML)
 if (!hasExistingSave) {
   document.getElementById('instructionsOverlay').classList.remove('hidden');
 } else {
@@ -3112,7 +2872,5 @@ gameState.displayCPS = gameState.targetCPS;
 updateUI();
 
 </script>
-
-
-
-</body></html>
+</body>
+</html>

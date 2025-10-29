@@ -34,7 +34,7 @@ A game where you brew coffee.
 
 ## Updates
 
-### Latest Version: v1.8 – Gains and Grains
+### Latest Version: v1.8: Gains and Grains
 #### Release Date: Oct 28, 2025
 #### New Features
 - Added notifications for **new Achievements and Upgrade Packs**
@@ -51,7 +51,7 @@ A game where you brew coffee.
 
 ---
 
-### Last Major Update: v1.8 – Gains and Grains
+### Last Major Update: v1.8: Gains and Grains
 #### Release Date: Oct 28, 2025
 Refer to the details listed above.
 

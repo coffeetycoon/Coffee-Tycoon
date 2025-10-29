@@ -44,10 +44,6 @@ A game where you brew coffee.
 - Achievement unlock delivers duplicate notification, only the one that matches the shop purchase notification will be kept
 - Achievement claim notification will be restyled to look like the shop purchase notification
 
-#### Improvements
-- General UI polish for smoother transitions and consistent notification behavior
-- Minor bug fixes and stability improvements
-
 ---
 
 ### Last Major Update: v1.8: Gains and Grains

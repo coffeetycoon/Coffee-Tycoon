@@ -65,6 +65,10 @@ Refer to the details listed above.
 
 ## Future Updates
 
+### v1.8.1 - Gains and Grains Patch 1
+- Remove the number of attachments from achievement packs ([number unlocked]/[number total] achievements will not show anymore), while keeping the green progress bar
+  - Same for upgrade packs 
+
 ### v1.9 - Riches and Reaches
 - Achievements for coffee collection will scale to 1 quintillion coffee
 - Achievements for shop item collection will scale to 5000 items

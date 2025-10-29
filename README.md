@@ -71,6 +71,8 @@ A game where you brew coffee.
 - Achievements for shop item collection will scale to 5000 items
 - New achievement pack: upgrades collection, achievement for 10% of upgrades, then 20% and so on until 100% of upgrades
 - Remove number from notifications on achievement packs
+- All shop items coffee grinder and beyond buffed by 50%
+- Auto Brewer now does 5 CPS, Barista now does 20 CPS
 - Claimed achievements will now have a green border/theme, so as not to confuse them with unclaimed achievements
   - Unclaimed (but completed) achievements will not change
 

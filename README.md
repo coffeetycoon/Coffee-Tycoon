@@ -74,6 +74,7 @@ A game where you brew coffee.
 - All shop items coffee grinder and beyond buffed by at least 200%
 - All shop items more spaced out (CPS-wise), no price changes but Coffee Franchise now produces 1M CPS, with all items before till coffee grinder scaling along with it
 - Auto Brewer now does 5 CPS, Barista now does 10 CPS
+- Affordable upgrades in an upgrade pack will be represented by "!" instead of "."
 - Claimed achievements will now have a green border/theme, so as not to confuse them with unclaimed achievements
   - Unclaimed (but completed) achievements will not change
 
